@@ -6,7 +6,7 @@ namespace TwilightAndBlight
 
         private static GameManager instance;
         public static GameManager Instance { get { return instance; } }
-
+        [SerializeField] private Canvas mainCanvas;
         private void Awake()
         {
             if (instance == null)
@@ -20,6 +20,10 @@ namespace TwilightAndBlight
             }
         }
 
+        public Canvas GetMainCanvas()
+        {
+            return mainCanvas;
+        }
 
     }
 }

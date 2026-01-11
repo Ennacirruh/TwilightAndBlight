@@ -4,10 +4,10 @@ using UnityEngine;
 public class Stat 
 {
     private float totalValue;
-    private float baseValue;
+    [SerializeField] private float baseValue;
     private float decimalModifier;
     private float flatModifier;
-    private bool recalculationQueued;
+    private bool recalculationQueued = true;
     public float Value { get { return GetValue(); } }
     private float GetValue()
     {

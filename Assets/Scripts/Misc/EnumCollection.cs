@@ -4,7 +4,27 @@ namespace TwilightAndBlight
     
     public enum DamageType
     {
-        Test
+        Physical
     }
-    
+    public enum StatType
+    {
+        Power,
+        Fortitude,
+        Agility,
+        Constition,
+        Intelligence,
+        Wisdom,
+        Dexterity,
+        Reflexes,
+        Charisma,
+        Cunning,
+        Discipline    
+    }
+    public enum AbilityTarget
+    {
+        Enemy,
+        Ally,
+        Both
+    }
+
 }

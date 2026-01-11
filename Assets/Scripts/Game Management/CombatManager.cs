@@ -5,10 +5,26 @@ using System;
 namespace TwilightAndBlight {
     public class CombatManager : MonoBehaviour
     {
+        private static CombatManager instance;
+        public static CombatManager Instance { get { return instance; } }
         public const float TurnThreshold = 10000;
+        public const float damageVarianceRange = 0.25f;
         private List<CombatTeam> teams = new List<CombatTeam>();
         private List<CombatEntity> entityTurnQueue = new List<CombatEntity>();
         private CombatEntity entityTakingTurn;
+        public int cursorPos;
+        public CombatTeam cursorTarget;
+        private void Awake()
+        {
+            if (instance == null)
+            {
+                instance = this;
+            }
+            else
+            {
+                Destroy(this);
+            }
+        }
         public void BeginCombat()
         {
             GameEvents.OnCombatStart?.Invoke();
