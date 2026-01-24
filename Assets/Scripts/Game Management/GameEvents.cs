@@ -3,17 +3,6 @@ namespace TwilightAndBlight
 {
     public static class GameEvents
     {
-        //private static GameEvents instance;
-        //public GameEvents Instance { get { return GetInstance(); } }
-        //private static GameEvents GetInstance()
-        //{
-        //    if(instance == null)
-        //    {
-        //        instance = new GameEvents();
-        //    }
-        //    return instance;
-        //}
-
         public static DamageEntityInteraction OnEntiyDamaged;
         public static DamageEntityOverride OnEntityDamagedOverride;
         public static HealEntityInteraction OnEntityHealed;
@@ -26,6 +15,8 @@ namespace TwilightAndBlight
         public static CombatTeamInteraction OnTeamJoin;
         public static CombatTeamInteraction OnTeamLeave;
         public static CombatResourceChangeAction OnHealthChange;
-
+        public static CombatEntityAction OnAbilitySelected;
+        public static CombatEntityAction OnTargetsSelected;
+        public static CombatEntityMapNodeInteraction OnAbilityPerformed;
     }
 }

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac76d89f4576844b92a0e9a99b8a84f, type: 3}
+  m_Name: TestHexGenerator
+  m_EditorClassIdentifier: 
+  mapNodePrefab: {fileID: 1123927982889099553, guid: bef650f79d386704a86a351dfada0ac2, type: 3}
+  radius: 10
+  offsetPerNode: {x: 0.865, y: 0.75}
+  heightRange: 1
+  heightRangeNoiseScale: 0.3
+  maxPercentAsSpawnNodes: 0.15
+  initialSpawnNodeChance: 0.9
+  subsequentSpawnNodeChanceModifier: 0.8

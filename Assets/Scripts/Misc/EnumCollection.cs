@@ -22,9 +22,18 @@ namespace TwilightAndBlight
     }
     public enum AbilityTarget
     {
-        Enemy,
-        Ally,
-        Both
+        EnemyNode,
+        AllyNode,
+        OccupiedNode,
+        EmptyNode,
+        AnyNode
+    }
+    public enum IndicatorType
+    {
+        Generic,
+        Valid,
+        Invalid,
+        Warnign
     }
 
 }

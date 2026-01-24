@@ -2,28 +2,48 @@ using UnityEngine;
 using System.Collections.Generic;
 using System.Collections;
 using System;
+using TwilightAndBlight.Map;
 namespace TwilightAndBlight {
     public class CombatManager : MonoBehaviour
     {
         private static CombatManager instance;
         public static CombatManager Instance { get { return instance; } }
-        public const float TurnThreshold = 10000;
-        public const float damageVarianceRange = 0.25f;
+        
         private List<CombatTeam> teams = new List<CombatTeam>();
         private List<CombatEntity> entityTurnQueue = new List<CombatEntity>();
         private CombatEntity entityTakingTurn;
-        public int cursorPos;
         public CombatTeam cursorTarget;
+        [SerializeField] private bool startCombat;
         private void Awake()
         {
             if (instance == null)
             {
                 instance = this;
             }
-            else
+            else 
             {
                 Destroy(this);
             }
+        }
+        private void OnEnable()
+        {
+            GameEvents.OnAbilitySelected += ActionSelected;
+            GameEvents.OnTargetsSelected += TargetsSelected;
+            GameEvents.OnAbilityPerformed += AbilityPerformed;
+        }
+        private void OnDisable()
+        {
+            GameEvents.OnAbilitySelected -= ActionSelected;
+            GameEvents.OnTargetsSelected -= TargetsSelected;
+            GameEvents.OnAbilityPerformed -= AbilityPerformed;
+        }
+        private void Update()
+        {
+            if (startCombat)
+            {
+                startCombat = false;
+                BeginCombat();
+            }  
         }
         public void BeginCombat()
         {
@@ -40,37 +60,40 @@ namespace TwilightAndBlight {
             entityTurnQueue.Sort(new SortCombatEntitiesByTurn());
             CombatEntity nextEntity = entityTurnQueue[0];
             int ticks = Mathf.CeilToInt(nextEntity.GetTicksToTurn());
-            foreach (CombatEntity entity in entityTurnQueue)
+            //Debug.Log($"Ticks Passed: {ticks}");
+            if (ticks > 0)
             {
-                entity.TickTurnProgress(ticks);
+                foreach (CombatEntity entity in entityTurnQueue)
+                {
+                    entity.TickTurnProgress(ticks);
+                }
             }
             entityTakingTurn = nextEntity;
+            entityTakingTurn.ResetTurnProgress();
             BeginTurn();
         }
         public void BeginTurn()
         {
-            GameEvents.OnTurnStart.Invoke(entityTakingTurn);
+            GameEvents.OnTurnStart?.Invoke(entityTakingTurn);
             SelectAction();
         }
         public void EndTurn()
         {
-            GameEvents.OnTurnEnd.Invoke(entityTakingTurn);
+            GameEvents.OnTurnEnd?.Invoke(entityTakingTurn);
             CheckWinConditions();
         }
         public void SelectAction()
         {
             entityTakingTurn.SelectAction();
-            SelectTargets();
+            
         }
         public void SelectTargets()
         {
             entityTakingTurn.AcquireTargets();
-            PerformAction();
         }
         public void PerformAction()
         {
             entityTakingTurn.PerformAction();
-            StartCoroutine(WaitUntilActionCompleteCoroutine());
         }
         public void CheckWinConditions()
         {
@@ -91,15 +114,56 @@ namespace TwilightAndBlight {
                 ProgressToNextTurn();
             }
         }
-        private bool CurrentActionComplete()
+        private void ActionSelected(CombatEntity entity)
         {
-            return !entityTakingTurn.ActionInProgress();
+            if(entity = entityTakingTurn)
+            {
+                SelectTargets();
+                UIManager.Instance.CloseAbilityPreview();
+            }
         }
-
-        private IEnumerator WaitUntilActionCompleteCoroutine()
+        private void TargetsSelected(CombatEntity entity)
         {
-            yield return new WaitUntil(CurrentActionComplete);
-            EndTurn();
+            if(entity = entityTakingTurn)
+            {
+                PerformAction();
+            }
+        }
+        private void AbilityPerformed(CombatEntity entity, MapNode origin) 
+        {
+            if(entity = entityTakingTurn)
+            {
+                MapManager.Instance.ResetHighlight();
+                CheckWinConditions();
+            }
+        }
+        public void AddTeam(CombatTeam team) 
+        {
+            teams.Add(team);
+            foreach (CombatEntity entity in team.GetEntireTeam())
+            {
+                if(entity != null)
+                {
+                    entityTurnQueue.Add(entity);
+                    List<MapNode> mapNodes = MapManager.Instance.GetSpawnNodes(team);
+                    foreach(MapNode node in mapNodes)
+                    {
+                        if (!node.IsOccupied())
+                        {
+                            node.AssignEntity(entity, Vector2.zero);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        public CombatEntity GetCombatEntityTakingTurn()
+        {
+            return entityTakingTurn;
+        }
+        public List<CombatTeam> GetCombatTeams()
+        {
+            return teams;
         }
     }
 }

@@ -1,130 +1,62 @@
 using System.Collections.Generic;
+using System.Collections;
+using TwilightAndBlight.Map;
 using UnityEngine;
 namespace TwilightAndBlight.Ability
 {
     [RequireComponent(typeof(EntityStats))]
     public abstract class EntityAbility : MonoBehaviour
     {
+        [SerializeField] protected Sprite abilityIcon;
         [SerializeField] protected string abilityName;
         [TextArea][SerializeField] protected string abilityDescription;
         [TextArea][SerializeField] private string descriptionPreview;
-        [SerializeField] private AbilityTarget target;
+        [SerializeField] protected AbilityTarget targetFilter;
         protected Dictionary<string, string> StringConversionTable { get { return GetStringConversionTable(); }}
-        private List<CombatEntity> targets = new List<CombatEntity>();
-        protected List<(CombatTeam, int)> targetIndexReference = new List<(CombatTeam, int)>();
-        protected delegate bool CombatEntityConditional(CombatEntity entity, int cursor);
+        protected List<MapNode> targetVisualReference = new List<MapNode>();
+        protected delegate bool CombatEntityConditional(CombatEntity caster, MapNode targetOrigin);
         protected EntityStats entityStats;
+        protected CombatEntity combatEntity;
         protected virtual void Awake()
         {
             entityStats = GetComponent<EntityStats>();  
+            combatEntity = GetComponent<CombatEntity>();
         }
-        
-        protected abstract void SelectTargets(CombatTeam team, int cursor);
-        protected abstract void GenerateTargetIndexReference(CombatTeam team, int cursor);
+
+        protected abstract IEnumerator AbilityBehavior(MapNode targetingOrigin);
+        public abstract void HighlightAbility(MapNode targetingOrigin);
         protected abstract Dictionary<string, string> GetStringConversionTable();
-        public void AquireTargets(CombatTeam combatTeam, int cursor)
+        public void PerformAbility(MapNode targetingOrigin)
         {
-            SelectTargets(combatTeam, cursor);
-            GenerateTargetList();
+   
+            StartCoroutine(AbilityBehavior(targetingOrigin));
+            
         }
-        public List<(CombatTeam, int)> GetTargetIndexReference(CombatTeam team, int cursor)
+        protected void EndAbility(MapNode targetingOrigin)
         {
-            targetIndexReference.Clear();
-            GenerateTargetIndexReference(team, cursor);
-            return targetIndexReference;
+            GameEvents.OnAbilityPerformed?.Invoke(combatEntity, targetingOrigin);
         }
-        private void GenerateTargetList()
+        public virtual bool IsValidTarget(MapNode targetNode)
         {
-            foreach ((CombatTeam, int) target in targetIndexReference)
+            if(targetNode == null) return false;
+            switch (targetFilter)
             {
-                CombatEntity entity = target.Item1.GetCombatEntity(target.Item2);
-                AddCombatEntity(entity);
+                case AbilityTarget.EnemyNode:
+                    if (!targetNode.IsOccupied()) return false;
+                    return targetNode.GetCombatEntity().GetComponent<CombatEntity>().GetCombatTeam() != combatEntity.GetCombatTeam();
+                case AbilityTarget.AllyNode:
+                    if(!targetNode.IsOccupied()) return false;
+                    return targetNode.GetCombatEntity().GetComponent<CombatEntity>().GetCombatTeam() == combatEntity.GetCombatTeam();
+                case AbilityTarget.OccupiedNode:
+                    return targetNode.IsOccupied();
+                case AbilityTarget.EmptyNode:
+                    return !targetNode.IsOccupied();
+                case AbilityTarget.AnyNode:
+                    return true;
             }
+            return false;
         }
-        protected void AddCombatEntity(CombatEntity entity)
-        {
-            if (entity != null)
-            {
-                targets.Add(entity);
-            }
-        }
-        protected void AddSingleTarget(CombatTeam combatTeam, int cursor)
-        {
-            targetIndexReference.Add((combatTeam, cursor));
-        }
-        protected void AddAdjacentTargets(CombatTeam combatTeam, int cursor, int range = 1)
-        {
-            range = Mathf.Max(0, range);
-            targetIndexReference.Add((combatTeam, cursor));
-            for (int i = 0; i < range; i++)
-            {
-                targetIndexReference.Add((combatTeam, cursor + i));
-                targetIndexReference.Add((combatTeam, cursor - i));
-            }
-        }
-        protected void InsertRandomTargets(CombatTeam team, int rolls = 1, bool allowRepeats = true)
-        {
-            InsertRandomTargets(new HashSet<CombatTeam>() { team }, rolls, allowRepeats);
-        }
-        protected void InsertRandomTargets(HashSet<CombatTeam> teams, int rolls = 1, bool allowRepeats = true)
-        {
-            List<CombatEntity> entities = new List<CombatEntity>();
-            foreach (CombatTeam team in teams)
-            {
-                for (int i = 0; i < CombatTeam.maxTeamSize; i++)
-                {
-                    CombatEntity entity = team.GetCombatEntity(i);
-                    if (entity != null)
-                    {
-                        entities.Add(entity);
-                    }
-                }
-            }
-            rolls = Mathf.Max(1, rolls);
-            if (allowRepeats)
-            {
-                for (int i = 0; i < rolls; i++)
-                {
-                    int index = Random.Range(0, entities.Count);
-                    AddCombatEntity(entities[index]);
-                }
-            }
-            else
-            {
-                rolls = Mathf.Min(rolls, entities.Count);
-                for (int i = 0; i < rolls; i++)
-                {
-                    int index = Random.Range(0, entities.Count);
-                    AddCombatEntity(entities[index]);
-                    entities.RemoveAt(index);
-                }
-            }
-        }
-
-        protected void AddAllTargets(CombatTeam combatTeam)
-        {
-            for (int i = 0; i < CombatTeam.maxTeamSize; i++)
-            {
-                targetIndexReference.Add((combatTeam,i));
-            }
-        }
-
-        protected void InsertTargetsByConditional(CombatTeam team, int cursor, CombatEntityConditional condition)
-        {
-            for (int i = 0; i < CombatTeam.maxTeamSize; i++)
-            {
-                CombatEntity entity = team.GetCombatEntity(i);
-                if (entity != null)
-                {
-                    bool result = condition.Invoke(entity, cursor);
-                    if (result)
-                    {
-                        AddCombatEntity(entity);
-                    }
-                }
-            }
-        }
-        public string GetDescription()
+        public string GetAbilityDescription()
         {
             string returnString = "";
             if (abilityDescription.Length > 0)
@@ -171,15 +103,22 @@ namespace TwilightAndBlight.Ability
             }
             return returnString;
         }
-       
-        private void OnValidate()
+        public Sprite GetAbilityIcon()
+        {
+            return abilityIcon;
+        }
+        public string GetAbilityName()
+        {
+            return abilityName;
+        }
+        protected virtual void OnValidate()
         {
             if(entityStats == null)
             {
                 entityStats = GetComponent<EntityStats>();
             }
-            descriptionPreview = GetDescription();
+            descriptionPreview = GetAbilityDescription();
         }
-        
+
     }
 }

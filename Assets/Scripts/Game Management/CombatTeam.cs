@@ -1,12 +1,16 @@
+using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Runtime.InteropServices.WindowsRuntime;
 using UnityEngine;
 namespace TwilightAndBlight
 {
+    [Serializable]
     public class CombatTeam
     {
         public static int maxTeamSize = 5;
-        private List<CombatEntity> team = new List<CombatEntity>(maxTeamSize);
+        private HashSet<CombatEntity> team = new HashSet<CombatEntity>();
+        private CombatEntity[] teamSlots = new CombatEntity[maxTeamSize];
         public bool TeamLost {get { return team.Count == 0; } }
         public void AddCombatant(CombatEntity entity, int pos = -1)
         {
@@ -14,13 +18,14 @@ namespace TwilightAndBlight
             {
                 if (!team.Contains(entity))
                 {
-                    for (int i = 0; i < team.Count; i++)
+                    for (int i = 0; i < teamSlots.Length; i++)
                     {
-                        if(team[i] == null)
+                        if(teamSlots[i] == null)
                         {
-                            team[i] = entity;
+                            teamSlots[i] = entity;
+                            team.Add(entity);
                             entity.AssignCombatTeam(this);
-                            GameEvents.OnTeamJoin.Invoke(this, entity);
+                            GameEvents.OnTeamJoin?.Invoke(this, entity);
                             break;
                         }
                     }
@@ -28,7 +33,7 @@ namespace TwilightAndBlight
             }
             else
             {
-                if (team[pos] != null)
+                if (teamSlots[pos] != null)
                 {
                     RemoveCombatant(pos);
                 }
@@ -36,7 +41,8 @@ namespace TwilightAndBlight
                 {
                     RemoveCombatant(entity);
                 }
-                team[pos] = entity;
+                teamSlots[pos] = entity;
+                team.Add(entity);
                 entity.AssignCombatTeam(this);
                 GameEvents.OnTeamJoin.Invoke(this, entity);
             }
@@ -45,18 +51,26 @@ namespace TwilightAndBlight
         {
             if (team.Contains(entity))
             {
-                int index = team.IndexOf(entity);
-                team[index] = null;
-                entity.AssignCombatTeam(null);
-                GameEvents.OnTeamLeave.Invoke(this, entity);
+                for (int i = 0; i < teamSlots.Length; i++)
+                {
+                    if( teamSlots[i] == entity)
+                    {
+                        teamSlots[i] = null;
+                        team.Remove(entity);
+                        entity.AssignCombatTeam(null);
+                        GameEvents.OnTeamLeave.Invoke(this, entity);
+                    }
+                }
+                
             }
         }
         public void RemoveCombatant(int index)
         {
-            CombatEntity entity = team[index];
+            CombatEntity entity = teamSlots[index];
             if (entity != null)
-            { 
-                team[index] = null;
+            {
+                teamSlots[index] = null;
+                team.Remove(entity);
                 entity.AssignCombatTeam(null);
                 GameEvents.OnTeamLeave.Invoke(this, entity);
                 
@@ -66,9 +80,13 @@ namespace TwilightAndBlight
         {
             if (index >= 0 && index < team.Count)
             {
-                return team[index];
+                return teamSlots[index];
             }
             return null;
+        }
+        public List<CombatEntity> GetEntireTeam()
+        {
+            return new List<CombatEntity>(team);
         }
 
     }

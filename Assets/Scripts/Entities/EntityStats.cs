@@ -16,6 +16,8 @@ namespace TwilightAndBlight {
         [SerializeField] private Stat cunning = new Stat();
         [SerializeField] private Stat discipline = new Stat();
         [SerializeField] private Stat reflexes = new Stat();
+        [SerializeField] private Stat flatArmorPen = new Stat();
+        [SerializeField] private Stat percemtArmorPen = new Stat();
         private Dictionary<DamageType, float> resistances = new Dictionary<DamageType, float>();
         private Dictionary<StatType, Stat> statLookupTable = new Dictionary<StatType, Stat>();
         #endregion
@@ -31,6 +33,8 @@ namespace TwilightAndBlight {
         public float Cunning { get { return cunning.Value; } }
         public float Discipline { get { return discipline.Value; } }
         public float Reflexes { get { return reflexes.Value; } }
+        public float FlatArmorPen { get { return flatArmorPen.Value; } }
+        public float PercentArmorPen { get { return percemtArmorPen.Value; } }
         #endregion
         private void Awake()
         {
@@ -66,6 +70,7 @@ namespace TwilightAndBlight {
             statLookupTable.Add(StatType.Cunning, cunning);
             statLookupTable.Add(StatType.Discipline, discipline);
             statLookupTable.Add(StatType.Reflexes, reflexes);
+
         }
         private void OnValidate()
         {

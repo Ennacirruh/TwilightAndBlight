@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TwilightAndBlight.Map;
 namespace TwilightAndBlight
 {
     public delegate void GenericAction();
@@ -12,4 +13,5 @@ namespace TwilightAndBlight
     public delegate void KillEntityOverride(CombatEntity target, CombatEntity source, ref bool kill);
     public delegate void CombatTeamInteraction(CombatTeam team, CombatEntity entity);
     public delegate void CombatResourceChangeAction(CombatEntity entity, float differnece);
+    public delegate void CombatEntityMapNodeInteraction(CombatEntity entity, MapNode mapNode);
 }

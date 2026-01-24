@@ -4,12 +4,12 @@ namespace TwilightAndBlight
     public class EntityHealthBar : MonoBehaviour
     {
         [SerializeField] private GameObject resourceBarPrefab;
-        [SerializeField] private Vector2 barOffsetPosition;
+        [SerializeField] private RectTransform canvasParent;
         private ResourceBarController controller;
         private void Start()
         {
-            GameObject resourceBar = Instantiate(resourceBarPrefab, GameManager.Instance.GetMainCanvas().transform);
-            resourceBar.transform.position = Camera.main.WorldToScreenPoint(transform.position + (Vector3)barOffsetPosition);
+            GameObject resourceBar = Instantiate(resourceBarPrefab, canvasParent);
+            ((RectTransform)resourceBar.transform).anchoredPosition = Vector2.zero;
             controller = resourceBar.GetComponent<ResourceBarController>();
         }
 

@@ -1,5 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
+using TwilightAndBlight.Ability;
+using Unity.VisualScripting;
+using TwilightAndBlight.Map;
 namespace TwilightAndBlight
 {
     [RequireComponent(typeof(EntityStats))]
@@ -11,7 +14,10 @@ namespace TwilightAndBlight
         protected float turnProgress;
         protected CombatTeam combatTeam;
         protected HashSet<CombatEntity> targets = new HashSet<CombatEntity>();
+        protected HashSet<EntityAbility> abilities = new HashSet<EntityAbility>();
+        protected EntityAbility selectedAbility;
         [SerializeField] protected float health;
+        private MapNode currentNode;
         public float MaxHealth { get { return 1000f + (100f * Stats.Constitution); } }
         public float Health { get { return health; } }
         private bool actionInProgress;
@@ -23,11 +29,11 @@ namespace TwilightAndBlight
             entityStats = GetComponent<EntityStats>();
             health = MaxHealth;
         }
-        private void OnEnable()
+        protected virtual void OnEnable()
         {
             GameEvents.OnCombatStart += OnCombatStart;
         }
-        private void OnDisable()
+        protected virtual void OnDisable()
         {
             GameEvents.OnCombatStart -= OnCombatStart;
         }
@@ -51,20 +57,31 @@ namespace TwilightAndBlight
         {
             turnProgress = 0;
             health = MaxHealth;
+            abilities.AddRange(GetComponents<EntityAbility>());
         }
         public void AssignCombatTeam(CombatTeam team)
         {
             combatTeam = team;
         }
-        
+        public CombatTeam GetCombatTeam()
+        {
+            return combatTeam;
+        }
         public void TickTurnProgress(int ticks)
         {
             turnProgress += entityStats.Agility * ticks;
-            if(turnProgress >= CombatManager.TurnThreshold)
-            {
-                turnProgress = 0;
-            }
-
+        }
+        public void ProgressTowardsTurn(float decimalTowardsTurn)
+        {
+            turnProgress += GameManager.Instance.TurnThreshold * decimalTowardsTurn;
+        }
+        public void ResetTurnProgress()
+        {
+            turnProgress = 0;
+        }
+        public void SetSelectedAbility(EntityAbility ability)
+        {
+            selectedAbility = ability;
         }
         public void DamageEntity(CombatEntity source, float attack, DamageType damageType, float percentPenetration = 0, float flatPenetration = 0)
         {
@@ -86,9 +103,9 @@ namespace TwilightAndBlight
                 resistanceMultiplier = resistanceMultiplier * (1f - Stats.GetResistance(damageType));
             }
             float attackWeightRoll = (-Mathf.Cos(Mathf.PI * Random.Range(0f,1f))) + 1f;
-            attackWeightRoll = CombatManager.damageVarianceRange * (attackWeightRoll / 2f);
-            attackWeightRoll += 1f - (CombatManager.damageVarianceRange / 2f);
-            attackWeightRoll += (damageRangeWeight - (CombatManager.damageVarianceRange / 2f)) / 100f;
+            attackWeightRoll = GameManager.Instance.DamageVarianceRange * (attackWeightRoll / 2f);
+            attackWeightRoll += 1f - (GameManager.Instance.DamageVarianceRange / 2f);
+            attackWeightRoll += (damageRangeWeight - (GameManager.Instance.DamageVarianceRange / 2f)) / 100f;
             attack = attack * attackWeightRoll;
             float damage = (attack / ((armor / attack) + 1f)) * resistanceMultiplier;
 
@@ -107,7 +124,7 @@ namespace TwilightAndBlight
                 damage *= critDamage;
             }
             health -= damage;
-            Debug.Log($"Damage: {damage}");
+            Debug.Log($"Damage: {damage}\nBaseDamage: {attack}\nEfective Armor: {armor}\nResistance Mult: {resistanceMultiplier}\nCrit: {crit}\nCrit Damage{critDamage}");
             GameEvents.OnEntiyDamaged?.Invoke(attack, damage, this, source);
             GameEvents.OnHealthChange?.Invoke(this, -damage);
             if(health <= 0f)
@@ -139,7 +156,23 @@ namespace TwilightAndBlight
         }
         public float GetTicksToTurn()
         {
-            return (CombatManager.TurnThreshold - TurnProgress) / Stats.Agility;
+            if(Stats.Agility == 0)
+            {
+                return Mathf.Infinity;
+            }
+            return (GameManager.Instance.TurnThreshold - TurnProgress) / Stats.Agility;
+        }
+        public void SetCurrentMapNode(MapNode node)
+        {
+            currentNode = node;
+        }
+        public MapNode GetCurrentMapNode()
+        {
+            return currentNode;
+        }
+        public HashSet<EntityAbility> GetEntityAbilities()
+        {
+            return abilities;
         }
     }
 }
