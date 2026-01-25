@@ -1,5 +1,7 @@
+
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace TwilightAndBlight.Map
@@ -16,6 +18,7 @@ namespace TwilightAndBlight.Map
         private bool spawnNode = false;
         private CombatTeam spawnTeam;
         private float pathfindingScoreModifier = 1f;
+        private bool moveInProgress;
        
         private void Start()
         {
@@ -36,38 +39,32 @@ namespace TwilightAndBlight.Map
         {
             return entity;
         }
-        public void AssignEntity(CombatEntity entity, Vector3 offset, EntityMovePattern movePattern = null)
+        public void AssignEntity(CombatEntity entity, Vector3 offset)
         {
-            this.entity = entity;
             MapNode node = entity.GetCurrentMapNode();
-            
-            if (movePattern == null)
+            if (node != this) // check if already assigned
             {
+                this.entity = entity;
+
                 TeleportMovePattern(entity, transform.position + offset);
+                entity.SetCurrentMapNode(this);
+                GameEvents.OnNodeEntered?.Invoke(entity, this);
+                if (node != null)
+                {
+                    node.UnassignCurrentEntity();
+                }
+
             }
-            else
-            {
-                movePattern?.Invoke(entity, transform.position + offset);
-            }
-            if (node != null)
-            {
-                node.UnassignCurrentEntity();
-            }
-            entity.SetCurrentMapNode(this);
         }
         public void UnassignCurrentEntity()
         {
-            entity = null;
+            if (entity != null)
+            {
+                GameEvents.OnNodeExited?.Invoke(entity, this);
+                entity = null;
+            }
         }
-        public void TeleportMovePattern(CombatEntity entity, Vector3 targetPos)
-        {
-            StartCoroutine(TeleportMovePatternCoroutine(entity, targetPos));
-        }
-        private static IEnumerator TeleportMovePatternCoroutine(CombatEntity entity, Vector3 targetPos)
-        {
-            entity.transform.position = targetPos;
-            yield return null;
-        }
+        
 
         public void ColorMaterial(Color color)
         {
@@ -111,5 +108,52 @@ namespace TwilightAndBlight.Map
         {
             return pathfindingScoreModifier;
         }
+        #region Move Patterns
+        public bool MoveInProgress()
+        {
+            return moveInProgress;
+        }
+        public void TeleportMovePattern(CombatEntity entity, Vector3 targetPos)
+        {
+            StartCoroutine(TeleportMovePatternCoroutine(entity, targetPos));
+        }
+        private IEnumerator TeleportMovePatternCoroutine(CombatEntity entity, Vector3 targetPos)
+        {
+            entity.transform.position = targetPos;
+            yield return null;
+        }
+        public void FollowPathMovePattern(CombatEntity entity, List<MapNode> path, float moveSpeed)
+        {
+            moveInProgress = true;
+            StartCoroutine(FollowPathMovePatternCoroutine(entity, path, moveSpeed));
+        }
+        private IEnumerator FollowPathMovePatternCoroutine(CombatEntity entity, List<MapNode> path, float speed)
+        {
+            MapNode currentNode = entity.GetCurrentMapNode();
+            int targetIndex = 0;
+            MapNode endPos = path[path.Count - 1];
+            while (currentNode != endPos)
+            {
+                float maxDelta = speed * Time.deltaTime;
+                Vector3 posMemory = entity.transform.position;
+                Vector3 newPos = Vector3.MoveTowards(entity.transform.position, path[targetIndex].transform.position, maxDelta);
+                if(newPos == path[targetIndex].transform.position)
+                {
+                    currentNode = path[targetIndex];
+                    currentNode.AssignEntity(entity, Vector3.zero);
+                    targetIndex++;
+                    if(targetIndex < path.Count)
+                    {
+                        float distanceTraveled = (newPos - posMemory).magnitude;
+                        float difference = maxDelta - distanceTraveled;
+                        newPos = Vector3.MoveTowards(newPos, path[targetIndex].transform.position, difference);
+                    }
+                }
+                entity.transform.position = newPos;
+                yield return null;
+            }
+            moveInProgress = false;
+        }
+        #endregion
     }
 }

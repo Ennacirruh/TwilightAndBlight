@@ -483,7 +483,7 @@ GameObject:
   - component: {fileID: 238925284}
   - component: {fileID: 238925283}
   - component: {fileID: 238925282}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -946,7 +946,7 @@ GameObject:
   - component: {fileID: 883671503}
   - component: {fileID: 883671504}
   - component: {fileID: 883671505}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1021,7 +1021,7 @@ GameObject:
   - component: {fileID: 1222710136}
   - component: {fileID: 1222710138}
   - component: {fileID: 1222710137}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: 'Team 2 A '
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1151,7 +1151,7 @@ GameObject:
   - component: {fileID: 1388232285}
   - component: {fileID: 1388232287}
   - component: {fileID: 1388232288}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Team 1 A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1402,7 +1402,7 @@ GameObject:
   - component: {fileID: 1436181371}
   - component: {fileID: 1436181373}
   - component: {fileID: 1436181372}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: HealthBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1499,7 +1499,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &1664380805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1599,8 +1599,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   turnThreshold: 10000
   damageVarianceRange: 0.25
-  fallDamageThreshold: 2
-  terrainMantleThreshold: 3
+  fallDamageThreshold: 3
+  terrainMantleThreshold: 1.75
   mainCanvas: {fileID: 1664380806}
 --- !u!4 &1909998096
 Transform:
@@ -1721,7 +1721,7 @@ GameObject:
   - component: {fileID: 2115640773}
   - component: {fileID: 2115640772}
   - component: {fileID: 2115640771}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7494074486248263238}
   - component: {fileID: 8178962776087282871}
   - component: {fileID: 5341752537877391254}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: MapNode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   entity: {fileID: 0}
+  movesToLeave: 1
   nodeRanderer: {fileID: 2374543894596659002}
 --- !u!54 &5341752537877391254
 Rigidbody:
@@ -88,7 +89,7 @@ GameObject:
   - component: {fileID: 2374543894596659002}
   - component: {fileID: 4585751122088683845}
   - component: {fileID: 4477224696133729874}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}

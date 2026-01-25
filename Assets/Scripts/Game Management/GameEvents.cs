@@ -18,5 +18,7 @@ namespace TwilightAndBlight
         public static CombatEntityAction OnAbilitySelected;
         public static CombatEntityAction OnTargetsSelected;
         public static CombatEntityMapNodeInteraction OnAbilityPerformed;
+        public static CombatEntityMapNodeInteraction OnNodeEntered;
+        public static CombatEntityMapNodeInteraction OnNodeExited;
     }
 }

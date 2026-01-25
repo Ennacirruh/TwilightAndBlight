@@ -112,27 +112,30 @@ namespace TwilightAndBlight.Map
             currentHighlightDict.Clear();
             overlayNodes.Clear();
         }
-        public void HighlightNodesAsOverlay(MapNode node, IndicatorType indicatorType)
+        public void HighlightNodesAsOverlay(MapNode node, IndicatorType indicatorType, bool erasePrevious = true)
         {
-            HighlightNodesAsOverlay(new List<MapNode>() { node }, indicatorType);
+            HighlightNodesAsOverlay(new List<MapNode>() { node }, indicatorType, erasePrevious);
         }
-        public void HighlightNodesAsOverlay(List<MapNode> nodes, IndicatorType indicatorType)
+        public void HighlightNodesAsOverlay(List<MapNode> nodes, IndicatorType indicatorType, bool erasePrevious = true)
         {
-            foreach(MapNode node in overlayNodes)
+            if (erasePrevious)
             {
-                if(node != null)
+                foreach (MapNode node in overlayNodes)
                 {
-                    if (currentHighlightDict.ContainsKey(node))
+                    if (node != null)
                     {
-                        ColorNode(node, currentHighlightDict[node]);
-                    }
-                    else
-                    {
-                        node.ResetMaterial();
+                        if (currentHighlightDict.ContainsKey(node))
+                        {
+                            ColorNode(node, currentHighlightDict[node]);
+                        }
+                        else
+                        {
+                            node.ResetMaterial();
+                        }
                     }
                 }
+                overlayNodes.Clear();
             }
-            overlayNodes.Clear();
             foreach (MapNode node in nodes)
             {
                 if(node != null)
@@ -209,6 +212,15 @@ namespace TwilightAndBlight.Map
                     node.ColorMaterial(warningIndicator);
                     break;
             }
+        }
+
+        public static bool IsValidNeighboringNode(MapNode originNode, MapNode neighborNode)
+        {
+            if (neighborNode == null || originNode == null) return false;
+            if (neighborNode.IsOccupied()) return false;
+            if (neighborNode.transform.position.y - originNode.transform.position.y >= GameManager.Instance.TerrainMantleThreshold) return false;
+
+            return true;
         }
     }
 }

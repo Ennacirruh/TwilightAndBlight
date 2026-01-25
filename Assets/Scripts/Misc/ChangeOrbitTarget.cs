@@ -60,7 +60,7 @@ public class ChangeOrbitTarget : MonoBehaviour
     private void SelectTarget(InputAction.CallbackContext context)
     {
         RaycastHit hit;
-        if (Physics.Raycast(Camera.main.transform.position, Camera.main.ScreenPointToRay(Input.mousePosition).direction, out hit, Mathf.Infinity))
+        if (Physics.Raycast(Camera.main.transform.position, Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()).direction, out hit, Mathf.Infinity))
         {
             ApplyTarget(hit.transform);
         }

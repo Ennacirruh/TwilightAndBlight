@@ -15,6 +15,7 @@ namespace TwilightAndBlight.Ability
         private HashSet<MapNode> nodesInRange = new HashSet<MapNode>();
         private bool nodeRecalulationQueued = true;
         private int totalMoves;
+        
 
         private void OnEnable()
         {
@@ -61,12 +62,17 @@ namespace TwilightAndBlight.Ability
             
             if (IsValidTarget(targetingOrigin))
             {
-                MapManager.Instance.HighlightNodesAsOverlay(targetingOrigin, IndicatorType.Valid);
+                List<MapNode> path = AStarNavigation.GetShortestPath(combatEntity.GetCurrentMapNode(), targetingOrigin, totalMoves);
+                if (path.Count > 0)
+                {
+                    MapManager.Instance.HighlightNodesAsOverlay(path, IndicatorType.Valid);
+                }
             }
             else
             {
                 MapManager.Instance.HighlightNodesAsOverlay(targetingOrigin, IndicatorType.Invalid);
             }
+
                 
         }
         
@@ -76,17 +82,13 @@ namespace TwilightAndBlight.Ability
             {
                 return base.IsValidTarget(targetNode);
             }
-            else
-            {
-                return false;
-            }
-
+            return false;
         }
         private void EvaluateNode(MapNode parentNode, int parentDistance, Vector3Int targetNodeOffset)
         {
             MapNode target = MapManager.Instance.GetRealativeNode(parentNode, targetNodeOffset.x, targetNodeOffset.y, targetNodeOffset.z);
             int newDistance = parentDistance + 1;
-            if (target != null) // node exists
+            if (target != null && MapManager.IsValidNeighboringNode(parentNode, target)) // node exists
             {
                 if (evaluatedNodes.ContainsKey(target)) // node previously evaluated
                 {
@@ -113,19 +115,14 @@ namespace TwilightAndBlight.Ability
         {
             MapNode currentNode = combatEntity.GetCurrentMapNode();
             int moves = GetMoveSpeed();
-
+            float speed = 1f + (entityStats.Agility / 50f);
             List<MapNode> path = AStarNavigation.GetShortestPath(currentNode, targetingOrigin, moves);
             if (path != null)
             {
-                
-                foreach (MapNode node in path)
-                {
-
-                    MapManager.Instance.HighlightNodes(node, IndicatorType.Warnign);
-                }
+                targetingOrigin.FollowPathMovePattern(combatEntity, path, speed);
             }
-            yield return null;
-
+            yield return new WaitUntil(() => { return !currentNode.MoveInProgress(); });
+            EndAbility(targetingOrigin);
         }
 
         protected override Dictionary<string, string> GetStringConversionTable()

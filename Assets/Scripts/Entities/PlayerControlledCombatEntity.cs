@@ -16,6 +16,7 @@ namespace TwilightAndBlight
         {
             inputActions = new InputSystem_Actions();
             inputActions.Enable();
+            
             base.Awake();
         }
         protected override void OnEnable()
@@ -23,6 +24,7 @@ namespace TwilightAndBlight
             base.OnEnable();
             inputActions.Player.Attack.performed += SelectNode;
             inputActions.Player.Cancel.performed += ReturnToAbilitySelection;
+            
         }
         protected override void OnDisable()
         {
@@ -64,8 +66,8 @@ namespace TwilightAndBlight
             while (acquiringTarget)
             {
                 RaycastHit hit;
-                Debug.DrawRay(Camera.main.transform.position, Camera.main.ScreenPointToRay(Input.mousePosition).direction * 1000f, Color.red);
-                if (Physics.Raycast(Camera.main.transform.position, Camera.main.ScreenPointToRay(Input.mousePosition).direction, out hit, Mathf.Infinity, MapNode.GetMapNodeMask()))
+                Debug.DrawRay(Camera.main.transform.position, Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()).direction * 1000f, Color.red);
+                if (Physics.Raycast(Camera.main.transform.position, Camera.main.ScreenPointToRay(Mouse.current.position.ReadValue()).direction, out hit, Mathf.Infinity, MapNode.GetMapNodeMask()))
                 {
                     MapNode node = hit.collider.GetComponentInParent<MapNode>();
                     if (node != null && node != targetNode)
@@ -87,8 +89,10 @@ namespace TwilightAndBlight
         }
         private void SelectNode(InputAction.CallbackContext context)
         {
+            Debug.Log("Click Registered");
             if (CombatManager.Instance.GetCombatEntityTakingTurn() == this && selectedAbility != null && selectedAbility.IsValidTarget(targetNode))
             {
+
                 acquiringTarget = false;
             }
         }

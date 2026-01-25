@@ -42,7 +42,7 @@ namespace TwilightAndBlight.AI
                     direction = new Vector3Int(-direction.z, direction.x, direction.y);
                     MapNode neighboringNode = MapManager.Instance.GetRealativeNode(currentNode, direction);
                     
-                    if (IsValidNeighboringNode(currentNode, neighboringNode))
+                    if (MapManager.IsValidNeighboringNode(currentNode, neighboringNode))
                     {
                        
                         float score = EvaluateNodeScore(currentNode, neighboringNode, end, navDataDictionary[currentNode].score);
@@ -126,14 +126,7 @@ namespace TwilightAndBlight.AI
             }
             return GetShortestPath(startNode, endNode, maxMoves);
         }
-        private static bool IsValidNeighboringNode(MapNode originNode, MapNode neighborNode)
-        {
-            if(neighborNode == null || originNode == null) return false;
-            if(neighborNode.IsOccupied()) return false;
-            if(neighborNode.transform.position.y - originNode.transform.position.y >= GameManager.Instance.TerrainMantleThreshold) return false;
-
-            return true;
-        }
+        
         private static float EvaluateNodeScore(MapNode originNode, MapNode evaluating, MapNode finalDestination, float costUntilNow)
         {
             Vector2 currentVector2 = new Vector2(evaluating.transform.position.x, evaluating.transform.position.z);

@@ -5,7 +5,12 @@ namespace TwilightAndBlight
     {
         [SerializeField] private GameObject resourceBarPrefab;
         [SerializeField] private RectTransform canvasParent;
+        private CombatEntity target;
         private ResourceBarController controller;
+        private void Awake()
+        {
+            target = GetComponent<CombatEntity>();
+        }
         private void Start()
         {
             GameObject resourceBar = Instantiate(resourceBarPrefab, canvasParent);
@@ -25,10 +30,13 @@ namespace TwilightAndBlight
         }
         private void UpdateResourceBar(CombatEntity entity, float difference)
         {
-            float Max = entity.MaxHealth;
-            float current = entity.Health;
-            float t = current / Max;    
-            controller.SetBarProgress(t);
+            if (entity == target)
+            {
+                float Max = entity.MaxHealth;
+                float current = entity.Health;
+                float t = current / Max;
+                controller.SetBarProgress(t);
+            }
         }
     }
 }
