@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TestHexGenerator
   m_EditorClassIdentifier: 
   mapNodePrefab: {fileID: 1123927982889099553, guid: bef650f79d386704a86a351dfada0ac2, type: 3}
-  radius: 10
+  radius: 20
   offsetPerNode: {x: 0.865, y: 0.75}
   heightRange: 1
   heightRangeNoiseScale: 0.3

@@ -64,7 +64,7 @@ public class UIManager : MonoBehaviour
     private UIWindow OpenNewAbilityViewWindow()
     {
         bool exists = windowCache.ContainsKey("AbilityView");
-        UIWindow window = OpenNewUIWindow(new Vector2(700, 0), new Vector2(520, 1080), "AbilityView");
+        UIWindow window = OpenNewUIWindow(new Vector2(690, 0), new Vector2(520, 990), "AbilityView");
         if (!exists)
         {
             window.AssignContent(AbilityListPrefab);

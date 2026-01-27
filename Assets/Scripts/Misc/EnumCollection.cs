@@ -15,11 +15,23 @@ namespace TwilightAndBlight
         Intelligence,
         Wisdom,
         Dexterity,
-        Reflexes,
+        Reflex,
         Charisma,
         Cunning,
-        Discipline    
+        Discipline,
+        FlatArmorPen,
+        PercentArmorPen,
+        Spirit,
+        Endurance,
+        Vitality,
+        Tenacity,
+        Effervescence,
+        Compassion,
+        Mettle,
+        Transendance
     }
+ 
+
     public enum AbilityTarget
     {
         EnemyNode,

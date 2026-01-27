@@ -63,10 +63,30 @@ namespace TwilightAndBlight.Ability
             if (IsValidTarget(targetingOrigin))
             {
                 List<MapNode> path = AStarNavigation.GetShortestPath(combatEntity.GetCurrentMapNode(), targetingOrigin, totalMoves);
+                
                 if (path.Count > 0)
                 {
+                    MapNode parent = path[0];
                     MapManager.Instance.HighlightNodesAsOverlay(path, IndicatorType.Valid);
+                    foreach (MapNode node in path)
+                    {
+                        if (MapManager.WillTakeFallDamge(parent, node))
+                        {
+                            MapManager.Instance.HighlightNodesAsOverlay(node, IndicatorType.Warnign, false);
+                        }
+                        parent = node;
+                    }
                 }
+                //List<MapNode> debugNodes = new List<MapNode>();
+                //debugNodes.Add(targetingOrigin);
+                //debugNodes.Add(MapManager.Instance.GetRealativeNode(targetingOrigin, new Vector3Int(1, 0, 0)));
+                //debugNodes.Add(MapManager.Instance.GetRealativeNode(targetingOrigin, new Vector3Int(0, 1, 0)));
+                //debugNodes.Add(MapManager.Instance.GetRealativeNode(targetingOrigin, new Vector3Int(0, 0, 1)));
+                //debugNodes.Add(MapManager.Instance.GetRealativeNode(targetingOrigin, new Vector3Int(-1, 0, 0)));
+                //debugNodes.Add(MapManager.Instance.GetRealativeNode(targetingOrigin, new Vector3Int(0, -1, 0)));
+                //debugNodes.Add(MapManager.Instance.GetRealativeNode(targetingOrigin, new Vector3Int(0, 0, -1)));
+                //MapManager.Instance.HighlightNodesAsOverlay(debugNodes, IndicatorType.Valid);
+
             }
             else
             {

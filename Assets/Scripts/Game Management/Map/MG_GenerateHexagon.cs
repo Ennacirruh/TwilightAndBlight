@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 namespace TwilightAndBlight.Map
 {
@@ -13,6 +14,7 @@ namespace TwilightAndBlight.Map
         [SerializeField] private float maxPercentAsSpawnNodes;
         [SerializeField] private float initialSpawnNodeChance;
         [SerializeField] private float subsequentSpawnNodeChanceModifier;
+
         private float spawnNodeChance;
         private int spawnNodeLimit;
 
@@ -68,10 +70,11 @@ namespace TwilightAndBlight.Map
             Vector2Int gridPos = MapManager.Instance.GetRealativePosition(Vector2Int.zero, offset);
             float xPos = offsetPerNode.x * gridPos.x + (offsetPerNode.x / 2f) * (Mathf.Abs(gridPos.y % 2) + 1);
             float zPos = offsetPerNode.y * gridPos.y;
-            float yPos =  (Mathf.Abs(offset.x) + Mathf.Abs(offset.y) + Mathf.Abs(offset.z)) * -0.2f; //Mathf.PerlinNoise((xPos * heightRangeNoiseScale) + 10000, (zPos * heightRangeNoiseScale) + 10000) * heightRange;
+            float yPos =  Mathf.PerlinNoise((xPos * heightRangeNoiseScale) + 10000, (zPos * heightRangeNoiseScale) + 10000) * heightRange;//(Mathf.Abs(offset.x) + Mathf.Abs(offset.y) + Mathf.Abs(offset.z)) * -0.2f; 
             newNode.transform.position = new Vector3(xPos, yPos, zPos);
             newNode.name = newNode.name + $"{gridPos.x}_{gridPos.y}";
             MapNode mapNode = newNode.GetComponent<MapNode>();
+            mapNode.PositionInMap = gridPos;
             map.Add(gridPos, mapNode);
             lookupDict.Add(mapNode, gridPos);
 

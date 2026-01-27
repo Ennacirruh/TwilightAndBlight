@@ -6,20 +6,23 @@ using UnityEngine;
 
 namespace TwilightAndBlight.Map
 {
+    [SelectionBase]
     public class MapNode : MonoBehaviour
     {
         [SerializeField] private CombatEntity entity;
         [SerializeField] private int movesToLeave = 1;
+        [SerializeField] private float pathfindingScoreModifier = 1f;
+        [SerializeField] private Vector2Int positionInMap;
+        [SerializeField] private bool spawnNode = false;
+
         public delegate void EntityMovePattern(CombatEntity entity, Vector3 targetPos);
         private Color defaultColor;
         public Renderer nodeRanderer;
         private static LayerMask mapNodeMask;
         private static bool maskGenerated = false;
-        private bool spawnNode = false;
         private CombatTeam spawnTeam;
-        private float pathfindingScoreModifier = 1f;
         private bool moveInProgress;
-       
+        public Vector2Int PositionInMap { get { return positionInMap; } set{ positionInMap = value; } }
         private void Start()
         {
             int layer = LayerMask.NameToLayer("MapNode");
@@ -122,14 +125,15 @@ namespace TwilightAndBlight.Map
             entity.transform.position = targetPos;
             yield return null;
         }
-        public void FollowPathMovePattern(CombatEntity entity, List<MapNode> path, float moveSpeed)
+        public void FollowPathMovePattern(CombatEntity entity, List<MapNode> path, float moveSpeed, bool takeFallDamage = true)
         {
             moveInProgress = true;
-            StartCoroutine(FollowPathMovePatternCoroutine(entity, path, moveSpeed));
+            StartCoroutine(FollowPathMovePatternCoroutine(entity, path, moveSpeed, takeFallDamage));
         }
-        private IEnumerator FollowPathMovePatternCoroutine(CombatEntity entity, List<MapNode> path, float speed)
+        private IEnumerator FollowPathMovePatternCoroutine(CombatEntity entity, List<MapNode> path, float speed, bool takeFallDamage)
         {
             MapNode currentNode = entity.GetCurrentMapNode();
+            MapNode nodeMemory = currentNode;
             int targetIndex = 0;
             MapNode endPos = path[path.Count - 1];
             while (currentNode != endPos)
@@ -137,9 +141,19 @@ namespace TwilightAndBlight.Map
                 float maxDelta = speed * Time.deltaTime;
                 Vector3 posMemory = entity.transform.position;
                 Vector3 newPos = Vector3.MoveTowards(entity.transform.position, path[targetIndex].transform.position, maxDelta);
+                
                 if(newPos == path[targetIndex].transform.position)
                 {
+                    nodeMemory = currentNode;
                     currentNode = path[targetIndex];
+                    if(MapManager.WillTakeFallDamge(nodeMemory, currentNode) && takeFallDamage)
+                    {
+                        float fallDistance = MapManager.FallDistance(nodeMemory, currentNode);
+                        float damage = (entity.MaxHealth * GameManager.Instance.PercentHealthDamageOnFallPerMeter * fallDistance) + (GameManager.Instance.FlatDamageOnFallPerMeter * fallDistance);
+                        float resistance = 5f * Mathf.Clamp(entity.Stats.Dexterity, -damage / 2f, Mathf.Infinity);
+                        damage = (damage / ((resistance / damage) + 1f));
+                        entity.DamageEntity(null, damage, DamageType.Physical, GameManager.Instance.FallDamagePercentArmorPen);
+                    }
                     currentNode.AssignEntity(entity, Vector3.zero);
                     targetIndex++;
                     if(targetIndex < path.Count)
@@ -155,5 +169,13 @@ namespace TwilightAndBlight.Map
             moveInProgress = false;
         }
         #endregion
+        private void OnDrawGizmos()
+        {
+            if (spawnNode)
+            {
+            Gizmos.DrawLine(transform.position, transform.position + transform.up * 2.5f);
+
+            }
+        }
     }
 }

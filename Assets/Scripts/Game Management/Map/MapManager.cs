@@ -213,14 +213,33 @@ namespace TwilightAndBlight.Map
                     break;
             }
         }
+        public static bool IsValidNode(MapNode node)
+        {
+            if (node == null) return false;
+            if (node.IsOccupied()) return false;
 
+            return true;
+        }
         public static bool IsValidNeighboringNode(MapNode originNode, MapNode neighborNode)
         {
             if (neighborNode == null || originNode == null) return false;
             if (neighborNode.IsOccupied()) return false;
-            if (neighborNode.transform.position.y - originNode.transform.position.y >= GameManager.Instance.TerrainMantleThreshold) return false;
+            if (CanMantle(originNode, neighborNode)) return false;
 
             return true;
+        }
+        public static bool WillTakeFallDamge(MapNode originNode, MapNode neighborNode)
+        {
+            return (originNode.transform.position.y - neighborNode.transform.position.y) >= GameManager.Instance.FallDamageThreshold;
+        }
+        public static bool CanMantle(MapNode originNode, MapNode neighborNode)
+        {
+            return neighborNode.transform.position.y - originNode.transform.position.y >= GameManager.Instance.TerrainMantleThreshold;
+        }
+        public static float FallDistance(MapNode originNode, MapNode neighborNode)
+        {
+            return originNode.transform.position.y - neighborNode.transform.position.y;
+
         }
     }
 }

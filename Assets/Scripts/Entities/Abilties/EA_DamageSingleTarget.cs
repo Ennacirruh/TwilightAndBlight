@@ -1,55 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
-using TwilightAndBlight;
-using TwilightAndBlight.Ability;
 using TwilightAndBlight.Map;
 using UnityEngine;
 
-public class EA_DamageSingleTarget : EntityAbility
+namespace TwilightAndBlight.Ability
 {
-    [SerializeField] private DamageType damageType;
-    [SerializeField] private float baseDamage;
-    [SerializeField] private float damagePerStat;
-    [SerializeField] private StatType scalingStat;
-    [SerializeField] private float flatPen;
-    [SerializeField] private float percentPen;
-    protected override IEnumerator AbilityBehavior(MapNode targetingOrigin)
+    public class EA_DamageSingleTarget : EA_DamageBase
     {
-        if (targetingOrigin.IsOccupied())
-        {
-            targetingOrigin.GetCombatEntity().GetComponent<CombatEntity>().DamageEntity(combatEntity, GetDamageValue(), damageType, percentPen + entityStats.PercentArmorPen, flatPen + entityStats.FlatArmorPen);
-        }
-        yield return null;
-        EndAbility(targetingOrigin);
-    }
 
-    public override void HighlightAbility(MapNode targetingOrigin)
-    {
-        if (IsValidTarget(targetingOrigin))
+        protected override IEnumerator AbilityBehavior(MapNode targetingOrigin)
         {
-            MapManager.Instance.HighlightNodesAsOverlay(targetingOrigin, IndicatorType.Valid);
+            if (targetingOrigin.IsOccupied())
+            {
+                CombatEntity target = targetingOrigin.GetCombatEntity().GetComponent<CombatEntity>();
+
+                for (int i = 0; i < ticksOfDamage; i++)
+                {
+                    target.DamageEntity(combatEntity, GetDamageValue(), damageType, percentPen + entityStats.PercentArmorPen, flatPen + entityStats.FlatArmorPen);
+                    if(i != ticksOfDamage - 1) yield return new WaitForSeconds(delayBetweenTicks);
+                }
+               
+            }
+            yield return null;
+            EndAbility(targetingOrigin);
         }
-        else
+
+        public override void HighlightAbility(MapNode targetingOrigin)
         {
-            MapManager.Instance.HighlightNodesAsOverlay(targetingOrigin, IndicatorType.Invalid);
+            if (IsValidTarget(targetingOrigin))
+            {
+                MapManager.Instance.HighlightNodesAsOverlay(targetingOrigin, IndicatorType.Valid);
+            }
+            else
+            {
+                MapManager.Instance.HighlightNodesAsOverlay(targetingOrigin, IndicatorType.Invalid);
+            }
         }
-    }
 
-    protected override Dictionary<string, string> GetStringConversionTable()
-    {
-        return new Dictionary<string, string>() {
-        {"damagetype", damageType.ToString()} ,
-        {"basedamage", baseDamage.ToString()} ,
-        {"damageperstat", damagePerStat.ToString()} ,
-        {"scalingstat", scalingStat.ToString()} ,
-        {"damage", (baseDamage + (damagePerStat * entityStats.GetStat(scalingStat).Value)).ToString() },
-        {"flatpen", (flatPen + entityStats.FlatArmorPen).ToString() },
-        {"percentpen", (percentPen + entityStats.PercentArmorPen).ToString() }
-        };
-    }
-    protected float GetDamageValue()
-    {
-        return baseDamage + damagePerStat * entityStats.GetStat(scalingStat).Value;
-    }
+        protected override Dictionary<string, string> GetStringConversionTable()
+        {
+            return base.GetStringConversionTable();
+        }
 
+    }
 }

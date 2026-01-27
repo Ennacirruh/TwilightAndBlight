@@ -89,9 +89,9 @@ namespace TwilightAndBlight
         }
         public void DamageEntity(CombatEntity source, float attack, HashSet<DamageType> damageTypes, float percentPenetration = 0, float flatPenetration = 0)
         {
-            float damageRangeWeight = source.Stats.Discipline;
-            float critChance = source.Stats.Cunning;
-            float critDamage = 1.5f + (source.Stats.Intelligence / 100f);
+            float damageRangeWeight = source != null ? source.Stats.Discipline : 0;
+            float critChance = source != null ? source.Stats.Cunning : 0; 
+            float critDamage = source != null ?  1.5f + (source.Stats.Intelligence / 100f) : 1.5f;
             bool crit = false;
             GameEvents.OnEntityDamagedOverride?.Invoke(source, this, ref attack, ref damageTypes, ref percentPenetration, ref flatPenetration, ref damageRangeWeight, ref critChance, ref critDamage, ref crit);
             
@@ -109,7 +109,7 @@ namespace TwilightAndBlight
             attack = attack * attackWeightRoll;
             float damage = (attack / ((armor / attack) + 1f)) * resistanceMultiplier;
 
-            critChance -= Stats.Reflexes;
+            critChance -= Stats.Reflex;
             if (critChance > 100f)
             {
                  damage *= (1f + ((critChance-100f) / 200f));

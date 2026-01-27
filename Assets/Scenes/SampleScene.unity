@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 619394804}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -301,8 +301,6 @@ MonoBehaviour:
       Input:
         InputAction: {fileID: -5630151704836100654, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
         Gain: 1
-        LegacyInput: 
-        LegacyGain: 1
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
@@ -314,8 +312,6 @@ MonoBehaviour:
       Input:
         InputAction: {fileID: -5630151704836100654, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
         Gain: -1
-        LegacyInput: 
-        LegacyGain: 1
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
@@ -327,8 +323,6 @@ MonoBehaviour:
       Input:
         InputAction: {fileID: 5082991133974614888, guid: 1d6e640e716dc4ff6989b73d02023f2b, type: 3}
         Gain: -25
-        LegacyInput: 
-        LegacyGain: 1
         CancelDeltaTime: 0
       InputValue: 0
       Driver:
@@ -595,6 +589,7 @@ GameObject:
   - component: {fileID: 519420030}
   - component: {fileID: 519420033}
   - component: {fileID: 519420034}
+  - component: {fileID: 519420035}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -633,11 +628,11 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
-  m_Antialiasing: 0
+  m_RenderPostProcessing: 1
+  m_Antialiasing: 3
   m_AntialiasingQuality: 2
-  m_StopNaN: 0
-  m_Dithering: 0
+  m_StopNaN: 1
+  m_Dithering: 1
   m_ClearDepth: 1
   m_AllowXRRendering: 1
   m_AllowHDROutput: 1
@@ -664,7 +659,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 2
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_BackGroundColor: {r: 0.2784314, g: 0.34901962, b: 0.42745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -768,6 +763,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294967295
   m_MaxRayIntersections: 0
+--- !u!114 &519420035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: b2e3c4f4a05f1384a8fdda8bef843667, type: 2}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,7 +835,7 @@ MonoBehaviour:
   m_ShadowRenderingLayers: 1
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
-  m_SoftShadowQuality: 0
+  m_SoftShadowQuality: 3
 --- !u!108 &619394804
 Light:
   m_ObjectHideFlags: 0
@@ -841,10 +853,10 @@ Light:
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
-    m_Strength: 1
+    m_Strength: 0.824
     m_Bias: 0.05
     m_NormalBias: 0.4
     m_NearPlane: 0.2
@@ -1068,6 +1080,8 @@ MonoBehaviour:
   scalingStat: 0
   flatPen: 5
   percentPen: 0.05
+  ticksOfDamage: 1
+  delayBetweenTicks: 0
 --- !u!114 &1222710138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1114,11 +1128,27 @@ MonoBehaviour:
     baseValue: 10
   discipline:
     baseValue: 10
-  reflexes:
+  reflex:
     baseValue: 0
   flatArmorPen:
     baseValue: 0
   percemtArmorPen:
+    baseValue: 0
+  spirit:
+    baseValue: 0
+  endurance:
+    baseValue: 0
+  vitality:
+    baseValue: 0
+  tenacity:
+    baseValue: 0
+  effervescence:
+    baseValue: 0
+  compassion:
+    baseValue: 0
+  mettle:
+    baseValue: 0
+  transendance:
     baseValue: 0
 --- !u!4 &1222710140
 Transform:
@@ -1206,7 +1236,7 @@ MonoBehaviour:
   fortitude:
     baseValue: 10
   agility:
-    baseValue: 300
+    baseValue: 200
   constitution:
     baseValue: 10
   intelligence:
@@ -1221,11 +1251,27 @@ MonoBehaviour:
     baseValue: 10
   discipline:
     baseValue: 10
-  reflexes:
+  reflex:
     baseValue: 0
   flatArmorPen:
     baseValue: 0
   percemtArmorPen:
+    baseValue: 0
+  spirit:
+    baseValue: 0
+  endurance:
+    baseValue: 0
+  vitality:
+    baseValue: 0
+  tenacity:
+    baseValue: 0
+  effervescence:
+    baseValue: 0
+  compassion:
+    baseValue: 0
+  mettle:
+    baseValue: 0
+  transendance:
     baseValue: 0
 --- !u!114 &1388232285
 MonoBehaviour:
@@ -1255,11 +1301,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
   abilityName: Test Ability
-  abilityDescription: "Deal :damage :damagetype damage to a single target. \n(:basedamage
-    base + :damageperstat per :scalingstat;) damage. Ignores :percentpen;% of armor,
-    and pierces and additional :flatpen armor. "
-  descriptionPreview: "Deal 40 Physical damage to a single target. \n(30 base + 1
-    per Power) damage. Ignores 0.05% of armor, and pierces and additional 5 armor. "
+  abilityDescription: "Deal :damage :damagetype damage to a single target :ticksofdamage
+    times. \n(:basedamage base + :damageperstat per :scalingstat;) damage. Ignores
+    :percentpen;% of armor, and pierces and additional :flatpen armor. "
+  descriptionPreview: "Deal 40 Physical damage to a single target 5 times. \n(30
+    base + 1 per Power) damage. Ignores 0.05% of armor, and pierces and additional
+    5 armor. "
   targetFilter: 0
   damageType: 0
   baseDamage: 30
@@ -1267,6 +1314,8 @@ MonoBehaviour:
   scalingStat: 0
   flatPen: 5
   percentPen: 0.05
+  ticksOfDamage: 5
+  delayBetweenTicks: 0.1
 --- !u!114 &1388232288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,7 +1332,7 @@ MonoBehaviour:
   abilityName: Move
   abilityDescription: 'Move up to :totalmovespeed spaces (:basemovespeed  base +
     1 for every :agilitypermovespeed agility). '
-  descriptionPreview: 'Move up to 6 spaces (3 base + 1 for every 100 agility). '
+  descriptionPreview: 'Move up to 5 spaces (3 base + 1 for every 100 agility). '
   targetFilter: 3
   agilityPerMoveSpeed: 100
   baseMoveSpeed: 3
@@ -1370,11 +1419,27 @@ MonoBehaviour:
     baseValue: 0
   discipline:
     baseValue: 0
-  reflexes:
+  reflex:
     baseValue: 0
   flatArmorPen:
     baseValue: 0
   percemtArmorPen:
+    baseValue: 0
+  spirit:
+    baseValue: 0
+  endurance:
+    baseValue: 0
+  vitality:
+    baseValue: 0
+  tenacity:
+    baseValue: 0
+  effervescence:
+    baseValue: 0
+  compassion:
+    baseValue: 0
+  mettle:
+    baseValue: 0
+  transendance:
     baseValue: 0
 --- !u!4 &1391307749
 Transform:
@@ -1601,6 +1666,9 @@ MonoBehaviour:
   damageVarianceRange: 0.25
   fallDamageThreshold: 3
   terrainMantleThreshold: 1.75
+  percentHealthDamageOnFallPerMeter: 0.03
+  flatDamageOnFallPerMeter: 15
+  fallDamagePercentArmorPen: 0.5
   mainCanvas: {fileID: 1664380806}
 --- !u!4 &1909998096
 Transform:
@@ -1646,7 +1714,7 @@ MonoBehaviour:
   warningIndicator: {r: 1, g: 0.58485585, b: 0, a: 1}
   validIndicator: {r: 0.09806943, g: 1, b: 0, a: 1}
   invalidIndicator: {r: 1, g: 0, b: 0, a: 1}
-  mapGenerator: {fileID: 11400000, guid: f8cb23848cfc6ba4e92146984058e836, type: 2}
+  mapGenerator: {fileID: 11400000, guid: 77f7ccabe55425942846568cc46edbe6, type: 2}
 --- !u!114 &1909998099
 MonoBehaviour:
   m_ObjectHideFlags: 0

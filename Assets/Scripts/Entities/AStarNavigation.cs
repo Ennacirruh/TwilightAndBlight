@@ -1,8 +1,11 @@
+using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using TwilightAndBlight.Collections;
 using TwilightAndBlight.Map;
+using Unity.XR.OpenVR;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
@@ -19,58 +22,68 @@ namespace TwilightAndBlight.AI
                 return null;
             }
             navDataDictionary.Clear();
-            SortedSet<MapNode> open = new SortedSet<MapNode>(new MapNodeNavComparer()); 
+            
+            SortedSet<MapNode> open = new SortedSet<MapNode>(new MapNodeNavComparer());
             HashSet<MapNode> closed = new HashSet<MapNode>();
 
             open.Add(start);
-            navDataDictionary.Add(start, new NavData(0,0,null));
-
-            while(open.Count > 0)
+            navDataDictionary.Add(start, new NavData(0, 0, null));
+            int abortPathfindCounter = 0;
+            while (open.Count > 0)
             {
-                MapNode currentNode = open.ElementAt(0);
+                MapNode currentNode = open.Min;
                 open.Remove(currentNode);
+                abortPathfindCounter++;
+                if (abortPathfindCounter == 10000)
+                {
+                    Debug.LogError($"Suspected Infinate Loop! Start {start.name}, End {end.name}, maxMoves {maxMoves}");
+                    return new List<MapNode>();
+                }
 
-                if(currentNode == end)
+
+                if (currentNode == end)
                 {
                     List<MapNode> path = ReconstructPath(end);
-                    if (path.Count == 0) return null;
                     return path; //destination reached
                 }
                 Vector3Int direction = new Vector3Int(0, 0, -1);
                 for (int i = 0; i < 6; i++)
                 {
                     direction = new Vector3Int(-direction.z, direction.x, direction.y);
+
                     MapNode neighboringNode = MapManager.Instance.GetRealativeNode(currentNode, direction);
-                    
+
                     if (MapManager.IsValidNeighboringNode(currentNode, neighboringNode))
                     {
-                       
                         float score = EvaluateNodeScore(currentNode, neighboringNode, end, navDataDictionary[currentNode].score);
-                       
+                        int distance = navDataDictionary[currentNode].distance + currentNode.GetMovesToLeaveNode();
+
                         bool skipNode = false;
 
-                        if (open.Contains(neighboringNode, new MapNodeNameComparison()) || closed.Contains(neighboringNode))
+                        if (open.Contains(neighboringNode, new MapNodeEqualityComparison()) || closed.Contains(neighboringNode))
                         {
-                           if(navDataDictionary[neighboringNode].score < score) skipNode = true;
+                            if (navDataDictionary[neighboringNode].score <= score || navDataDictionary[neighboringNode].distance <= distance) skipNode = true;
                         }
-                       
+
                         if (!skipNode)
                         {
-                            int distance = navDataDictionary[currentNode].distance + currentNode.GetMovesToLeaveNode();
                             if (distance <= maxMoves)
                             {
                                 NavData newData = new NavData(distance, score, currentNode);
                                 if (navDataDictionary.ContainsKey(neighboringNode))
                                 {
+                                    open.Remove(neighboringNode);
                                     navDataDictionary[neighboringNode] = newData;
                                 }
                                 else
                                 {
                                     navDataDictionary.Add(neighboringNode, newData);
                                 }
+
                                 closed.Remove(neighboringNode);
                                 open.Add(neighboringNode);
                             }
+                            else { Debug.Log(neighboringNode); }
                         }
                     }
                 }
@@ -78,10 +91,10 @@ namespace TwilightAndBlight.AI
                 closed.Add(currentNode);
             }
 
-        
-            return null;
+
+            return new List<MapNode>();
         }
-        public  static List<MapNode> ReconstructPath(MapNode end)
+        public static List<MapNode> ReconstructPath(MapNode end)
         {
             MapNode currentNode = end;
             List<MapNode> path = new List<MapNode>();
@@ -126,15 +139,16 @@ namespace TwilightAndBlight.AI
             }
             return GetShortestPath(startNode, endNode, maxMoves);
         }
-        
+
         private static float EvaluateNodeScore(MapNode originNode, MapNode evaluating, MapNode finalDestination, float costUntilNow)
         {
             Vector2 currentVector2 = new Vector2(evaluating.transform.position.x, evaluating.transform.position.z);
             Vector2 endVector2 = new Vector2(finalDestination.transform.position.x, finalDestination.transform.position.z);
-            float value = Vector2.SqrMagnitude(endVector2 - currentVector2);
+            float magnitude = (endVector2 - currentVector2).magnitude;
+            float value = Mathf.Pow(magnitude, 0.20f);
             if (originNode != null)
             {
-                if (Mathf.Abs(originNode.transform.position.y - evaluating.transform.position.y) >= GameManager.Instance.FallDamageThreshold)
+                if (MapManager.WillTakeFallDamge(originNode, evaluating))
                 {
                     value *= value;
                 }
@@ -148,25 +162,51 @@ namespace TwilightAndBlight.AI
 
         private class MapNodeNavComparer : IComparer<MapNode>
         {
-
             public int Compare(MapNode x, MapNode y)
             {
+                if(x == y)
+                {
+                    return 0;
+                }
                 if (navDataDictionary.ContainsKey(x) && navDataDictionary.ContainsKey(y))
                 {
-                    if (navDataDictionary[x].score < navDataDictionary[y].score)
-                    {
-                        return -1;
-                    }
                     if (navDataDictionary[x].score > navDataDictionary[y].score)
                     {
                         return 1;
                     }
                 }
-                
-                return 0;
+                return -1;
             }
         }
-        private class MapNodeNameComparison : IEqualityComparer<MapNode>
+        //if (x.transform.position.y < y.transform.position.y)
+        //{
+        //    return -1;
+        //}
+        //if (x.transform.position.y > y.transform.position.y)
+        //{
+        //    return 1;
+        //}
+        //if (x.PositionInMap.x < y.PositionInMap.x)
+        //{
+        //    return -1;
+        //}
+        //if (x.PositionInMap.x > y.PositionInMap.x)
+        //{
+        //    return 1;
+        //}
+        //if (x.PositionInMap.y < y.PositionInMap.y)
+        //{
+        //    return -1;
+        //}
+        //if (x.PositionInMap.y > y.PositionInMap.y)
+        //{
+        //    return 1;
+        //}
+        //if (navDataDictionary[x].score > navDataDictionary[y].score)
+        //{
+        //    return 1;
+        //}
+        private class MapNodeEqualityComparison : IEqualityComparer<MapNode>
         {
             public bool Equals(MapNode x, MapNode y)
             {
@@ -175,7 +215,7 @@ namespace TwilightAndBlight.AI
 
             public int GetHashCode(MapNode obj)
             {
-                return 0;
+                return obj.GetHashCode();
             }
         }
         private struct NavData
@@ -190,6 +230,6 @@ namespace TwilightAndBlight.AI
                 this.parent = parent;
             }
         }
-        
+
     }
 }
