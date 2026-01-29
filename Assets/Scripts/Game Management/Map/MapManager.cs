@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Experimental.XR.Interaction;
 using Valve.VR;
@@ -17,16 +18,16 @@ namespace TwilightAndBlight.Map
         private Dictionary<MapNode, Vector2Int> mapNodePositionLookup = new Dictionary<MapNode, Vector2Int>();
         private Dictionary<CombatTeam, List<MapNode>> spawnPoints = new Dictionary<CombatTeam, List<MapNode>>();
         private List<MapNode> universalSpawnPoints = new List<MapNode>();
-        private HashSet<MapNode> overlayNodes = new HashSet<MapNode>(); 
+        private HashSet<MapNode> overlayNodes = new HashSet<MapNode>();
         private Dictionary<MapNode, IndicatorType> currentHighlightDict = new Dictionary<MapNode, IndicatorType>();
-
+        public const float gridPosMultiplier = 0.85f;
+        public const float gridSizeMultiplier = 0.4f;
 
         private void Awake()
         {
             if (instance == null)
             {
                 instance = this;
-                //mapGenerator.GenerateMap(transform, ref map);
             }
             else
             {
@@ -41,7 +42,7 @@ namespace TwilightAndBlight.Map
             {
                 spawnPoints.Add(team, new List<MapNode>());
             }
-            foreach(MapNode node in map.Values)
+            foreach (MapNode node in map.Values)
             {
                 if (node.IsSpawnNode())
                 {
@@ -53,7 +54,7 @@ namespace TwilightAndBlight.Map
                     else
                     {
                         universalSpawnPoints.Add(node);
-                        foreach(CombatTeam team in teams)
+                        foreach (CombatTeam team in teams)
                         {
                             spawnPoints[team].Add(node);
                         }
@@ -138,7 +139,7 @@ namespace TwilightAndBlight.Map
             }
             foreach (MapNode node in nodes)
             {
-                if(node != null)
+                if (node != null)
                 {
                     overlayNodes.Add(node);
                     ColorNode(node, indicatorType);
@@ -158,7 +159,7 @@ namespace TwilightAndBlight.Map
                     bool changeColor = false;
                     if (currentHighlightDict.ContainsKey(node))
                     {
-                        if(currentHighlightDict[node] != indicatorType)
+                        if (currentHighlightDict[node] != indicatorType)
                         {
                             changeColor = true;
                             currentHighlightDict[node] = indicatorType;
@@ -173,14 +174,14 @@ namespace TwilightAndBlight.Map
                     {
                         ColorNode(node, indicatorType);
                     }
-                    
+
                 }
             }
         }
-        
+
         public List<MapNode> GetSpawnNodes(CombatTeam filter = null)
         {
-            if(filter == null || !spawnPoints.ContainsKey(filter))
+            if (filter == null || !spawnPoints.ContainsKey(filter))
             {
                 return universalSpawnPoints;
             }
@@ -192,7 +193,7 @@ namespace TwilightAndBlight.Map
         }
         public Vector2Int GetRealativePosition(Vector2Int origin, int i, int j, int k)
         {
-            return new Vector2Int(i + Mathf.FloorToInt((j + Mathf.Abs((origin.y) % 2)) /2f) - Mathf.FloorToInt((k+Mathf.Abs((j+k+origin.y)%2))/2f), j + k) + origin;
+            return new Vector2Int(i + Mathf.FloorToInt((j + Mathf.Abs((origin.y) % 2)) / 2f) - Mathf.FloorToInt((k + Mathf.Abs((j + k + origin.y) % 2)) / 2f), j + k) + origin;
         }
 
         private void ColorNode(MapNode node, IndicatorType indicator)
@@ -224,7 +225,7 @@ namespace TwilightAndBlight.Map
         {
             if (neighborNode == null || originNode == null) return false;
             if (neighborNode.IsOccupied()) return false;
-            if (CanMantle(originNode, neighborNode)) return false;
+            if (!CanMantle(originNode, neighborNode)) return false;
 
             return true;
         }
@@ -234,12 +235,107 @@ namespace TwilightAndBlight.Map
         }
         public static bool CanMantle(MapNode originNode, MapNode neighborNode)
         {
-            return neighborNode.transform.position.y - originNode.transform.position.y >= GameManager.Instance.TerrainMantleThreshold;
+            return neighborNode.transform.position.y - originNode.transform.position.y <= GameManager.Instance.TerrainMantleThreshold;
         }
         public static float FallDistance(MapNode originNode, MapNode neighborNode)
         {
             return originNode.transform.position.y - neighborNode.transform.position.y;
 
+        }
+        public HashSet<MapNode> GetNodesWithinRange(MapNode originNode, int range)
+        {
+            HashSet<MapNode> returnSet = new HashSet<MapNode>();
+            returnSet.Add(originNode);
+
+            Vector3Int direction = new Vector3Int(0, 0, -1);
+            for(int i = 0; i < 6; i++)
+            {
+                direction = new Vector3Int(-direction.z, direction.x, direction.y);
+                for(int j = 1; j < range; j++)
+                {
+                    Vector3Int rotDirection = new Vector3Int(-direction.z, direction.x, direction.y); 
+                    for (int k = 0; k <= range - j - 1; k++)
+                    {
+                        Vector3Int offset = direction * j + (rotDirection * k);
+                        Debug.Log("Offset: " + offset);
+                        MapNode newNode = GetRealativeNode(originNode, offset);
+                        if (newNode != null)
+                        {
+                            returnSet.Add(newNode);
+                        }
+                    }
+                }
+            
+            }
+
+            return returnSet;
+        }
+        public HashSet<(MapNode,MapNode)> GetNodesWithinMoveLimit(MapNode originNode, int maxMoves, MapNodeConditional condition = null)
+        {
+            HashSet<(MapNode, int)> nodesToEvaluate = new HashSet<(MapNode, int)>();
+            Dictionary<MapNode, int> evaluatedNodes = new Dictionary<MapNode, int>();
+            Dictionary<MapNode, MapNode> parentNodes = new Dictionary<MapNode, MapNode>();
+            HashSet<MapNode> nodesInRange = new HashSet<MapNode>(); ;
+            nodesToEvaluate.Add((originNode, 0));
+            while (nodesToEvaluate.Count > 0)
+            {
+                (MapNode, int) nodeInEvaluation = nodesToEvaluate.First();
+                nodesToEvaluate.Remove(nodeInEvaluation);
+                if (nodeInEvaluation.Item2 < maxMoves)
+                {
+                    nodesInRange.Add(nodeInEvaluation.Item1);
+
+                    Vector3Int direction = new Vector3Int(0, 0, -1);
+                    for (int i = 0; i < 6; i++)
+                    {
+                        direction = new Vector3Int(-direction.z, direction.x, direction.y);
+                        MapNode candidate = GetRealativeNode(nodeInEvaluation.Item1, direction);
+                        if (candidate != null)
+                        {
+                            bool valid = true;
+                            if (condition != null)
+                            {
+                                valid &= condition.Invoke(nodeInEvaluation.Item1, candidate);
+                            }
+                            if (valid)
+                            {
+                                int newDistance = nodeInEvaluation.Item2 + 1;
+
+                                if (evaluatedNodes.ContainsKey(candidate)) // node previously evaluated
+                                {
+                                    if (evaluatedNodes[candidate] > newDistance) //shorter path discovered, re-evaluate for chance of new nodes
+                                    {
+                                        nodesToEvaluate.Add((candidate, newDistance));
+                                        evaluatedNodes[candidate] = newDistance;
+                                        parentNodes[candidate] = nodeInEvaluation.Item1;
+                                    }
+                                }
+                                else //new node encounter
+                                {
+                                    evaluatedNodes.Add(candidate, newDistance);
+                                    nodesToEvaluate.Add((candidate, newDistance));
+                                    parentNodes.Add(candidate, nodeInEvaluation.Item1);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            HashSet<(MapNode, MapNode)> returnSet = new HashSet<(MapNode, MapNode)>();
+            foreach(MapNode node in nodesInRange)
+            {
+                MapNode parent;
+                if (parentNodes.ContainsKey(node))
+                {
+                    parent = parentNodes[node];
+                }
+                else
+                {
+                    parent = null;
+                }
+                returnSet.Add((node, parent));
+            }
+            return returnSet;
         }
     }
 }

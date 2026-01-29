@@ -1032,7 +1032,7 @@ GameObject:
   - component: {fileID: 1222710139}
   - component: {fileID: 1222710136}
   - component: {fileID: 1222710138}
-  - component: {fileID: 1222710137}
+  - component: {fileID: 1222710141}
   m_Layer: 6
   m_Name: 'Team 2 A '
   m_TagString: Untagged
@@ -1054,34 +1054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityLevel: 1
   health: 0
---- !u!114 &1222710137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222710135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fbaa21002a31ff48936d7e3f264af4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Test Ability
-  abilityDescription: "Deal :damage :damagetype damage to a single target. \n(:basedamage
-    base + :damageperstat per :scalingstat;) damage. Ignores :percentpen;% of armor,
-    and pierces and additional :flatpen armor. "
-  descriptionPreview: "Deal 30 Physical damage to a single target. \n(20 base + 1
-    per Power) damage. Ignores 0.05% of armor, and pierces and additional 5 armor. "
-  targetFilter: 0
-  damageType: 0
-  baseDamage: 20
-  damagePerStat: 1
-  scalingStat: 0
-  flatPen: 5
-  percentPen: 0.05
-  ticksOfDamage: 1
-  delayBetweenTicks: 0
+  entityHeight: 0
 --- !u!114 &1222710138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1167,6 +1140,25 @@ Transform:
   - {fileID: 1436181371}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1222710141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222710135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 5697c26ee2ef0c848996640f6a3d3432, type: 3}
+  abilityName: Move
+  abilityDescription: Test
+  descriptionPreview: 'Test '
+  targetFilter: 3
+  agilityPerMoveSpeed: 100
+  baseMoveSpeed: 3
 --- !u!1 &1388232281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1179,8 +1171,9 @@ GameObject:
   - component: {fileID: 1388232284}
   - component: {fileID: 1388232283}
   - component: {fileID: 1388232285}
-  - component: {fileID: 1388232287}
   - component: {fileID: 1388232288}
+  - component: {fileID: 1388232289}
+  - component: {fileID: 1388232290}
   m_Layer: 6
   m_Name: Team 1 A
   m_TagString: Untagged
@@ -1219,6 +1212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityLevel: 1
   health: 0
+  entityHeight: 0
 --- !u!114 &1388232284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1287,35 +1281,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   resourceBarPrefab: {fileID: 892272746398520389, guid: b00cdea330ee3174ca1f80a291a96b98, type: 3}
   canvasParent: {fileID: 883671503}
---- !u!114 &1388232287
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388232281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fbaa21002a31ff48936d7e3f264af4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Test Ability
-  abilityDescription: "Deal :damage :damagetype damage to a single target :ticksofdamage
-    times. \n(:basedamage base + :damageperstat per :scalingstat;) damage. Ignores
-    :percentpen;% of armor, and pierces and additional :flatpen armor. "
-  descriptionPreview: "Deal 40 Physical damage to a single target 5 times. \n(30
-    base + 1 per Power) damage. Ignores 0.05% of armor, and pierces and additional
-    5 armor. "
-  targetFilter: 0
-  damageType: 0
-  baseDamage: 30
-  damagePerStat: 1
-  scalingStat: 0
-  flatPen: 5
-  percentPen: 0.05
-  ticksOfDamage: 5
-  delayBetweenTicks: 0.1
 --- !u!114 &1388232288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,6 +1301,52 @@ MonoBehaviour:
   targetFilter: 3
   agilityPerMoveSpeed: 100
   baseMoveSpeed: 3
+--- !u!114 &1388232289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388232281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 61ac40b257b3a994f841856ad38b2b6b, type: 3}
+  abilityName: Test Line
+  abilityDescription: 
+  descriptionPreview: 
+  targetFilter: 0
+  abilityShape: 1
+  baseRange: 10
+  rangeScalers: []
+  baseSize: 3
+  sizeScalers: []
+  respectLineOfSight: 0
+--- !u!114 &1388232290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388232281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 0}
+  abilityName: Test Hex
+  abilityDescription: 
+  descriptionPreview: 
+  targetFilter: 0
+  abilityShape: 0
+  baseRange: 0
+  rangeScalers: []
+  baseSize: 3
+  sizeScalers: []
+  respectLineOfSight: 0
 --- !u!1 &1391307745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1387,6 +1398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityLevel: 1
   health: 0
+  entityHeight: 0
 --- !u!114 &1391307748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1665,7 +1677,7 @@ MonoBehaviour:
   turnThreshold: 10000
   damageVarianceRange: 0.25
   fallDamageThreshold: 3
-  terrainMantleThreshold: 1.75
+  terrainMantleThreshold: 2.25
   percentHealthDamageOnFallPerMeter: 0.03
   flatDamageOnFallPerMeter: 15
   fallDamagePercentArmorPen: 0.5

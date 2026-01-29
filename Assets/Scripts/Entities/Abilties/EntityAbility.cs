@@ -2,6 +2,10 @@ using System.Collections.Generic;
 using System.Collections;
 using TwilightAndBlight.Map;
 using UnityEngine;
+using System.Linq;
+using UnityEngine.Android;
+using UnityEngine.Rendering;
+
 namespace TwilightAndBlight.Ability
 {
     [RequireComponent(typeof(EntityStats))]
@@ -23,6 +27,14 @@ namespace TwilightAndBlight.Ability
             combatEntity = GetComponent<CombatEntity>();
         }
 
+        protected virtual void OnEnable()
+        {
+            
+        }
+        protected virtual void OnDisable()
+        {
+            
+        }
         protected abstract IEnumerator AbilityBehavior(MapNode targetingOrigin);
         public abstract void HighlightAbility(MapNode targetingOrigin);
         protected abstract Dictionary<string, string> GetStringConversionTable();
@@ -38,14 +50,18 @@ namespace TwilightAndBlight.Ability
         }
         public virtual bool IsValidTarget(MapNode targetNode)
         {
-            if(targetNode == null) return false;
+            return NodeMatchesAbilityTarget(targetNode);
+        }
+        protected bool NodeMatchesAbilityTarget(MapNode targetNode)
+        {
+            if (targetNode == null) return false;
             switch (targetFilter)
             {
                 case AbilityTarget.EnemyNode:
                     if (!targetNode.IsOccupied()) return false;
                     return targetNode.GetCombatEntity().GetComponent<CombatEntity>().GetCombatTeam() != combatEntity.GetCombatTeam();
                 case AbilityTarget.AllyNode:
-                    if(!targetNode.IsOccupied()) return false;
+                    if (!targetNode.IsOccupied()) return false;
                     return targetNode.GetCombatEntity().GetComponent<CombatEntity>().GetCombatTeam() == combatEntity.GetCombatTeam();
                 case AbilityTarget.OccupiedNode:
                     return targetNode.IsOccupied();
@@ -56,10 +72,14 @@ namespace TwilightAndBlight.Ability
             }
             return false;
         }
+        public virtual bool IsValidAbilityCast(MapNode targetNode)
+        {
+            return IsValidTarget(targetNode);
+        }
         public string GetAbilityDescription()
         {
             string returnString = "";
-            if (abilityDescription.Length > 0)
+            if (abilityDescription != null && abilityDescription.Length > 0)
             {
                 string[] words = abilityDescription.Split(' ');
                 foreach (string word in words)
@@ -111,6 +131,7 @@ namespace TwilightAndBlight.Ability
         {
             return abilityName;
         }
+    
         protected virtual void OnValidate()
         {
             if(entityStats == null)

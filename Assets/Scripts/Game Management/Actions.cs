@@ -14,5 +14,6 @@ namespace TwilightAndBlight
     public delegate void CombatTeamInteraction(CombatTeam team, CombatEntity entity);
     public delegate void CombatResourceChangeAction(CombatEntity entity, float differnece);
     public delegate void CombatEntityMapNodeInteraction(CombatEntity entity, MapNode mapNode);
+    public delegate bool MapNodeConditional(MapNode parent, MapNode neighbor);
 
 }

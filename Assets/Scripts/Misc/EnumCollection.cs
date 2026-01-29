@@ -47,5 +47,11 @@ namespace TwilightAndBlight
         Invalid,
         Warnign
     }
+    public enum DefaultAbilityShapes
+    {
+        Hexagon, 
+        Line,
+        Arc
+    }
 
 }

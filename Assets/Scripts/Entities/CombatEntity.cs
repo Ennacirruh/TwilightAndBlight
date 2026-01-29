@@ -17,12 +17,14 @@ namespace TwilightAndBlight
         protected HashSet<EntityAbility> abilities = new HashSet<EntityAbility>();
         protected EntityAbility selectedAbility;
         [SerializeField] protected float health;
+        [SerializeField] protected float entityHeight;
         private MapNode currentNode;
         public float MaxHealth { get { return 1000f + (100f * Stats.Constitution); } }
         public float Health { get { return health; } }
         private bool actionInProgress;
         public int Level {  get { return entityLevel; } } 
         public float TurnProgress {  get { return turnProgress; } } 
+        public float EntityHeight {  get { return entityHeight; } }
         public EntityStats Stats { get { return entityStats; } }
         protected virtual void Awake()
         {

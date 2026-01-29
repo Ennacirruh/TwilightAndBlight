@@ -89,10 +89,8 @@ namespace TwilightAndBlight
         }
         private void SelectNode(InputAction.CallbackContext context)
         {
-            Debug.Log("Click Registered");
-            if (CombatManager.Instance.GetCombatEntityTakingTurn() == this && selectedAbility != null && selectedAbility.IsValidTarget(targetNode))
+            if (CombatManager.Instance.GetCombatEntityTakingTurn() == this && selectedAbility != null && selectedAbility.IsValidAbilityCast(targetNode))
             {
-
                 acquiringTarget = false;
             }
         }
