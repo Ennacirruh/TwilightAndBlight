@@ -16,7 +16,8 @@ namespace TwilightAndBlight.Ability
         [TextArea][SerializeField] protected string abilityDescription;
         [TextArea][SerializeField] private string descriptionPreview;
         [SerializeField] protected AbilityTarget targetFilter;
-        protected Dictionary<string, string> StringConversionTable { get { return GetStringConversionTable(); }}
+        private Dictionary<string, string> stringConversionTable;
+        protected Dictionary<string, string> StringConversionTable { get { if (stringConversionTable == null) { stringConversionTable = GenerateStringConversionTable(); } return stringConversionTable; }}
         protected List<MapNode> targetVisualReference = new List<MapNode>();
         protected delegate bool CombatEntityConditional(CombatEntity caster, MapNode targetOrigin);
         protected EntityStats entityStats;
@@ -37,7 +38,7 @@ namespace TwilightAndBlight.Ability
         }
         protected abstract IEnumerator AbilityBehavior(MapNode targetingOrigin);
         public abstract void HighlightAbility(MapNode targetingOrigin);
-        protected abstract Dictionary<string, string> GetStringConversionTable();
+        protected abstract Dictionary<string, string> GenerateStringConversionTable();
         public void PerformAbility(MapNode targetingOrigin)
         {
    
@@ -132,6 +133,48 @@ namespace TwilightAndBlight.Ability
             return abilityName;
         }
     
+        protected string GetStringFromScalerList( List<VariableStatScaler> list, string valueLable = "")
+        {
+            string returnString = "";
+
+            if (list == null || list.Count == 0)
+            {
+                return returnString;
+            }
+            if (list.Count == 1)
+            {
+                returnString += $"{list[0].valuePerScalingStat} {valueLable} per {list[0].scalingStat}";
+            }
+
+            for(int i = 0; i < list.Count - 1; i++)
+            {
+                VariableStatScaler scaler = list[i];
+                returnString += $"{scaler.valuePerScalingStat} {valueLable} per {scaler.scalingStat}, ";
+            }
+            returnString += $"and {list[list.Count - 1].valuePerScalingStat} {valueLable} per {list[list.Count - 1].scalingStat}";
+            return returnString;
+        }
+        protected string GetStringFromDamageList(List<DamageType> list)
+        {
+            string returnString = "";
+
+            if (list == null || list.Count == 0)
+            {
+                return returnString;
+            }
+            if (list.Count == 1)
+            {
+                returnString += $"{list[0].ToString()}";
+            }
+
+            for (int i = 0; i < list.Count - 1; i++)
+            {
+                DamageType type = list[i];
+                returnString += $"{type.ToString()}, ";
+            }
+            returnString += $"and {list[list.Count - 1].ToString()}";
+            return returnString;
+        }
         protected virtual void OnValidate()
         {
             if(entityStats == null)
@@ -140,6 +183,25 @@ namespace TwilightAndBlight.Ability
             }
             descriptionPreview = GetAbilityDescription();
         }
-
+        protected float GetScaledStat(float baseValue, List<VariableStatScaler> scalers)
+        {
+            float value = baseValue;
+            foreach (VariableStatScaler scaler in scalers)
+            {
+                float addition = scaler.valuePerScalingStat * entityStats.GetStat(scaler.scalingStat).Value;
+                value += addition;
+            }
+            return value;
+        }
+        protected int GetScaledStat(int baseValue, List<VariableStatScaler> scalers)
+        {
+            float value = baseValue;
+            foreach (VariableStatScaler scaler in scalers)
+            {
+                float addition = scaler.valuePerScalingStat * entityStats.GetStat(scaler.scalingStat).Value;
+                value += addition;
+            }
+            return Mathf.FloorToInt(value);
+        }
     }
 }

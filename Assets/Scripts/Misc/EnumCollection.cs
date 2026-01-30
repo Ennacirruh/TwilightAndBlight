@@ -43,6 +43,7 @@ namespace TwilightAndBlight
     public enum IndicatorType
     {
         Generic,
+        AltGeneric,
         Valid,
         Invalid,
         Warnign

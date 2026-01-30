@@ -419,7 +419,7 @@ MonoBehaviour:
   VerticalAxis:
     Value: 17.5
     Center: 17.5
-    Range: {x: -10, y: 45}
+    Range: {x: -10, y: 85}
     Wrap: 0
     Recentering:
       Enabled: 0
@@ -1054,7 +1054,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityLevel: 1
   health: 0
-  entityHeight: 0
+  entityHeight: 2
 --- !u!114 &1222710138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1174,6 +1174,7 @@ GameObject:
   - component: {fileID: 1388232288}
   - component: {fileID: 1388232289}
   - component: {fileID: 1388232290}
+  - component: {fileID: 1388232291}
   m_Layer: 6
   m_Name: Team 1 A
   m_TagString: Untagged
@@ -1212,7 +1213,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityLevel: 1
   health: 0
-  entityHeight: 0
+  entityHeight: 2
 --- !u!114 &1388232284
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1324,6 +1325,17 @@ MonoBehaviour:
   baseSize: 3
   sizeScalers: []
   respectLineOfSight: 0
+  lineOfSightForgiveness: 0.25
+  damageTypes: 
+  baseDamage: 0
+  damageScalers: []
+  basePercentArmorPen: 0
+  percentArmorPenScalers: []
+  baseFlatArmorPen: 0
+  flatArmorPenScalers: []
+  baseDamageTicks: 0
+  damageTickScalers: []
+  abilityCastHeightOffset: 0
 --- !u!114 &1388232290
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1336,7 +1348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 0}
+  abilityIcon: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
   abilityName: Test Hex
   abilityDescription: 
   descriptionPreview: 
@@ -1347,6 +1359,51 @@ MonoBehaviour:
   baseSize: 3
   sizeScalers: []
   respectLineOfSight: 0
+  lineOfSightForgiveness: 0.25
+  damageTypes: 
+  baseDamage: 0
+  damageScalers: []
+  basePercentArmorPen: 0
+  percentArmorPenScalers: []
+  baseFlatArmorPen: 0
+  flatArmorPenScalers: []
+  baseDamageTicks: 0
+  damageTickScalers: []
+  abilityCastHeightOffset: 0
+--- !u!114 &1388232291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388232281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 27916dbd53464474fbd89dc6b88228ab, type: 3}
+  abilityName: Test Arc
+  abilityDescription: 
+  descriptionPreview: 
+  targetFilter: 0
+  abilityShape: 2
+  baseRange: 20
+  rangeScalers: []
+  baseSize: 30
+  sizeScalers: []
+  respectLineOfSight: 1
+  lineOfSightForgiveness: 0.5
+  damageTypes: 
+  baseDamage: 10
+  damageScalers: []
+  basePercentArmorPen: 0
+  percentArmorPenScalers: []
+  baseFlatArmorPen: 0
+  flatArmorPenScalers: []
+  baseDamageTicks: 0
+  damageTickScalers: []
+  abilityCastHeightOffset: 1
 --- !u!1 &1391307745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1723,6 +1780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   genericIndicator: {r: 0.41960788, g: 0.9980959, b: 1, a: 1}
+  altGenericIndicator: {r: 0.08288832, g: 0.20754719, b: 0.20754719, a: 1}
   warningIndicator: {r: 1, g: 0.58485585, b: 0, a: 1}
   validIndicator: {r: 0.09806943, g: 1, b: 0, a: 1}
   invalidIndicator: {r: 1, g: 0, b: 0, a: 1}

@@ -104,7 +104,7 @@ namespace TwilightAndBlight.Ability
             EndAbility(targetingOrigin);
         }
 
-        protected override Dictionary<string, string> GetStringConversionTable()
+        protected override Dictionary<string, string> GenerateStringConversionTable()
         {
             return new Dictionary<string, string>() {
                 {"agilitypermovespeed", agilityPerMoveSpeed.ToString()},

@@ -9,6 +9,7 @@ namespace TwilightAndBlight.Map
     {
         private static MapManager instance;
         [SerializeField] private Color genericIndicator;
+        [SerializeField] private Color altGenericIndicator;
         [SerializeField] private Color warningIndicator;
         [SerializeField] private Color validIndicator;
         [SerializeField] private Color invalidIndicator;
@@ -21,7 +22,7 @@ namespace TwilightAndBlight.Map
         private HashSet<MapNode> overlayNodes = new HashSet<MapNode>();
         private Dictionary<MapNode, IndicatorType> currentHighlightDict = new Dictionary<MapNode, IndicatorType>();
         public const float gridPosMultiplier = 0.85f;
-        public const float gridSizeMultiplier = 0.4f;
+        public const float gridSizeMultiplier = 0.42f;
 
         private void Awake()
         {
@@ -212,6 +213,9 @@ namespace TwilightAndBlight.Map
                 case IndicatorType.Warnign:
                     node.ColorMaterial(warningIndicator);
                     break;
+                case IndicatorType.AltGeneric:
+                    node.ColorMaterial(altGenericIndicator);
+                    break;
             }
         }
         public static bool IsValidNode(MapNode node)
@@ -242,7 +246,7 @@ namespace TwilightAndBlight.Map
             return originNode.transform.position.y - neighborNode.transform.position.y;
 
         }
-        public HashSet<MapNode> GetNodesWithinRange(MapNode originNode, int range)
+        public HashSet<MapNode> GetNodesWithinRange(MapNode originNode, int range, MapNodeConditional condition = null)
         {
             HashSet<MapNode> returnSet = new HashSet<MapNode>();
             returnSet.Add(originNode);
@@ -257,11 +261,15 @@ namespace TwilightAndBlight.Map
                     for (int k = 0; k <= range - j - 1; k++)
                     {
                         Vector3Int offset = direction * j + (rotDirection * k);
-                        Debug.Log("Offset: " + offset);
                         MapNode newNode = GetRealativeNode(originNode, offset);
                         if (newNode != null)
                         {
-                            returnSet.Add(newNode);
+                            bool valid = true;
+                            if(condition != null)
+                            {
+                                valid &= condition.Invoke(newNode);
+                            }
+                            if(valid) returnSet.Add(newNode);
                         }
                     }
                 }
@@ -270,7 +278,7 @@ namespace TwilightAndBlight.Map
 
             return returnSet;
         }
-        public HashSet<(MapNode,MapNode)> GetNodesWithinMoveLimit(MapNode originNode, int maxMoves, MapNodeConditional condition = null)
+        public HashSet<(MapNode,MapNode)> GetNodesWithinMoveLimit(MapNode originNode, int maxMoves, MapNodeParentConditional condition = null)
         {
             HashSet<(MapNode, int)> nodesToEvaluate = new HashSet<(MapNode, int)>();
             Dictionary<MapNode, int> evaluatedNodes = new Dictionary<MapNode, int>();
