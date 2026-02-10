@@ -17,6 +17,7 @@ namespace TwilightAndBlight.Map
                     Vector2Int gridPos = node.PositionInMap;
                     mapList.Add(gridPos, node);
                     lookupDict.Add(node, gridPos);
+                    node.AdjustMapVerticalScale();
                 }
             }
 

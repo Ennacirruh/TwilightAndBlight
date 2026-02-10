@@ -11,11 +11,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject windowPrefab;
     [SerializeField] private GameObject AbilityListPrefab;
     [SerializeField] private GameObject AbilityPreviewPrefab;
+    [SerializeField] private GameObject StatPreviewListPrefab;
+    [SerializeField] private GameObject DescriptionViewPrefab;
     private Dictionary<string, UIWindow> windowCache = new Dictionary<string, UIWindow>();
     private List<AbilityPreview> abilityPreviewPool = new List<AbilityPreview>();
     private List<AbilityPreview> inUse = new List<AbilityPreview>();
     private UIWindow abilityPreview;
-    private bool previewWindowOpen;
+    private UIWindow statPreview;
+    private bool abilityPreviewWindowOpen;
+    private bool statPreviewWindowOpen;
     private void Awake()
     {
         if (_instance == null)
@@ -64,21 +68,50 @@ public class UIManager : MonoBehaviour
     private UIWindow OpenNewAbilityViewWindow()
     {
         bool exists = windowCache.ContainsKey("AbilityView");
-        UIWindow window = OpenNewUIWindow(new Vector2(690, 0), new Vector2(520, 990), "AbilityView");
+        UIWindow window = OpenNewUIWindow(new Vector2(700, 0), new Vector2(520, 990), "AbilityView");
         if (!exists)
         {
+            window.AssignContent(DescriptionViewPrefab);
             window.AssignContent(AbilityListPrefab);
         }
         return window;
     }
-   
+    private UIWindow OpenNewStatViewWindow()
+    {
+        bool exists = windowCache.ContainsKey("StatView");
+        UIWindow window = OpenNewUIWindow(new Vector2(-810, 0), new Vector2(300, 990), "StatView");
+        if (!exists)
+        {
+            window.AssignContent(DescriptionViewPrefab);
+            window.AssignContent(StatPreviewListPrefab);
+        }
+        return window;
+    }
+    public void PreviewStats(CombatEntity entity)
+    {
+        UIWindow window = OpenNewStatViewWindow();
+        GameObject description = window.GetContent(0);
+        GameObject statView = window.GetContent(1);
+        DescriptionView descriptionView = description.GetComponentInChildren<DescriptionView>();
+        StatPreviewManager previewManager = statView.GetComponentInChildren<StatPreviewManager>();
+        previewManager.InitializeStatManager(descriptionView, entity);
+        statPreview = window;
+        statPreviewWindowOpen = true;
+         
+    }
     public void PreviewAbilities(CombatEntity entity)
     {
         UIWindow window = OpenNewAbilityViewWindow();
-        GameObject content = window.GetContent();
-        RectTransform contentTransform = content.GetComponent<RectTransform>();
+        GameObject description = window.GetContent(0);
+        GameObject abilityList = window.GetContent(1);
+        RectTransform contentTransform = abilityList.GetComponent<RectTransform>();
+        DescriptionView descriptionView = description.GetComponentInChildren<DescriptionView>();
+        descriptionView.AssignPrefix("Passive: ");
+        descriptionView.AssignDefaultDescriptable(entity.GetEntityPassive());
+        descriptionView.PreviewDefault();
         foreach(EntityAbility ability in entity.GetEntityAbilities())
         {
+            
             AbilityPreview preview;
             if(abilityPreviewPool.Count > 0)
             {
@@ -92,28 +125,34 @@ public class UIManager : MonoBehaviour
                 GameObject previewObj = Instantiate(AbilityPreviewPrefab, contentTransform, worldPositionStays: false);
                 preview = previewObj.GetComponent<AbilityPreview>();
             }
-            preview.DisplayAbility(ability, entity);
+            preview.DisplayAbility(ability, entity, descriptionView);
             inUse.Add(preview);
             abilityPreview = window;
-            previewWindowOpen = true;
+            abilityPreviewWindowOpen = true;
         }
     }
     public void CloseAbilityPreview()
     {
-        if (previewWindowOpen)
+        if (abilityPreviewWindowOpen)
         {
-            previewWindowOpen = false;
-            AbilityPreview[] previews = abilityPreview.GetContent().GetComponentsInChildren<AbilityPreview>();
+            abilityPreviewWindowOpen = false;
+            AbilityPreview[] previews = abilityPreview.GetContent(1).GetComponentsInChildren<AbilityPreview>();
             foreach (AbilityPreview preview in previews)
             {
                 abilityPreviewPool.Add(preview);
                 inUse.Remove(preview);
                 preview.gameObject.SetActive(false);
                 preview.transform.SetParent(canvas, false);
-                preview.CloseAbilityDescription();
 
             }
             abilityPreview.gameObject.SetActive(false);
+        }
+    }
+    public void CloseStatPreview()
+    {
+        if (statPreviewWindowOpen)
+        {
+            statPreview.gameObject.SetActive(false);
         }
     }
     public RectTransform GetCanvas()

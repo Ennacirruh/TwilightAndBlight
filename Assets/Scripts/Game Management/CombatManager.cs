@@ -1,8 +1,10 @@
-using UnityEngine;
-using System.Collections.Generic;
-using System.Collections;
 using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using TwilightAndBlight.Map;
+
+using UnityEngine;
 namespace TwilightAndBlight {
     public class CombatManager : MonoBehaviour
     {
@@ -52,6 +54,7 @@ namespace TwilightAndBlight {
         }
         public void EndCombat()
         {
+            Debug.Log("Combat Ended");
             GameEvents.OnCombatEnd?.Invoke();
 
         }
@@ -75,6 +78,7 @@ namespace TwilightAndBlight {
         public void BeginTurn()
         {
             GameEvents.OnTurnStart?.Invoke(entityTakingTurn);
+            entityTakingTurn.OnTurnStart();
             SelectAction();
         }
         public void EndTurn()
@@ -145,14 +149,16 @@ namespace TwilightAndBlight {
                 if(entity != null)
                 {
                     entityTurnQueue.Add(entity);
-                    List<MapNode> mapNodes = MapManager.Instance.GetSpawnNodes(team);
-                    foreach(MapNode node in mapNodes)
+                    HashSet<MapNode> mapNodes = new HashSet<MapNode>(MapManager.Instance.GetSpawnNodes(team));
+                    for (int i = 0; i < mapNodes.Count; i++)
                     {
+                        MapNode node = mapNodes.ElementAt(UnityEngine.Random.Range(0, mapNodes.Count - 1));
                         if (!node.IsOccupied())
                         {
                             node.AssignEntity(entity, Vector2.zero);
                             break;
                         }
+                        mapNodes.Remove(node);
                     }
                 }
             }

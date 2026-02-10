@@ -326,6 +326,7 @@ MonoBehaviour:
   abilityIcon: {fileID: 5063443086907803445}
   descriptionBox: {fileID: 7769828395887493652}
   descritpionText: {fileID: 7220310180042635634}
+  button: {fileID: 2999388246890359720}
   offset: {x: -275, y: 0}
 --- !u!114 &2999388246890359720
 MonoBehaviour:
@@ -352,7 +353,7 @@ MonoBehaviour:
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_DisabledColor: {r: 0.72327036, g: 0, b: 0, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:

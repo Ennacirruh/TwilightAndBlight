@@ -4,7 +4,8 @@ namespace TwilightAndBlight
     
     public enum DamageType
     {
-        Physical
+        Physical,
+        Fire
     }
     public enum StatType
     {
@@ -15,7 +16,7 @@ namespace TwilightAndBlight
         Intelligence,
         Wisdom,
         Dexterity,
-        Reflex,
+        Reflexes,
         Charisma,
         Cunning,
         Discipline,
@@ -53,6 +54,29 @@ namespace TwilightAndBlight
         Hexagon, 
         Line,
         Arc
+    }
+    public enum TerrainShiftType
+    {
+        Raise,
+        Bridge,
+        Level,
+        Flatten,
+        Lower
+    }
+    public enum CombatResource
+    {
+        Health,
+        Stamina,
+        Mana,
+        Corruption,
+        Astra
+    }
+    public enum ResourceCostType
+    {
+        Flat,
+        PercentMax,
+        PercentCurrent,
+        PercentMissing
     }
 
 }

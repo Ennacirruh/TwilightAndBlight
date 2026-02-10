@@ -74,6 +74,7 @@ namespace TwilightAndBlight.Map
             newNode.transform.position = new Vector3(xPos, yPos, zPos);
             newNode.name = newNode.name + $"{gridPos.x}_{gridPos.y}";
             MapNode mapNode = newNode.GetComponent<MapNode>();
+            mapNode.AdjustMapVerticalScale();
             mapNode.PositionInMap = gridPos;
             map.Add(gridPos, mapNode);
             lookupDict.Add(mapNode, gridPos);

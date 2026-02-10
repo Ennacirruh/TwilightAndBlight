@@ -8,40 +8,35 @@ using TwilightAndBlight;
 public class AbilityPreview : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private Image abilityIcon;
-    [SerializeField] private RectTransform descriptionBox;
-    [SerializeField] private TextMeshProUGUI descritpionText;
+    [SerializeField] private DescriptionView descriptionView;
+    [SerializeField] private Button button;
     private EntityAbility currentDisplay;
     private CombatEntity combatEntity;
-    public Vector2 offset;
     private void Awake()
     {
        
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
-        descriptionBox.gameObject.SetActive(true);
-        descriptionBox.localPosition = offset;
-        descriptionBox.SetParent(UIManager.Instance.GetCanvas());
+        descriptionView.PreviewDescriptable(currentDisplay, false);
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        CloseAbilityDescription();
+        descriptionView.PreviewDefault();
     }
 
 
-    public void DisplayAbility(EntityAbility ability, CombatEntity owner)
+    public void DisplayAbility(EntityAbility ability, CombatEntity owner, DescriptionView descriptionView)
     {
+        this.descriptionView = descriptionView;
         currentDisplay = ability;
         combatEntity = owner;
         abilityIcon.sprite = ability.GetAbilityIcon();
-        descritpionText.text = ability.GetAbilityName() + "\n" + ability.GetAbilityDescription();
+        button.interactable = ability.CanAffordAbility();
     }
-    public void CloseAbilityDescription()
-    {
-        descriptionBox.SetParent(transform);
-        descriptionBox.gameObject.SetActive(false);
-    }
+
+
     public void SelectAbility()
     {
         combatEntity.SetSelectedAbility(currentDisplay);

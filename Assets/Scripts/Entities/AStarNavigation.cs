@@ -17,6 +17,7 @@ namespace TwilightAndBlight.AI
 
         public static List<MapNode> GetShortestPath(MapNode start, MapNode end, int maxMoves)
         {
+            maxMoves++;
             if (start == null || end == null)
             {
                 return null;

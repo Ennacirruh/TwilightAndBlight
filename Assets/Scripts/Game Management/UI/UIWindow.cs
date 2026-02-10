@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections.Generic;
 public class UIWindow : MonoBehaviour
 {
    
@@ -8,7 +8,7 @@ public class UIWindow : MonoBehaviour
     [SerializeField] private GameObject expandapleParent;
     [SerializeField] private RectTransform contentParent;
     [SerializeField] private ScrollRect scrollRect;
-    private GameObject content;
+    private List<GameObject> content = new List<GameObject>();
     public Vector2 WindowSize { get{ return rectTransform.sizeDelta; } }
 
 
@@ -28,13 +28,13 @@ public class UIWindow : MonoBehaviour
     {
         GameObject newContent = Instantiate(content);
         newContent.GetComponent<RectTransform>().SetParent(contentParent, false);
-        this.content = newContent;
+        this.content.Add( newContent);
         
         //scrollRect.content = newContent.GetComponent<RectTransform>();
         //scrollRect.content.anchoredPosition = new Vector2(scrollRect.content.sizeDelta.x / 2f ,0);
     }
-    public GameObject GetContent()
+    public GameObject GetContent(int index)
     {
-        return content;
+        return content[index];
     }
 }

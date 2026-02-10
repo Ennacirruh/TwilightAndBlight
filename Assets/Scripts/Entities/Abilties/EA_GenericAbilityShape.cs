@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.InteropServices.WindowsRuntime;
+using TwilightAndBlight.Ability.Module;
 using TwilightAndBlight.Map;
 using UnityEngine;
 namespace TwilightAndBlight.Ability
@@ -8,12 +9,18 @@ namespace TwilightAndBlight.Ability
     public abstract class EA_GenericAbilityShape : EntityAbility
     {
         [SerializeField] protected DefaultAbilityShapes abilityShape;
-        [SerializeField] protected float baseRange;
-        [SerializeField] protected List<VariableStatScaler> rangeScalers = new List<VariableStatScaler>();
-        [SerializeField] protected float baseSize;
-        [SerializeField] protected List<VariableStatScaler> sizeScalers = new List<VariableStatScaler>();
-        [SerializeField] protected bool respectLineOfSight;
-        [SerializeField] protected float lineOfSightForgiveness = 0.25f;
+        [SerializeField] protected AbilitySizeModule abilitySizeModule = new AbilitySizeModule();
+        [SerializeField] protected AbilityRangeModule abilityRangeModule = new AbilityRangeModule();
+        
+        protected override void Awake()
+        {
+            base.Awake();
+            abilitySizeModule.InitializeAbilityModule(this);
+            abilityRangeModule.InitializeAbilityModule(this);
+        }
+
+
+        protected HashSet<MapNode> aquiredTargets = new HashSet<MapNode>();
 
         private float angleForArc;
         private float directionOfArc;
@@ -34,57 +41,50 @@ namespace TwilightAndBlight.Ability
 
         protected override Dictionary<string, string> GenerateStringConversionTable()
         {
-            return new Dictionary<string, string>() { 
-                { "range", GetRange().ToString()},
-                { "baserange", baseRange.ToString()},
-                { "size", GetRange().ToString()},
-                { "basesize", baseSize.ToString()},
-                { "rangescalers", GetStringFromScalerList(rangeScalers)},
-                { "sizescalers", GetStringFromScalerList(sizeScalers)},
-                { "respectlineofsight", respectLineOfSight.ToString()} 
-            };
-        }
-        protected float GetRange()
-        {
-            return GetScaledStat(baseRange, rangeScalers);
-
-        }
-        protected float GetSize()
-        {
-            return GetScaledStat(baseSize, sizeScalers);
+            Dictionary<string, string> dict = new Dictionary<string, string>();
+            abilitySizeModule.GenerateStringConversionTable(ref dict);
+            abilityRangeModule.GenerateStringConversionTable(ref dict);
+            return dict;
         }
 
         private HashSet<MapNode> TargetHexagon(MapNode targetingOrigin)
         {
-            Vector3Int direction = new Vector3Int(0, 0, -1);
-            int radius = Mathf.FloorToInt(GetSize());
+            int radius = Mathf.FloorToInt(abilitySizeModule.GetSize());
             HashSet<MapNode> newSet = MapManager.Instance.GetNodesWithinRange(targetingOrigin, radius);
-
             return newSet;
         }
         private HashSet<MapNode> TargetLine(MapNode targetingOrigin)
         {
             HashSet<MapNode> newSet = new HashSet<MapNode>();
-            float range = GetRange() * MapManager.gridPosMultiplier;
-            float size = GetSize() * MapManager.gridSizeMultiplier;
+            float range = abilityRangeModule.GetRange() * MapManager.gridDistanceToWorldDistance;
+            float size = abilitySizeModule.GetSize() * MapManager.gridSizeToWorldSize;
             Vector3 originPos = combatEntity.transform.position + (combatEntity.transform.up * combatEntity.EntityHeight);
             Vector3 targetPos = targetingOrigin.transform.position;
             targetPos.y = originPos.y;
             Vector3 direction = (targetPos - originPos).normalized;
 
             
-            Vector3 boxSize = new Vector3(size / 2f, 10f, 0.05f);
+            Vector3 boxSize = new Vector3(size / 2f, 40f, 0.05f);
             RaycastHit[] hits = Physics.BoxCastAll(originPos, boxSize , direction, Quaternion.LookRotation(direction, combatEntity.transform.up), range, MapNode.GetMapNodeMask());
             foreach (RaycastHit hit in hits)
             {
                 MapNode node = hit.collider.GetComponentInParent<MapNode>();
                 if (node != null)
                 {
-                    newSet.Add(node);
+                    if (hit.distance <= range * MapManager.gridDistanceToWorldDistance)
+                        newSet.Add(node);
                 }
             }
 
             return newSet;
+        }
+        public override bool IsValidAbilityCast(MapNode targetNode)
+        {
+            if (aquiredTargets.Count > 0)
+            {
+                return true;
+            }
+            return false;
         }
         protected MapNode GetTrueOrigin(MapNode defaultTargetingOrigin)
         {
@@ -104,9 +104,8 @@ namespace TwilightAndBlight.Ability
              
             Vector3 directionVector = (targetingOrigin.transform.position - combatEntity.transform.position);
             directionOfArc = Mathf.Atan2(directionVector.x, directionVector.z) * Mathf.Rad2Deg;
-            //Debug.Log($"{directionOfArc} vs {Vector3.Angle(Vector3.forward, directionVector)}");
-            arcRangeMem = Mathf.FloorToInt(GetRange());
-            angleForArc = GetSize();
+            arcRangeMem = Mathf.FloorToInt(abilityRangeModule.GetRange());
+            angleForArc = abilitySizeModule.GetSize();
 
             HashSet<MapNode> newSet = MapManager.Instance.GetNodesWithinRange(combatEntity.GetCurrentMapNode(), arcRangeMem, WithinAngle); 
 
@@ -122,29 +121,50 @@ namespace TwilightAndBlight.Ability
 
             if (delta <= angleForArc / 2f)
             {
-                if (directionVector.magnitude <= arcRangeMem * MapManager.gridPosMultiplier)
+                if (directionVector.magnitude <= arcRangeMem * MapManager.gridDistanceToWorldDistance)
                 {
                     return true;
                 }
             }
             return false;
         }
-
-        protected bool LineOfSightObstructed(MapNode origin, MapNode target, float rayHeightOffset)
+        protected bool TargetIsInRange(MapNode targetingNode)
         {
-            RaycastHit hit;
-            return LineOfSightObstructed(origin, target, rayHeightOffset, out hit);
+            switch (abilityShape)
+            {
+                case DefaultAbilityShapes.Hexagon:
+                    return MapManager.Instance.GetNodesWithinRange(combatEntity.GetCurrentMapNode(), Mathf.FloorToInt(abilityRangeModule.GetRange())).Contains(targetingNode);
+                default:
+                    return true;
+            }
         }
-        protected bool LineOfSightObstructed(MapNode origin, MapNode target, float rayHeightOffset, out RaycastHit hit)
+        protected bool AlwaysDrawDefaultHightlight()
         {
-            Vector3 originPos = origin.transform.position + (origin.transform.up * rayHeightOffset);
-            float targetOffset = target.IsOccupied() ? target.GetCombatEntity().EntityHeight : lineOfSightForgiveness;
-            Vector3 targetPos = target.transform.position + (target.transform.up * lineOfSightForgiveness);
-            Vector3 direction = (targetPos - originPos).normalized;
-            
-            float distance = (targetPos - originPos).magnitude * 0.99f;
-            bool result = Physics.Raycast(originPos, direction, out hit, distance, MapNode.GetMapNodeMask());
-            return result;
+            switch (abilityShape)
+            {
+                case DefaultAbilityShapes.Hexagon:
+                    return true;
+                default:
+                    return false;
+            }
+        }
+        protected virtual void DefaultHighlightBehavior(MapNode targetingOrigin)
+        {
+            MapManager.Instance.ResetHighlight();
+            MapNode currentNode = combatEntity.GetCurrentMapNode();
+            int range = Mathf.FloorToInt(abilityRangeModule.GetRange());
+            HashSet<MapNode> nodesInRange = MapManager.Instance.GetNodesWithinRange(currentNode, range);
+            foreach (MapNode node in nodesInRange)
+            {
+                MapManager.Instance.HighlightNodes(node, IndicatorType.AltGeneric);
+            }
+        }
+      
+        protected override void OnValidate()
+        {
+            abilitySizeModule.InitializeAbilityModule(this);
+            abilityRangeModule.InitializeAbilityModule(this);
+            base.OnValidate();
         }
     }
 }

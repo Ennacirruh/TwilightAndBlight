@@ -1,10 +1,16 @@
 using UnityEngine;
 
-namespace TwilightAndBlight.Ability {
-    public abstract class DamageBehaviorExpansion : ScriptableObject
+public class DamageBehaviorExpansion : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
     {
-        public abstract void PerformAdditionalBehavior(CombatEntity source, CombatEntity target, ref float damage);
-   
+        
+    }
 
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }

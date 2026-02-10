@@ -11,7 +11,7 @@ public class ResourceBarController : MonoBehaviour
     private float yMax;
     private float shadowTarget;
     private float shadowT;
-    private const float shadowSpeed = .5f;
+    private const float shadowSpeed = .1f;
     private Coroutine shadowBarCoroutine;
     private void Awake()
     {

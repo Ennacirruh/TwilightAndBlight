@@ -198,6 +198,116 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &107227118
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 107227119}
+  - component: {fileID: 107227122}
+  - component: {fileID: 107227121}
+  - component: {fileID: 107227120}
+  m_Layer: 6
+  m_Name: Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &107227119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107227118}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1394196316}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &107227120
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107227118}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &107227121
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107227118}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 6c1c0e2adaa88304a80a3429c6f9d866, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &107227122
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 107227118}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &141664991
 GameObject:
   m_ObjectHideFlags: 0
@@ -271,8 +381,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141664991}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212339, y: 4.263186e-22, z: -7.110963e-23, w: 0.98836154}
-  m_LocalPosition: {x: 0, y: 3.0070581, z: -9.537169}
+  m_LocalRotation: {x: 0.2773573, y: -0.00000003725441, z: 0.000000010754723, w: 0.9607669}
+  m_LocalPosition: {x: 0, y: 6.007058, z: -9.537169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -385,7 +495,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5d7c088409d9a40b7b09aa707777f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetOffset: {x: 0, y: 0, z: 0}
+  TargetOffset: {x: 0, y: 3, z: 0}
   TrackerSettings:
     BindingMode: 0
     PositionDamping: {x: 1, y: 1, z: 1}
@@ -575,6 +685,337 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 238925280}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &457419560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 457419568}
+  - component: {fileID: 457419567}
+  - component: {fileID: 457419566}
+  - component: {fileID: 457419565}
+  - component: {fileID: 457419564}
+  - component: {fileID: 457419563}
+  - component: {fileID: 457419562}
+  - component: {fileID: 457419561}
+  m_Layer: 6
+  m_Name: Team 2 C
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &457419561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457419560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 68e5a78013e33f247822a837e55b0ab4, type: 3}
+  abilityName: Level Terrain
+  abilityDescription: Terrain Shift
+  descriptionPreview: 'Terrain Shift  Costs 50 Health. Has a cooldown of 2 turns.
+
+    Remaining
+    Cooldown: 2 turns.'
+  targetFilter: 0
+  abilityCost: 50
+  costResource: 0
+  resourceCostType: 0
+  abilityCooldown: 2
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 1
+  abilitySizeModule:
+    baseSize: 2
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 7
+    rangeScalers: []
+  abilityTerrainModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    baseMaxShift: 50
+    maxShiftScalers: []
+    baseShiftSpeed: 20
+    shiftSpeedScalers: []
+    delayRange: 1
+    terrainShiftType: 2
+    realativeToTarget: 0
+--- !u!114 &457419562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457419560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
+  abilityName: Stomp
+  abilityDescription: AOE Damage.
+  descriptionPreview: AOE Damage.  Costs 25 Mana.
+  targetFilter: 0
+  abilityCost: 25
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 0
+  abilitySizeModule:
+    baseSize: 3
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 
+    baseDamage: 15
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.85
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &457419563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457419560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
+  abilityName: Beam
+  abilityDescription: Damage in an Line
+  descriptionPreview: Damage in an Line  Costs 25 Stamina.
+  targetFilter: 0
+  abilityCost: 25
+  costResource: 1
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 1
+  abilitySizeModule:
+    baseSize: 3
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 5
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 
+    baseDamage: 15
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.9
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &457419564
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457419560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 5697c26ee2ef0c848996640f6a3d3432, type: 3}
+  abilityName: Move
+  abilityDescription: Test
+  descriptionPreview: 'Test '
+  targetFilter: 3
+  abilityCost: 0
+  costResource: 0
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  agilityPerMoveSpeed: 100
+  baseMoveSpeed: 3
+--- !u!114 &457419565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457419560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c56833d6d3fb14b8719de38677d930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarPrefab: {fileID: 892272746398520389, guid: b00cdea330ee3174ca1f80a291a96b98, type: 3}
+  manaBarPrefab: {fileID: 892272746398520389, guid: 8b5bf63c4893183479be6c0f2fd63d7d, type: 3}
+  staminaBarPrefab: {fileID: 892272746398520389, guid: 0c5a8ef5a21dbfa4ebb322d2ebad06cf, type: 3}
+  healthBarVertOffset: 20
+  staminaBarVertOffset: 10
+  manaBarVertOffset: 0
+  canvasParent: {fileID: 959267810}
+--- !u!114 &457419566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457419560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityLevel: 1
+  health: 0
+  mana: 0
+  stamina: 0
+  corruption: 0
+  astra: 0
+  totalShield: 0
+  entityHeight: 2
+--- !u!114 &457419567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457419560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73bcf3d88f7e3b04ebb92e8e620a5a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power:
+    baseValue: 15
+  fortitude:
+    baseValue: 20
+  agility:
+    baseValue: 10
+  constitution:
+    baseValue: 10
+  intelligence:
+    baseValue: 15
+  wisdom:
+    baseValue: 10
+  dexterity:
+    baseValue: 10
+  charisma:
+    baseValue: 10
+  cunning:
+    baseValue: 25
+  discipline:
+    baseValue: 10
+  reflex:
+    baseValue: 10
+  flatArmorPen:
+    baseValue: 0
+  percemtArmorPen:
+    baseValue: 0
+  spirit:
+    baseValue: 10
+  endurance:
+    baseValue: 10
+  vitality:
+    baseValue: 5
+  tenacity:
+    baseValue: 10
+  effervescence:
+    baseValue: 10
+  compassion:
+    baseValue: 0
+  mettle:
+    baseValue: 0
+  transendance:
+    baseValue: 0
+--- !u!4 &457419568
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 457419560}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.21, y: -28.87, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1826495363}
+  - {fileID: 959267810}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -708,8 +1149,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15212339, y: 4.2545265e-22, z: -6.548343e-23, w: 0.98836154}
-  m_LocalPosition: {x: 0, y: 3.0070581, z: -9.537169}
+  m_LocalRotation: {x: 0.27735734, y: -0.000000037254416, z: 0.000000010754728, w: 0.96076685}
+  m_LocalPosition: {x: 0, y: 6.007058, z: -9.537169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1020,6 +1461,79 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 519420032}
+--- !u!1 &959267809
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 959267810}
+  - component: {fileID: 959267812}
+  - component: {fileID: 959267811}
+  m_Layer: 6
+  m_Name: HealthBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &959267810
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959267809}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 457419568}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 2.2}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &959267811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959267809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d55c2264f43f974cb5d3aaeefbb6a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 519420032}
+--- !u!223 &959267812
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 959267809}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 519420031}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1222710135
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,6 +1547,9 @@ GameObject:
   - component: {fileID: 1222710136}
   - component: {fileID: 1222710138}
   - component: {fileID: 1222710141}
+  - component: {fileID: 1222710142}
+  - component: {fileID: 1222710144}
+  - component: {fileID: 1222710145}
   m_Layer: 6
   m_Name: 'Team 2 A '
   m_TagString: Untagged
@@ -1054,6 +1571,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityLevel: 1
   health: 0
+  mana: 0
+  stamina: 0
+  corruption: 0
+  astra: 0
+  totalShield: 0
   entityHeight: 2
 --- !u!114 &1222710138
 MonoBehaviour:
@@ -1067,7 +1589,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c56833d6d3fb14b8719de38677d930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceBarPrefab: {fileID: 892272746398520389, guid: b00cdea330ee3174ca1f80a291a96b98, type: 3}
+  healthBarPrefab: {fileID: 892272746398520389, guid: b00cdea330ee3174ca1f80a291a96b98, type: 3}
+  manaBarPrefab: {fileID: 892272746398520389, guid: 8b5bf63c4893183479be6c0f2fd63d7d, type: 3}
+  staminaBarPrefab: {fileID: 892272746398520389, guid: 0c5a8ef5a21dbfa4ebb322d2ebad06cf, type: 3}
+  healthBarVertOffset: 20
+  staminaBarVertOffset: 10
+  manaBarVertOffset: 0
   canvasParent: {fileID: 1436181371}
 --- !u!114 &1222710139
 MonoBehaviour:
@@ -1082,15 +1609,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power:
-    baseValue: 10
+    baseValue: 15
   fortitude:
-    baseValue: 10
+    baseValue: 20
   agility:
-    baseValue: 31
+    baseValue: 10
   constitution:
     baseValue: 10
   intelligence:
-    baseValue: 10
+    baseValue: 15
   wisdom:
     baseValue: 10
   dexterity:
@@ -1098,25 +1625,25 @@ MonoBehaviour:
   charisma:
     baseValue: 10
   cunning:
-    baseValue: 10
+    baseValue: 25
   discipline:
     baseValue: 10
   reflex:
-    baseValue: 0
+    baseValue: 10
   flatArmorPen:
     baseValue: 0
   percemtArmorPen:
     baseValue: 0
   spirit:
-    baseValue: 0
+    baseValue: 10
   endurance:
-    baseValue: 0
+    baseValue: 10
   vitality:
-    baseValue: 0
+    baseValue: 5
   tenacity:
-    baseValue: 0
+    baseValue: 10
   effervescence:
-    baseValue: 0
+    baseValue: 10
   compassion:
     baseValue: 0
   mettle:
@@ -1157,8 +1684,187 @@ MonoBehaviour:
   abilityDescription: Test
   descriptionPreview: 'Test '
   targetFilter: 3
+  abilityCost: 0
+  costResource: 0
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
   agilityPerMoveSpeed: 100
   baseMoveSpeed: 3
+--- !u!114 &1222710142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222710135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
+  abilityName: Beam
+  abilityDescription: Damage in an Line
+  descriptionPreview: Damage in an Line  Costs 25 Stamina.
+  targetFilter: 0
+  abilityCost: 25
+  costResource: 1
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 1
+  abilitySizeModule:
+    baseSize: 3
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 5
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 
+    baseDamage: 15
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.9
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &1222710144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222710135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
+  abilityName: Stomp
+  abilityDescription: AOE Damage.
+  descriptionPreview: AOE Damage.  Costs 25 Mana.
+  targetFilter: 0
+  abilityCost: 25
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 0
+  abilitySizeModule:
+    baseSize: 3
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 
+    baseDamage: 15
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.85
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &1222710145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1222710135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 68e5a78013e33f247822a837e55b0ab4, type: 3}
+  abilityName: Level Terrain
+  abilityDescription: Terrain Shift
+  descriptionPreview: 'Terrain Shift  Costs 50 Health. Has a cooldown of 2 turns.
+
+    Remaining
+    Cooldown: 2 turns.'
+  targetFilter: 0
+  abilityCost: 50
+  costResource: 0
+  resourceCostType: 0
+  abilityCooldown: 2
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 1
+  abilitySizeModule:
+    baseSize: 2
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 7
+    rangeScalers: []
+  abilityTerrainModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    baseMaxShift: 50
+    maxShiftScalers: []
+    baseShiftSpeed: 20
+    shiftSpeedScalers: []
+    delayRange: 1
+    terrainShiftType: 2
+    realativeToTarget: 0
 --- !u!1 &1388232281
 GameObject:
   m_ObjectHideFlags: 0
@@ -1172,11 +1878,16 @@ GameObject:
   - component: {fileID: 1388232283}
   - component: {fileID: 1388232285}
   - component: {fileID: 1388232288}
-  - component: {fileID: 1388232289}
-  - component: {fileID: 1388232290}
   - component: {fileID: 1388232291}
+  - component: {fileID: 1388232295}
+  - component: {fileID: 1388232296}
+  - component: {fileID: 1388232297}
+  - component: {fileID: 1388232298}
+  - component: {fileID: 1388232299}
+  - component: {fileID: 1388232300}
+  - component: {fileID: 1388232294}
   m_Layer: 6
-  m_Name: Team 1 A
+  m_Name: Solara
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1213,6 +1924,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityLevel: 1
   health: 0
+  mana: 0
+  stamina: 0
+  corruption: 0
+  astra: 0
+  totalShield: 0
   entityHeight: 2
 --- !u!114 &1388232284
 MonoBehaviour:
@@ -1227,13 +1943,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   power:
-    baseValue: 10
+    baseValue: 20
   fortitude:
-    baseValue: 10
+    baseValue: 20
   agility:
-    baseValue: 200
+    baseValue: 20
   constitution:
-    baseValue: 10
+    baseValue: 20
   intelligence:
     baseValue: 10
   wisdom:
@@ -1241,31 +1957,31 @@ MonoBehaviour:
   dexterity:
     baseValue: 10
   charisma:
-    baseValue: 10
+    baseValue: 20
   cunning:
-    baseValue: 10
+    baseValue: 20
   discipline:
-    baseValue: 10
+    baseValue: 5
   reflex:
-    baseValue: 0
+    baseValue: 10
   flatArmorPen:
     baseValue: 0
   percemtArmorPen:
     baseValue: 0
   spirit:
-    baseValue: 0
+    baseValue: 10
   endurance:
-    baseValue: 0
+    baseValue: 15
   vitality:
-    baseValue: 0
+    baseValue: 15
   tenacity:
-    baseValue: 0
+    baseValue: 10
   effervescence:
-    baseValue: 0
+    baseValue: 5
   compassion:
-    baseValue: 0
+    baseValue: 10
   mettle:
-    baseValue: 0
+    baseValue: 10
   transendance:
     baseValue: 0
 --- !u!114 &1388232285
@@ -1280,7 +1996,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2c56833d6d3fb14b8719de38677d930, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resourceBarPrefab: {fileID: 892272746398520389, guid: b00cdea330ee3174ca1f80a291a96b98, type: 3}
+  healthBarPrefab: {fileID: 892272746398520389, guid: b00cdea330ee3174ca1f80a291a96b98, type: 3}
+  manaBarPrefab: {fileID: 892272746398520389, guid: 8b5bf63c4893183479be6c0f2fd63d7d, type: 3}
+  staminaBarPrefab: {fileID: 892272746398520389, guid: 0c5a8ef5a21dbfa4ebb322d2ebad06cf, type: 3}
+  healthBarVertOffset: 20
+  staminaBarVertOffset: 10
+  manaBarVertOffset: 0
   canvasParent: {fileID: 883671503}
 --- !u!114 &1388232288
 MonoBehaviour:
@@ -1294,82 +2015,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: fa557b89ecf3d44f2b6cae783ce09806, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 395f6b9556f14704790df6035be6ee3a, type: 3}
   abilityName: Move
-  abilityDescription: 'Move up to :totalmovespeed spaces (:basemovespeed  base +
-    1 for every :agilitypermovespeed agility). '
-  descriptionPreview: 'Move up to 5 spaces (3 base + 1 for every 100 agility). '
+  abilityDescription: 'Move up to :totalmovespeed spaces. '
+  descriptionPreview: 'Move up to 7 spaces. '
   targetFilter: 3
-  agilityPerMoveSpeed: 100
-  baseMoveSpeed: 3
---- !u!114 &1388232289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388232281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 61ac40b257b3a994f841856ad38b2b6b, type: 3}
-  abilityName: Test Line
-  abilityDescription: 
-  descriptionPreview: 
-  targetFilter: 0
-  abilityShape: 1
-  baseRange: 10
-  rangeScalers: []
-  baseSize: 3
-  sizeScalers: []
-  respectLineOfSight: 0
-  lineOfSightForgiveness: 0.25
-  damageTypes: 
-  baseDamage: 0
-  damageScalers: []
-  basePercentArmorPen: 0
-  percentArmorPenScalers: []
-  baseFlatArmorPen: 0
-  flatArmorPenScalers: []
-  baseDamageTicks: 0
-  damageTickScalers: []
-  abilityCastHeightOffset: 0
---- !u!114 &1388232290
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1388232281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 2747690628134850419, guid: 16037dbd798344f57a526d53d48f5ead, type: 3}
-  abilityName: Test Hex
-  abilityDescription: 
-  descriptionPreview: 
-  targetFilter: 0
-  abilityShape: 0
-  baseRange: 0
-  rangeScalers: []
-  baseSize: 3
-  sizeScalers: []
-  respectLineOfSight: 0
-  lineOfSightForgiveness: 0.25
-  damageTypes: 
-  baseDamage: 0
-  damageScalers: []
-  basePercentArmorPen: 0
-  percentArmorPenScalers: []
-  baseFlatArmorPen: 0
-  flatArmorPenScalers: []
-  baseDamageTicks: 0
-  damageTickScalers: []
-  abilityCastHeightOffset: 0
+  abilityCost: 0
+  costResource: 0
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  agilityPerMoveSpeed: 0
+  baseMoveSpeed: 7
 --- !u!114 &1388232291
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1382,28 +2044,541 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 27916dbd53464474fbd89dc6b88228ab, type: 3}
-  abilityName: Test Arc
-  abilityDescription: 
-  descriptionPreview: 
+  abilityIcon: {fileID: 21300000, guid: 2b4752bce841cc74bb73820ce5212d34, type: 3}
+  abilityName: Stellar Flare
+  abilityDescription: 'Damage all entities in a line within :range tiles for :damage;
+    (:basedamage + :damagescalers;), ignoring a base :percentarmorpen;% of armor.  '
+  descriptionPreview: 'Damage all entities in a line within 3 tiles for 45 (35 +
+    100%  Power), ignoring a base 25% of armor.  Costs 25 Stamina. Has a cooldown
+    of 1 turns.
+
+    Remaining Cooldown: 1 turns.'
   targetFilter: 0
+  abilityCost: 25
+  costResource: 1
+  resourceCostType: 0
+  abilityCooldown: 1
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 1
+  abilitySizeModule:
+    baseSize: 0
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 3
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 1
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 
+    baseDamage: 35
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 1
+    basePercentArmorPen: 25
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &1388232294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388232281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f64709555c9fe43b201408cd33f186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passiveName: Inner Fire
+  description: Certain abilities generate stacks of heat. At the start of a turn,
+    this entitie loses a percent of its current health scaling with heat, damaging
+    nearby entities and gaining a signigant power boost for a turn scaling with the
+    health lost.
+  heat: 0
+  percentCurrentHealthConsumption: 5
+  damageRange: 1
+  damagePerHealthConsumed: 1.25
+  powerPerHealthConsumed: 0.1
+  novaStrikeBonusPerHeat: 0.25
+  markCharges: 2
+  markDamageBonus: 3
+--- !u!114 &1388232295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388232281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 62053ed690017d143bd2cfa8e5dc3ff5, type: 3}
+  abilityName: Sweeping Corona
+  abilityDescription: Damage all entities in a line within :range tiles for :damage;
+    (:basedamage + :damagescalers;) :damagetypes damage.
+  descriptionPreview: Damage all entities in a line within 2 tiles for 27 (20 + 70% 
+    Power) Fire damage.  Costs 25 Stamina.
+  targetFilter: 2
+  abilityCost: 25
+  costResource: 1
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
   abilityShape: 2
-  baseRange: 20
-  rangeScalers: []
-  baseSize: 30
-  sizeScalers: []
-  respectLineOfSight: 1
-  lineOfSightForgiveness: 0.5
-  damageTypes: 
-  baseDamage: 10
-  damageScalers: []
-  basePercentArmorPen: 0
-  percentArmorPenScalers: []
-  baseFlatArmorPen: 0
-  flatArmorPenScalers: []
-  baseDamageTicks: 0
-  damageTickScalers: []
-  abilityCastHeightOffset: 1
+  abilitySizeModule:
+    baseSize: 180
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 2
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 1
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 01000000
+    baseDamage: 20
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.7
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &1388232296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388232281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9cd9dd35e486c49b8d0ab29f77bbb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 4e62fa74d1eac074cac268c2997a658c, type: 3}
+  abilityName: Battle Fever
+  abilityDescription: 'Gain 1 heat and gain a :shield (:baseshield + :shieldscalers;)
+    damage shield for :shieldduration turns. '
+  descriptionPreview: 'Gain 1 heat and gain a 280 (250 + 300%  Mettle) damage shield
+    for 3 turns.  Costs 20% max Mana. Has a cooldown of 1 turns.
+
+    Remaining Cooldown:
+    1 turns.'
+  targetFilter: 1
+  abilityCost: 20
+  costResource: 2
+  resourceCostType: 1
+  abilityCooldown: 1
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 0
+  abilitySizeModule:
+    baseSize: 0
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityShieldModule:
+    canTargetSelf: 1
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    baseShield: 250
+    shieldScalers:
+    - scalingStat: 19
+      valuePerScalingStat: 3
+    baseShieldDuration: 3
+    shieldDurationScalers: []
+    baseShieldTicks: 0
+    shieldTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &1388232297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388232281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e56d2a65d0a3240941f1dfb2d5f92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: ba345f2f643d842459447c374943401d, type: 3}
+  abilityName: Trail Blazer
+  abilityDescription: Teleport to a tile within :range tiles, and damage entities
+    within :destinationsize tiles for :destinationdamage (:destinationbasedamage;
+    + :destinationdamagescalers;) :destinationdamagetypes damage.
+  descriptionPreview: 'Teleport to a tile within 10 tiles, and damage entities within
+    2 tiles for 38.5 (30 + 85%  Power) Fire damage.  Costs 50 Mana. Has a cooldown
+    of 3 turns.
+
+    Remaining Cooldown: 3 turns.'
+  targetFilter: 3
+  abilityCost: 50
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 3
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  teleportRangeModule:
+    rid: 3052357701269717067
+  originTargetFilter: 2
+  destinationTargetFilter: 2
+  originSizeModule:
+    baseSize: 0
+    sizeScalers: []
+  originDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 0.25
+    abilityModuleCastHeightOffset: 0.25
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 
+    baseDamage: 0
+    damageScalers: []
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+  destinationSizeModule:
+    baseSize: 2
+    sizeScalers: []
+  destinationDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 0.25
+    abilityModuleCastHeightOffset: 0.25
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 01000000
+    baseDamage: 30
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.85
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 3052357701269717067
+      type: {class: AbilityRangeModule, ns: TwilightAndBlight.Ability.Module, asm: Assembly-CSharp}
+      data:
+        baseRange: 10
+        rangeScalers: []
+--- !u!114 &1388232298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388232281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: ba2d3d7d05fd3e046b6d413365e9b11e, type: 3}
+  abilityName: Solar Wind
+  abilityDescription: Deal damage in a wide arc for :damage (:basedamage + :damagescalers;)
+    :damagetypes damage, and mark enemies. When a marked enemy is damaged, detonate
+    the mark for 125% of the recived damage.
+  descriptionPreview: 'Deal damage in a wide arc for 25 (20 + 50%  Power) Fire damage,
+    and mark enemies. When a marked enemy is damaged, detonate the mark for 125%
+    of the recived damage.  Costs 30 Mana. Has a cooldown of 2 turns.
+
+    Remaining
+    Cooldown: 2 turns.'
+  targetFilter: 0
+  abilityCost: 30
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 2
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 2
+  abilitySizeModule:
+    baseSize: 120
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 5
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 1
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 1388232294}
+          m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+            Assembly-CSharp
+          m_MethodName: MarkEnemies
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    damageTypes: 01000000
+    baseDamage: 20
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.5
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 1
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &1388232299
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388232281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 5e2b00fc2e687454b8c7dcf6cb8226d7, type: 3}
+  abilityName: Fury Fall
+  abilityDescription: Deal :damage (:basedamage + :damagescalers;) :damagetypes damage
+    to a single enemy, and generate 1 heat.
+  descriptionPreview: 'Deal 55 (40 + 150%  Power) Fire damage to a single enemy,
+    and generate 1 heat.  Costs 75 Stamina. Has a cooldown of 3 turns.
+
+    Remaining
+    Cooldown: 3 turns.'
+  targetFilter: 0
+  abilityCost: 75
+  costResource: 1
+  resourceCostType: 0
+  abilityCooldown: 3
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 2
+  abilitySizeModule:
+    baseSize: 0
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 1
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 1
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 01000000
+    baseDamage: 40
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 1.5
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &1388232300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1388232281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035e4d44b8a2a544abb5bd036f6a3e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 8004118ba4145a74e823fedaa37acf3a, type: 3}
+  abilityName: Nova Strike
+  abilityDescription: Consume all stacks of heat and deal :damage (:basedamage +
+    :damagescalers;) :damagetypes damage in a long line, cutting thorugh terrain.
+    Damage is signifigantly increased for each stack of heat consumed.
+  descriptionPreview: 'Consume all stacks of heat and deal 65 (50 + 150%  Power)
+    Fire damage in a long line, cutting thorugh terrain. Damage is signifigantly
+    increased for each stack of heat consumed.  Costs 100 Mana. Has a cooldown of
+    10 turns.
+
+    Remaining Cooldown: 10 turns.'
+  targetFilter: 4
+  abilityCost: 100
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 10
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1388232294}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+          Assembly-CSharp
+        m_MethodName: NovaStrikeStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1388232294}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+          Assembly-CSharp
+        m_MethodName: NovaStrikeEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  abilityShape: 1
+  abilitySizeModule:
+    baseSize: 5
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 25
+    rangeScalers: []
+  abilityTerrainModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    baseMaxShift: 50
+    maxShiftScalers: []
+    baseShiftSpeed: 100
+    shiftSpeedScalers: []
+    delayRange: 2
+    terrainShiftType: 3
+    realativeToTarget: 0
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 01000000
+    baseDamage: 50
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 1.5
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
 --- !u!1 &1391307745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1455,6 +2630,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   entityLevel: 1
   health: 0
+  mana: 0
+  stamina: 0
+  corruption: 0
+  astra: 0
+  totalShield: 0
   entityHeight: 0
 --- !u!114 &1391307748
 MonoBehaviour:
@@ -1525,6 +2705,410 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1394196308
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1394196316}
+  - component: {fileID: 1394196315}
+  - component: {fileID: 1394196314}
+  - component: {fileID: 1394196313}
+  - component: {fileID: 1394196312}
+  - component: {fileID: 1394196311}
+  - component: {fileID: 1394196310}
+  - component: {fileID: 1394196309}
+  m_Layer: 6
+  m_Name: Team 2 B
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1394196309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394196308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 68e5a78013e33f247822a837e55b0ab4, type: 3}
+  abilityName: Level Terrain
+  abilityDescription: Terrain Shift
+  descriptionPreview: 'Terrain Shift  Costs 50 Health. Has a cooldown of 2 turns.
+
+    Remaining
+    Cooldown: 2 turns.'
+  targetFilter: 0
+  abilityCost: 50
+  costResource: 0
+  resourceCostType: 0
+  abilityCooldown: 2
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 1
+  abilitySizeModule:
+    baseSize: 2
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 7
+    rangeScalers: []
+  abilityTerrainModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    baseMaxShift: 50
+    maxShiftScalers: []
+    baseShiftSpeed: 20
+    shiftSpeedScalers: []
+    delayRange: 1
+    terrainShiftType: 2
+    realativeToTarget: 0
+--- !u!114 &1394196310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394196308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
+  abilityName: Stomp
+  abilityDescription: AOE Damage.
+  descriptionPreview: AOE Damage.  Costs 25 Mana.
+  targetFilter: 0
+  abilityCost: 25
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 0
+  abilitySizeModule:
+    baseSize: 3
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 
+    baseDamage: 15
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.85
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &1394196311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394196308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
+  abilityName: Beam
+  abilityDescription: Damage in an Line
+  descriptionPreview: Damage in an Line  Costs 25 Stamina.
+  targetFilter: 0
+  abilityCost: 25
+  costResource: 1
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 1
+  abilitySizeModule:
+    baseSize: 3
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 5
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 
+    baseDamage: 15
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.9
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &1394196312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394196308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 5697c26ee2ef0c848996640f6a3d3432, type: 3}
+  abilityName: Move
+  abilityDescription: Test
+  descriptionPreview: 'Test '
+  targetFilter: 3
+  abilityCost: 0
+  costResource: 0
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  agilityPerMoveSpeed: 100
+  baseMoveSpeed: 3
+--- !u!114 &1394196313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394196308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2c56833d6d3fb14b8719de38677d930, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBarPrefab: {fileID: 892272746398520389, guid: b00cdea330ee3174ca1f80a291a96b98, type: 3}
+  manaBarPrefab: {fileID: 892272746398520389, guid: 8b5bf63c4893183479be6c0f2fd63d7d, type: 3}
+  staminaBarPrefab: {fileID: 892272746398520389, guid: 0c5a8ef5a21dbfa4ebb322d2ebad06cf, type: 3}
+  healthBarVertOffset: 20
+  staminaBarVertOffset: 10
+  manaBarVertOffset: 0
+  canvasParent: {fileID: 1434801397}
+--- !u!114 &1394196314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394196308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityLevel: 1
+  health: 0
+  mana: 0
+  stamina: 0
+  corruption: 0
+  astra: 0
+  totalShield: 0
+  entityHeight: 2
+--- !u!114 &1394196315
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394196308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73bcf3d88f7e3b04ebb92e8e620a5a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power:
+    baseValue: 15
+  fortitude:
+    baseValue: 20
+  agility:
+    baseValue: 10
+  constitution:
+    baseValue: 10
+  intelligence:
+    baseValue: 15
+  wisdom:
+    baseValue: 10
+  dexterity:
+    baseValue: 10
+  charisma:
+    baseValue: 10
+  cunning:
+    baseValue: 25
+  discipline:
+    baseValue: 10
+  reflex:
+    baseValue: 10
+  flatArmorPen:
+    baseValue: 0
+  percemtArmorPen:
+    baseValue: 0
+  spirit:
+    baseValue: 10
+  endurance:
+    baseValue: 10
+  vitality:
+    baseValue: 5
+  tenacity:
+    baseValue: 10
+  effervescence:
+    baseValue: 10
+  compassion:
+    baseValue: 0
+  mettle:
+    baseValue: 0
+  transendance:
+    baseValue: 0
+--- !u!4 &1394196316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394196308}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.21, y: -28.87, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 107227119}
+  - {fileID: 1434801397}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1434801396
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1434801397}
+  - component: {fileID: 1434801399}
+  - component: {fileID: 1434801398}
+  m_Layer: 6
+  m_Name: HealthBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1434801397
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434801396}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1394196316}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 2.2}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1434801398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434801396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d55c2264f43f974cb5d3aaeefbb6a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 519420032}
+--- !u!223 &1434801399
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434801396}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 519420031}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
 --- !u!1 &1436181370
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,6 +3283,116 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1826495362
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1826495363}
+  - component: {fileID: 1826495366}
+  - component: {fileID: 1826495365}
+  - component: {fileID: 1826495364}
+  m_Layer: 6
+  m_Name: Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1826495363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826495362}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 457419568}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &1826495364
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826495362}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1826495365
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826495362}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 6c1c0e2adaa88304a80a3429c6f9d866, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1826495366
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826495362}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1909998094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1732,12 +3426,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnThreshold: 10000
-  damageVarianceRange: 0.25
+  resourceInteractionVarianceRange: 0.25
   fallDamageThreshold: 3
   terrainMantleThreshold: 2.25
   percentHealthDamageOnFallPerMeter: 0.03
   flatDamageOnFallPerMeter: 15
   fallDamagePercentArmorPen: 0.5
+  minimumTerrainHeight: -5
+  maximumTerrainHeight: 10
+  gravity: 9.8
+  maxAstra: 1
   mainCanvas: {fileID: 1664380806}
 --- !u!4 &1909998096
 Transform:
@@ -1801,6 +3499,8 @@ MonoBehaviour:
   windowPrefab: {fileID: 4001572686940200869, guid: 0f0210e2eba504d4a8906060b3f4d463, type: 3}
   AbilityListPrefab: {fileID: 1939781775340145906, guid: 0afcdc723bba33842aa94c6daf24f576, type: 3}
   AbilityPreviewPrefab: {fileID: 4735520838496012867, guid: ef24053a7c910d24593556ece166553c, type: 3}
+  StatPreviewListPrefab: {fileID: 3876621723688022725, guid: 9c24d9de7e484dd4399058acdb29cdb5, type: 3}
+  DescriptionViewPrefab: {fileID: 7846234316464661787, guid: 930535616ed3caa43ac839eb305e5bac, type: 3}
 --- !u!1 &1934064791
 GameObject:
   m_ObjectHideFlags: 0
@@ -1832,6 +3532,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamMembers:
   - {fileID: 1222710136}
+  - {fileID: 1394196314}
+  - {fileID: 457419566}
 --- !u!4 &1934064793
 Transform:
   m_ObjectHideFlags: 0
@@ -1966,6 +3668,8 @@ SceneRoots:
   - {fileID: 1909998096}
   - {fileID: 1388232282}
   - {fileID: 1222710140}
+  - {fileID: 1394196316}
+  - {fileID: 457419568}
   - {fileID: 1664380807}
   - {fileID: 1391307749}
   - {fileID: 141664994}

@@ -5,7 +5,21 @@ namespace TwilightAndBlight
     {
         public static DamageEntityInteraction OnEntiyDamaged;
         public static DamageEntityOverride OnEntityDamagedOverride;
-        public static HealEntityInteraction OnEntityHealed;
+        public static ReplenishEntityInteraction OnEntityHealthReplenished;
+        public static ReplenishEntityOverride OnEntityHealthReplenishedOverride;
+        public static DrainEntityResourceInteraction OnEntityHealthDrained;
+        public static DrainEntityResourceOverride OnEntityHealthDrainedOverride;
+        public static CombatResourceChangeAction OnHealthChange;
+        public static ReplenishEntityInteraction OnEntityStaminaReplenished;
+        public static ReplenishEntityOverride OnEntityStaminaReplenishedOverride;
+        public static DrainEntityResourceInteraction OnEntityStaminaDrained;
+        public static DrainEntityResourceOverride OnEntityStaminaDrainedOverride;
+        public static CombatResourceChangeAction OnStaminaChange;
+        public static ReplenishEntityInteraction OnEntityManaReplenished;
+        public static ReplenishEntityOverride OnEntityManaReplenishedOverride;
+        public static DrainEntityResourceInteraction OnEntityManaDrained;
+        public static DrainEntityResourceOverride OnEntityManaDrainedOverride;
+        public static CombatResourceChangeAction OnManaChange;
         public static CombatEntityAction OnTurnStart;
         public static CombatEntityAction OnTurnEnd;
         public static CombatEntityInteraction OnEntityKilled;
@@ -14,7 +28,6 @@ namespace TwilightAndBlight
         public static GenericAction OnCombatEnd;
         public static CombatTeamInteraction OnTeamJoin;
         public static CombatTeamInteraction OnTeamLeave;
-        public static CombatResourceChangeAction OnHealthChange;
         public static CombatEntityAction OnAbilitySelected;
         public static CombatEntityAction OnTargetsSelected;
         public static CombatEntityMapNodeInteraction OnAbilityPerformed;

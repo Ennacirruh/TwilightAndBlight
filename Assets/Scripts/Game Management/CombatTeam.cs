@@ -11,7 +11,15 @@ namespace TwilightAndBlight
         public static int maxTeamSize = 5;
         private HashSet<CombatEntity> team = new HashSet<CombatEntity>();
         private CombatEntity[] teamSlots = new CombatEntity[maxTeamSize];
-        public bool TeamLost {get { return team.Count == 0; } }
+        public bool TeamLost {get 
+            {
+                foreach (CombatEntity e in team)
+                {
+                    if (e != null)
+                        return true;
+                }
+                return false;
+            } }
         public void AddCombatant(CombatEntity entity, int pos = -1)
         {
             if (pos == -1)

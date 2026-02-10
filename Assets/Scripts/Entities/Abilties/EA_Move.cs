@@ -12,42 +12,40 @@ namespace TwilightAndBlight.Ability
         [SerializeField] private int baseMoveSpeed = 3;
         
         private HashSet<MapNode> validNodesInRange = new HashSet<MapNode>();
-        private bool nodeRecalulationQueued = true;
         private int totalMoves;
         
 
         protected override void OnEnable()
         {
-            GameEvents.OnTurnStart += QueueNodeRecalculation;
+            combatEntity.RegisterFreeAction(this);
         }
         protected override void OnDisable()
         {
-            GameEvents.OnTurnStart -= QueueNodeRecalculation;
+            combatEntity.UnregisterFreeAction(this);
 
         }
         private bool IsValidPathNode(MapNode parent, MapNode neighbor)
         {
             return MapManager.IsValidNeighboringNode(parent, neighbor);
         }
+        
         public override void HighlightAbility(MapNode targetingOrigin)
         {
-            if (nodeRecalulationQueued)
-            {
-                MapManager.Instance.ResetHighlight();
-                nodeRecalulationQueued = false;
-                MapNode currentNode = combatEntity.GetCurrentMapNode();
-                totalMoves = GetMoveSpeed();
-                HashSet<(MapNode,MapNode)> nodesInRange = MapManager.Instance.GetNodesWithinMoveLimit(currentNode, totalMoves, IsValidPathNode);
-                validNodesInRange.Clear();
-                foreach ((MapNode, MapNode) set in nodesInRange)
-                {   
-                    validNodesInRange.Add(set.Item1);
-                }
-
+        
+            MapManager.Instance.ResetHighlight();
+            MapNode currentNode = combatEntity.GetCurrentMapNode();
+            totalMoves = GetMoveSpeed();
+            HashSet<(MapNode,MapNode)> nodesInRange = MapManager.Instance.GetNodesWithinMoveLimit(currentNode, totalMoves, IsValidPathNode);
+            validNodesInRange.Clear();
+            foreach ((MapNode, MapNode) set in nodesInRange)
+            {   
+                validNodesInRange.Add(set.Item1);
             }
+
+            
             foreach (MapNode node in validNodesInRange)
             {
-                MapManager.Instance.HighlightNodes(node, IndicatorType.Generic);
+                MapManager.Instance.HighlightNodes(node, IndicatorType.AltGeneric);
             }
             
             if (IsValidTarget(targetingOrigin))
@@ -94,13 +92,14 @@ namespace TwilightAndBlight.Ability
         {
             MapNode currentNode = combatEntity.GetCurrentMapNode();
             int moves = GetMoveSpeed();
-            float speed = 1f + (entityStats.Agility / 50f);
+            float speed = 5f + (entityStats.Agility / 500f);
             List<MapNode> path = AStarNavigation.GetShortestPath(currentNode, targetingOrigin, moves);
             if (path != null)
             {
                 targetingOrigin.FollowPathMovePattern(combatEntity, path, speed);
             }
-            yield return new WaitUntil(() => { return !currentNode.MoveInProgress(); });
+            yield return new WaitUntil(() => {return !targetingOrigin.MoveInProgress(); });
+            
             EndAbility(targetingOrigin);
         }
 
@@ -114,23 +113,9 @@ namespace TwilightAndBlight.Ability
         }
         private int GetMoveSpeed()
         {
-            return Mathf.FloorToInt(baseMoveSpeed + (entityStats.Agility / agilityPerMoveSpeed));
+            return Mathf.FloorToInt(baseMoveSpeed + ((agilityPerMoveSpeed != 0)? (entityStats.Agility / agilityPerMoveSpeed) : 0));
         }
-        private void QueueNodeRecalculation(CombatEntity combatEntity)
-        {
-            if (combatEntity = this.combatEntity)
-            {
-                nodeRecalulationQueued = true;
-            }
-        }
-        //protected override bool HighlightConditions(MapNode parentNode, MapNode node)
-        //{
-        //    if (node != null && MapManager.IsValidNeighboringNode(parentNode, node))
-        //    {
-        //        return true;
-        //    }
-        //    return false;
-        //}
+        
         protected override void OnValidate()
         {
             base.OnValidate();

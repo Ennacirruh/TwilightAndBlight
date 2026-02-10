@@ -1,8 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using UnityEngine.Experimental.XR.Interaction;
-using Valve.VR;
 namespace TwilightAndBlight.Map
 {
     public class MapManager : MonoBehaviour
@@ -21,8 +19,9 @@ namespace TwilightAndBlight.Map
         private List<MapNode> universalSpawnPoints = new List<MapNode>();
         private HashSet<MapNode> overlayNodes = new HashSet<MapNode>();
         private Dictionary<MapNode, IndicatorType> currentHighlightDict = new Dictionary<MapNode, IndicatorType>();
-        public const float gridPosMultiplier = 0.85f;
-        public const float gridSizeMultiplier = 0.42f;
+        public const float gridDistanceToWorldDistance = 0.87f;
+        public const float gridSizeToWorldSize = 0.42f;
+
 
         private void Awake()
         {
@@ -237,6 +236,10 @@ namespace TwilightAndBlight.Map
         {
             return (originNode.transform.position.y - neighborNode.transform.position.y) >= GameManager.Instance.FallDamageThreshold;
         }
+        public static bool WillTakeFallDamage(float fallHeight)
+        {
+            return fallHeight >= GameManager.Instance.FallDamageThreshold;
+        }
         public static bool CanMantle(MapNode originNode, MapNode neighborNode)
         {
             return neighborNode.transform.position.y - originNode.transform.position.y <= GameManager.Instance.TerrainMantleThreshold;
@@ -246,8 +249,28 @@ namespace TwilightAndBlight.Map
             return originNode.transform.position.y - neighborNode.transform.position.y;
 
         }
+        //public static int GetDistanceToNode(MapNode originNode, MapNode targetNode)
+        //{
+        //    return GetDistanceToNode(originNode.PositionInMap, targetNode.PositionInMap);
+        //}
+        //public static int GetDistanceToNode(Vector2Int originNode, Vector2Int targetNode)
+        //{
+        //    Vector2Int distanceVector = targetNode - originNode;
+        //    int x = Mathf.Abs(distanceVector.x);
+        //    int y = Mathf.Abs(distanceVector.y);
+        //    int valueToMax = x - Mathf.FloorToInt((y / 2f) + 0.5f) + ((distanceVector.x > 0) ? (y % 2) : 0);
+        //    int distance = y + Mathf.Max(valueToMax, 0);
+        //    distance += (originNode.y % 2 == 1 && targetNode.y % 2 == 1) ? -1 : 0;
+        //    return distance;
+        //}
+        //public static bool NodeInRange(MapNode originNode, MapNode targetNode, int range)
+        //{
+        //    int distance = GetDistanceToNode(originNode, targetNode);
+        //    return distance <= range;
+        //}
         public HashSet<MapNode> GetNodesWithinRange(MapNode originNode, int range, MapNodeConditional condition = null)
         {
+            range++;
             HashSet<MapNode> returnSet = new HashSet<MapNode>();
             returnSet.Add(originNode);
 
@@ -280,6 +303,7 @@ namespace TwilightAndBlight.Map
         }
         public HashSet<(MapNode,MapNode)> GetNodesWithinMoveLimit(MapNode originNode, int maxMoves, MapNodeParentConditional condition = null)
         {
+            maxMoves++;
             HashSet<(MapNode, int)> nodesToEvaluate = new HashSet<(MapNode, int)>();
             Dictionary<MapNode, int> evaluatedNodes = new Dictionary<MapNode, int>();
             Dictionary<MapNode, MapNode> parentNodes = new Dictionary<MapNode, MapNode>();
@@ -345,5 +369,10 @@ namespace TwilightAndBlight.Map
             }
             return returnSet;
         }
+        private void OnValidate()
+        {
+
+        }
     }
+    
 }

@@ -1,98 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
+using TwilightAndBlight.Ability.Module;
 using TwilightAndBlight.Map;
+using Unity.VisualScripting;
 using UnityEngine;
 namespace TwilightAndBlight.Ability
 {
     public class EA_GenericDamage : EA_GenericAbilityShape
     {
-        [SerializeField] protected List<DamageType> damageTypes = new List<DamageType>();
-        [SerializeField] protected float baseDamage;
-        [SerializeField] protected List<VariableStatScaler> damageScalers = new List<VariableStatScaler>();
-        [SerializeField] protected float basePercentArmorPen;
-        [SerializeField] protected List<VariableStatScaler> percentArmorPenScalers = new List<VariableStatScaler>();
-        [SerializeField] protected float baseFlatArmorPen;
-        [SerializeField] protected List<VariableStatScaler> flatArmorPenScalers = new List<VariableStatScaler>();
-        [SerializeField] protected int baseDamageTicks;
-        [SerializeField] protected List<VariableStatScaler> damageTickScalers = new List<VariableStatScaler>();
-        [SerializeField] protected float abilityCastHeightOffset; 
-        private AbilityTarget targetMem;
+        [SerializeField] AbilityDamageModule abilityDamageModule = new AbilityDamageModule();
+
+        private AbilityTarget targetMem;// for on validate
+        protected HashSet<DamageType> damageTypeSet = new HashSet<DamageType>();
+        protected override void Awake()
+        {
+            base.Awake();
+            abilityDamageModule.InitializeAbilityModule(this);
+        }
         public override void HighlightAbility(MapNode targetingOrigin)
         {
             MapManager.Instance.ResetHighlight();
-            HashSet<MapNode> nodes = GetTargetingNodes(targetingOrigin);
-            foreach (MapNode node in nodes)
+            if (AlwaysDrawDefaultHightlight())
             {
-                bool genericHighlight = true;
-                if (respectLineOfSight)
-                {
-                    if (LineOfSightObstructed(GetTrueOrigin(targetingOrigin), node, abilityCastHeightOffset))
-                    {
-                        genericHighlight = false;
-                        MapManager.Instance.HighlightNodes(node, IndicatorType.AltGeneric); 
-                    }
-                }
-                if (genericHighlight)
-                {
-                    if (IsValidTarget(node))
-                    {
-                        if (node.GetCombatEntity().GetCombatTeam() == combatEntity.GetCombatTeam())
-                        {
-                            MapManager.Instance.HighlightNodes(node, IndicatorType.Warnign);
-                        }
-                        else
-                        {
-                            MapManager.Instance.HighlightNodes(node, IndicatorType.Valid);
-                        }
-                    }
-                    else
-                    {
-                        MapManager.Instance.HighlightNodes(node, IndicatorType.Generic);
-                    }
-                }
-
+                DefaultHighlightBehavior(targetingOrigin);
+            }
+            if (TargetIsInRange(targetingOrigin))
+            {
+                aquiredTargets.Clear();
+                HashSet<MapNode> nodes = GetTargetingNodes(targetingOrigin);
+                abilityDamageModule.HighlightNodes(nodes, GetTrueOrigin(targetingOrigin), (node) => { return IsValidTarget(node); }, abilityRangeModule.GetRange(), ref aquiredTargets);
             }
         }
+            
         protected override Dictionary<string, string> GenerateStringConversionTable()
         {
             Dictionary<string, string> dict = base.GenerateStringConversionTable();
-            dict.Add("damagetypes", GetStringFromDamageList(damageTypes));
-            dict.Add("basedamage", baseDamage.ToString());
-            dict.Add("damagescalers", GetStringFromScalerList(damageScalers));
-            dict.Add("basepercentarmorpen", basePercentArmorPen.ToString());
-            dict.Add("percentarmorpenscalers", GetStringFromScalerList(percentArmorPenScalers));
-            dict.Add("baseflatarmorpen", baseFlatArmorPen.ToString());
-            dict.Add("flatarmorpenscalers", GetStringFromScalerList(flatArmorPenScalers));
-            dict.Add("basedamageticks", baseDamageTicks.ToString());
-            dict.Add("damagetickscalers", GetStringFromScalerList(damageTickScalers));
-            dict.Add("damage", GetDamage().ToString());
-            dict.Add("flatarmorpen", GetFlatArmorPen().ToString());
-            dict.Add("percentarmorpen", GetPercentArmorPen().ToString());
-            dict.Add("damageticks", GetDamageTicks().ToString());
+            abilityDamageModule.GenerateStringConversionTable(ref dict);
+
             return dict;
         }
-        protected float GetDamage()
-        {
-            return GetScaledStat(baseDamage, damageScalers);
-        }
-        protected float GetFlatArmorPen()
-        {
-            return GetScaledStat(baseFlatArmorPen, flatArmorPenScalers);
-        }
-        protected float GetPercentArmorPen()
-        {
-            return GetScaledStat(basePercentArmorPen, percentArmorPenScalers);
-        }
-        protected int GetDamageTicks()
-        {
-            return GetScaledStat(baseDamageTicks, damageTickScalers);
-        }
+ 
         protected override IEnumerator AbilityBehavior(MapNode targetingOrigin)
         {
-            throw new System.NotImplementedException();
+
+            abilityDamageModule.moduleBehaviorCoroutine = StartCoroutine(abilityDamageModule.PerformDamageBehavior(aquiredTargets, abilityRangeModule.GetRange() * MapManager.gridDistanceToWorldDistance));
+    
+            yield return new WaitUntil(() => { return abilityDamageModule.moduleBehaviorCoroutine == null; });
+
+            EndAbility(targetingOrigin);
         }
+
         protected override void OnValidate()
         {
+            abilityDamageModule.InitializeAbilityModule(this);
             base.OnValidate();
             if (targetFilter == AbilityTarget.EmptyNode || targetFilter == AbilityTarget.AnyNode)
             {

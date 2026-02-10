@@ -1,5 +1,7 @@
-using UnityEngine;
 using System.Collections.Generic;
+using TwilightAndBlight.Ability;
+using UnityEditor;
+using UnityEngine;
 namespace TwilightAndBlight {
     public class EntityStats : MonoBehaviour
     {
@@ -87,7 +89,7 @@ namespace TwilightAndBlight {
             statLookupTable.Add(StatType.Charisma, charisma);
             statLookupTable.Add(StatType.Cunning, cunning);
             statLookupTable.Add(StatType.Discipline, discipline);
-            statLookupTable.Add(StatType.Reflex, reflex);
+            statLookupTable.Add(StatType.Reflexes, reflex);
             statLookupTable.Add(StatType.PercentArmorPen, percemtArmorPen);
             statLookupTable.Add(StatType.FlatArmorPen, flatArmorPen);
             statLookupTable.Add(StatType.Spirit, spirit);
@@ -105,5 +107,7 @@ namespace TwilightAndBlight {
         {
             InitializeLookupTable();
         }
+
+
     }
 }

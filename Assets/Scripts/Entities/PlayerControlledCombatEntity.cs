@@ -11,7 +11,6 @@ namespace TwilightAndBlight
         private InputSystem_Actions inputActions;
         private MapNode targetNode;
         private Coroutine abilitySelectionCoroutine;
-
         protected override void Awake()
         {
             inputActions = new InputSystem_Actions();
@@ -54,10 +53,25 @@ namespace TwilightAndBlight
        
         private IEnumerator ActionSelectCoroutine()
         {
+            if (freeActions.Count > 0 && !freeActionsPerformed)
+            {
+                freeActionsPerformed = true;
+                performingFreeAction = true;
+                foreach (EntityAbility freeAction in freeActions)
+                {
+                    selectedAbility = freeAction;
+                    AcquireTargets();
+                    yield return new WaitUntil(() => (!performingFreeAction));
+                }
+            }
             UIManager.Instance.PreviewAbilities(this);
+            UIManager.Instance.PreviewStats(this);
+
             selectedAbility = null;
             yield return new WaitUntil(() => (selectedAbility != null));
             UIManager.Instance.CloseAbilityPreview();
+            UIManager.Instance.CloseStatPreview();
+
             GameEvents.OnAbilitySelected?.Invoke(this);
             abilitySelectionCoroutine = null;
         }
@@ -84,8 +98,20 @@ namespace TwilightAndBlight
             }
             else
             {
-                SelectAction();
+                if (performingFreeAction)
+                {
+                    performingFreeAction = false;
+                }
+                else
+                {
+                    SelectAction(); // for return to the ability selection menu
+                }
             }
+        }
+        public override void OnTurnStart()
+        {
+            base.OnTurnStart();
+            UIManager.Instance.PreviewStats(this);
         }
         private void SelectNode(InputAction.CallbackContext context)
         {
