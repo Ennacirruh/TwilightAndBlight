@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TwilightAndBlight.Map;
 using UnityEngine;
+using TwilightAndBlight.Events;
 namespace TwilightAndBlight.Ability.Module
 {
     [Serializable]
@@ -32,7 +33,7 @@ namespace TwilightAndBlight.Ability.Module
             AddElementToLookupTable(ref dictionary, "damagetypes", GetStringFromDamageList(damageTypes));
             AddElementToLookupTable(ref dictionary, "basedamage", baseDamage.ToString());
             AddElementToLookupTable(ref dictionary, "damagescalers", GetStringFromScalerList(damageScalers));
-            AddElementToLookupTable(ref dictionary, "basepercentarmorpen", basePercentArmorPen.ToString());
+            AddElementToLookupTable(ref dictionary, "basepercentarmorpen", (basePercentArmorPen).ToString());
             AddElementToLookupTable(ref dictionary, "percentarmorpenscalers", GetStringFromScalerList(percentArmorPenScalers));
             AddElementToLookupTable(ref dictionary, "baseflatarmorpen", baseFlatArmorPen.ToString());
             AddElementToLookupTable(ref dictionary, "flatarmorpenscalers", GetStringFromScalerList(flatArmorPenScalers));
@@ -40,36 +41,33 @@ namespace TwilightAndBlight.Ability.Module
             AddElementToLookupTable(ref dictionary, "damagetickscalers", GetStringFromScalerList(damageTickScalers));
             AddElementToLookupTable(ref dictionary, "damage", GetDamage().ToString());
             AddElementToLookupTable(ref dictionary, "flatarmorpen", GetFlatArmorPen().ToString());
-            AddElementToLookupTable(ref dictionary, "percentarmorpen", GetPercentArmorPen().ToString());
+            AddElementToLookupTable(ref dictionary, "percentarmorpen", (GetPercentArmorPen()).ToString());
             AddElementToLookupTable(ref dictionary, "damageticks", GetDamageTicks().ToString());
         }
 
         public IEnumerator PerformDamageBehavior(IEnumerable<MapNode> targets, float range = 0)
         {
-            foreach (MapNode node in targets)
+            for (int i = 0; i < GetDamageTicks(); i++)
             {
-                float damage = GetDamage();
-                if (respectLineOfSight)
+                foreach (MapNode node in targets)
                 {
-                    damage *= GetCoverMultiplier(node, range);
-                }
-
-                CombatEntity target = node.GetCombatEntity();
-                if (target != null)
-                {
-                    for (int i = 0; i < GetDamageTicks(); i++)
+                    float damage = GetDamage();
+                    if (respectLineOfSight)
                     {
-                        prePerTargetBehaviorExpansion?.Invoke(node, damage);
-                        float damageTaken = target.DamageEntity(owner.OwningCombatEntity, damage, damageTypeSet, GetPercentArmorPen(), GetFlatArmorPen());
-                        postPerTargetBehaviorExpansion?.Invoke(node, damageTaken);
+                        damage *= GetCoverMultiplier(node, range);
+                    }
+                    CombatEntity target = node.GetCombatEntity();
+                    if (target != null)
+                    {
 
-                        yield return new WaitForSeconds(timeBetweenTicks);
-
+                        DamageTarget(target, node, damage);
                     }
                 }
+                yield return new WaitForSeconds(timeBetweenTicks);
             }
             moduleBehaviorCoroutine = null;
         }
+        
         public IEnumerator PerformDamageBehavior(MapNode targetNode, float range)
         {
             float damage = GetDamage();
@@ -83,17 +81,17 @@ namespace TwilightAndBlight.Ability.Module
             {
                 for (int i = 0; i < GetDamageTicks(); i++)
                 {
-                    prePerTargetBehaviorExpansion?.Invoke(targetNode, damage);
-                    float damageTaken = target.DamageEntity(owner.OwningCombatEntity, damage, damageTypeSet, GetPercentArmorPen(), GetFlatArmorPen());
-                    postPerTargetBehaviorExpansion?.Invoke(targetNode, damageTaken);
+                    DamageTarget(target, targetNode, damage);
                     yield return new WaitForSeconds(timeBetweenTicks);
                 }
             }
             moduleBehaviorCoroutine = null;
         }
-        public void DamageTarget(CombatEntity target)
+        private void DamageTarget(CombatEntity target, MapNode targetNode, float damage)
         {
-
+            prePerTargetBehaviorExpansion?.Invoke(targetNode, damage);
+            float damageTaken = target.DamageEntity(owner.OwningCombatEntity, damage, damageTypeSet, GetPercentArmorPen() / 100f, GetFlatArmorPen());
+            postPerTargetBehaviorExpansion?.Invoke(targetNode, damageTaken);
         }
         public void HighlightNodes(IEnumerable<MapNode> nodes, MapNode origin, MapNodeConditional condition, float range, ref HashSet<MapNode> validSet)
         {

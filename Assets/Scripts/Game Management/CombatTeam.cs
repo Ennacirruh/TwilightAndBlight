@@ -1,24 +1,27 @@
 using System;
 using System.Collections.Generic;
-using System.Globalization;
-using System.Runtime.InteropServices.WindowsRuntime;
-using UnityEngine;
+using System.Linq;
+using TwilightAndBlight.Events;
 namespace TwilightAndBlight
 {
     [Serializable]
     public class CombatTeam
     {
-        public static int maxTeamSize = 5;
+        public static int maxTeamSize = 6;
         private HashSet<CombatEntity> team = new HashSet<CombatEntity>();
         private CombatEntity[] teamSlots = new CombatEntity[maxTeamSize];
+        private bool playerTeam;
+        public bool IsPlayerTeam { get { return playerTeam; } }
         public bool TeamLost {get 
             {
-                foreach (CombatEntity e in team)
+                foreach (CombatEntity e in teamSlots)
                 {
                     if (e != null)
-                        return true;
+                    {
+                        return false;
+                    }
                 }
-                return false;
+                return true;
             } }
         public void AddCombatant(CombatEntity entity, int pos = -1)
         {
@@ -33,7 +36,7 @@ namespace TwilightAndBlight
                             teamSlots[i] = entity;
                             team.Add(entity);
                             entity.AssignCombatTeam(this);
-                            GameEvents.OnTeamJoin?.Invoke(this, entity);
+                            GameEvents.OnTeamJoin?.Invoke(new CombatTeamCombatEntityInteractionCallback(this, entity));
                             break;
                         }
                     }
@@ -52,7 +55,7 @@ namespace TwilightAndBlight
                 teamSlots[pos] = entity;
                 team.Add(entity);
                 entity.AssignCombatTeam(this);
-                GameEvents.OnTeamJoin.Invoke(this, entity);
+                GameEvents.OnTeamJoin.Invoke(new CombatTeamCombatEntityInteractionCallback(this, entity));
             }
         }
         public void RemoveCombatant(CombatEntity entity) 
@@ -66,7 +69,8 @@ namespace TwilightAndBlight
                         teamSlots[i] = null;
                         team.Remove(entity);
                         entity.AssignCombatTeam(null);
-                        GameEvents.OnTeamLeave.Invoke(this, entity);
+                        GameEvents.OnTeamLeave?.Invoke(new CombatTeamCombatEntityInteractionCallback(this, entity));
+                        break;
                     }
                 }
                 
@@ -80,7 +84,7 @@ namespace TwilightAndBlight
                 teamSlots[index] = null;
                 team.Remove(entity);
                 entity.AssignCombatTeam(null);
-                GameEvents.OnTeamLeave.Invoke(this, entity);
+                GameEvents.OnTeamLeave.Invoke(new CombatTeamCombatEntityInteractionCallback(this, entity));
                 
             }
         }
@@ -96,6 +100,13 @@ namespace TwilightAndBlight
         {
             return new List<CombatEntity>(team);
         }
-
+        public void SetPlayerTeam(bool isPlayerTeam)
+        {
+            playerTeam = isPlayerTeam;
+        }
+        public string GetTeamString()
+        {
+            return teamSlots.ToString();
+        }
     }
 }

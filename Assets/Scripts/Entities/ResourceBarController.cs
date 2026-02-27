@@ -1,10 +1,13 @@
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class ResourceBarController : MonoBehaviour
 {
-    [SerializeField] RectTransform resourceBar;
-    [SerializeField] RectTransform resourceShadowBar;
+    [SerializeField] private RectTransform resourceBar;
+    [SerializeField] private RectTransform resourceShadowBar;
+    [SerializeField] private TextMeshProUGUI resourceText;
+
     [SerializeField] private bool xShift;
     [SerializeField] private bool yShift;
     private float xMax;
@@ -20,11 +23,13 @@ public class ResourceBarController : MonoBehaviour
         shadowT = 1f;
     }
 
-    public void SetBarProgress(float t)
+    public void SetBarProgress(float current, float max)
     {
+        float t = current / max;
         t = Mathf.Clamp01(t);
         shadowTarget = t;
         resourceBar.localScale = GetNewScale(t);
+        resourceText.text = $"{Mathf.CeilToInt(current)}/{Mathf.CeilToInt(max)}";
         if(shadowBarCoroutine == null)
         {
             shadowBarCoroutine = StartCoroutine(ShadowBarCoroutine());
@@ -43,7 +48,6 @@ public class ResourceBarController : MonoBehaviour
     }
     private Vector2 GetNewScale(float t)
     {
-       
         float x = xMax;
         float y = yMax;
         if (xShift)

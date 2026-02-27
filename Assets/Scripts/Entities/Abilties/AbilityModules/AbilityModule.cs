@@ -59,5 +59,6 @@ namespace TwilightAndBlight.Ability.Module
             }
             return multiplier;
         }
+        
     }
 }

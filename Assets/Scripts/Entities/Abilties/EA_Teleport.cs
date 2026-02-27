@@ -62,5 +62,10 @@ namespace TwilightAndBlight.Ability
                 targetFilter = AbilityTarget.EmptyNode;
             }
         }
+
+        public override bool HasValidTargetInRange()
+        {
+            return ValidTargetInRangeExists(combatEntity.GetCurrentMapNode(), teleportRangeModule.GetRange(), (MapNode node) => { return IsValidTarget(node); });
+        }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using TwilightAndBlight.Ability;
 using TwilightAndBlight.Map;
+using TwilightAndBlight.Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
 namespace TwilightAndBlight
@@ -17,6 +18,7 @@ namespace TwilightAndBlight
             inputActions.Enable();
             
             base.Awake();
+            
         }
         protected override void OnEnable()
         {
@@ -65,14 +67,14 @@ namespace TwilightAndBlight
                 }
             }
             UIManager.Instance.PreviewAbilities(this);
-            UIManager.Instance.PreviewStats(this);
+            //UIManager.Instance.PreviewStats(this);
 
             selectedAbility = null;
             yield return new WaitUntil(() => (selectedAbility != null));
             UIManager.Instance.CloseAbilityPreview();
             UIManager.Instance.CloseStatPreview();
 
-            GameEvents.OnAbilitySelected?.Invoke(this);
+            GameEvents.OnAbilitySelected?.Invoke(new CombatEntityActionCallback(this));
             abilitySelectionCoroutine = null;
         }
         private IEnumerator TargetAcquisitionCoroutine()
@@ -94,7 +96,7 @@ namespace TwilightAndBlight
             }
             if (selectedAbility != null)
             {
-                GameEvents.OnTargetsSelected?.Invoke(this);
+                GameEvents.OnTargetsSelected?.Invoke(new CombatEntityActionCallback(this));
             }
             else
             {
@@ -111,7 +113,7 @@ namespace TwilightAndBlight
         public override void OnTurnStart()
         {
             base.OnTurnStart();
-            UIManager.Instance.PreviewStats(this);
+            //UIManager.Instance.PreviewStats(this);
         }
         private void SelectNode(InputAction.CallbackContext context)
         {

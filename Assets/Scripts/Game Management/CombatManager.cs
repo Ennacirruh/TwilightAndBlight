@@ -3,26 +3,28 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TwilightAndBlight.Map;
-
+using TwilightAndBlight.Events;
+using Unity.VisualScripting;
 using UnityEngine;
 namespace TwilightAndBlight {
     public class CombatManager : MonoBehaviour
     {
         private static CombatManager instance;
         public static CombatManager Instance { get { return instance; } }
-        
+
         private List<CombatTeam> teams = new List<CombatTeam>();
         private List<CombatEntity> entityTurnQueue = new List<CombatEntity>();
         private CombatEntity entityTakingTurn;
         public CombatTeam cursorTarget;
         [SerializeField] private bool startCombat;
+        private bool combatRunning;
         private void Awake()
         {
             if (instance == null)
             {
                 instance = this;
             }
-            else 
+            else
             {
                 Destroy(this);
             }
@@ -32,12 +34,14 @@ namespace TwilightAndBlight {
             GameEvents.OnAbilitySelected += ActionSelected;
             GameEvents.OnTargetsSelected += TargetsSelected;
             GameEvents.OnAbilityPerformed += AbilityPerformed;
+            GameEvents.OnEntityKilled += RemoveCombatantFromTurnQueue;
         }
         private void OnDisable()
         {
             GameEvents.OnAbilitySelected -= ActionSelected;
             GameEvents.OnTargetsSelected -= TargetsSelected;
             GameEvents.OnAbilityPerformed -= AbilityPerformed;
+            GameEvents.OnEntityKilled -= RemoveCombatantFromTurnQueue;
         }
         private void Update()
         {
@@ -45,15 +49,34 @@ namespace TwilightAndBlight {
             {
                 startCombat = false;
                 BeginCombat();
-            }  
+            }
         }
         public void BeginCombat()
         {
+            combatRunning = true;
             GameEvents.OnCombatStart?.Invoke();
             ProgressToNextTurn();
         }
         public void EndCombat()
         {
+            combatRunning = false;
+            CombatTeam victor = null;
+            foreach(CombatTeam team in teams)
+            {
+                if (!team.TeamLost)
+                {
+                    victor = team;
+                    break;
+                }
+            }
+            if (victor != null && victor.IsPlayerTeam)
+            {
+                UIManager.Instance.OpenVictoryScreen();
+            }
+            else
+            {
+                UIManager.Instance.OpenDefeatScreen();
+            }
             Debug.Log("Combat Ended");
             GameEvents.OnCombatEnd?.Invoke();
 
@@ -77,19 +100,19 @@ namespace TwilightAndBlight {
         }
         public void BeginTurn()
         {
-            GameEvents.OnTurnStart?.Invoke(entityTakingTurn);
+            GameEvents.OnTurnStart?.Invoke(new CombatEntityActionCallback(entityTakingTurn));
             entityTakingTurn.OnTurnStart();
             SelectAction();
         }
         public void EndTurn()
         {
-            GameEvents.OnTurnEnd?.Invoke(entityTakingTurn);
+            GameEvents.OnTurnEnd?.Invoke(new CombatEntityActionCallback(entityTakingTurn));
             CheckWinConditions();
         }
         public void SelectAction()
         {
             entityTakingTurn.SelectAction();
-            
+
         }
         public void SelectTargets()
         {
@@ -101,52 +124,55 @@ namespace TwilightAndBlight {
         }
         public void CheckWinConditions()
         {
+            
             int teamsInTheRunning = teams.Count;
-            foreach(CombatTeam team in teams)
+            foreach (CombatTeam team in teams)
             {
+                Debug.Log($"Team: {team} : {team.TeamLost}");
                 if (team.TeamLost)
                 {
                     teamsInTheRunning--;
                 }
             }
+            Debug.Log($"Teams in the running: {teamsInTheRunning}");
             if (teamsInTheRunning == 1)
             {
                 EndCombat();
             }
-            else
-            {
-                ProgressToNextTurn();
-            }
+           
         }
-        private void ActionSelected(CombatEntity entity)
+        private void ActionSelected(CombatEntityActionCallback callback)
         {
-            if(entity = entityTakingTurn)
+            if (callback.entity = entityTakingTurn)
             {
                 SelectTargets();
                 UIManager.Instance.CloseAbilityPreview();
             }
         }
-        private void TargetsSelected(CombatEntity entity)
+        private void TargetsSelected(CombatEntityActionCallback callback)
         {
-            if(entity = entityTakingTurn)
+            if (callback.entity = entityTakingTurn)
             {
                 PerformAction();
             }
         }
-        private void AbilityPerformed(CombatEntity entity, MapNode origin) 
+        private void AbilityPerformed(CombatEntityMapNodeInteractionCallback callback)
         {
-            if(entity = entityTakingTurn)
+            if (combatRunning && callback.entity == entityTakingTurn)
             {
                 MapManager.Instance.ResetHighlight();
-                CheckWinConditions();
+                ProgressToNextTurn();
             }
         }
-        public void AddTeam(CombatTeam team) 
+        public void AddTeam(CombatTeam team, bool neutralTream = false)
         {
-            teams.Add(team);
+            if (!neutralTream)
+            {
+                teams.Add(team);
+            }
             foreach (CombatEntity entity in team.GetEntireTeam())
             {
-                if(entity != null)
+                if (entity != null)
                 {
                     entityTurnQueue.Add(entity);
                     HashSet<MapNode> mapNodes = new HashSet<MapNode>(MapManager.Instance.GetSpawnNodes(team));
@@ -163,6 +189,21 @@ namespace TwilightAndBlight {
                 }
             }
         }
+        private void RemoveCombatantFromTurnQueue(CombatEntityInteractionCallback callback)
+        {
+            
+            entityTurnQueue.Remove(callback.target);
+            StartCoroutine(DelayedCheckWInConditions());
+        }
+        private IEnumerator DelayedCheckWInConditions()
+        {
+            yield return new WaitForNextFrameUnit();
+            CheckWinConditions();
+        }
+        public void AddCombatantToGame(CombatEntity entity)
+        {
+            // For Neutrals
+        }
         public CombatEntity GetCombatEntityTakingTurn()
         {
             return entityTakingTurn;
@@ -171,5 +212,7 @@ namespace TwilightAndBlight {
         {
             return teams;
         }
+      
+       
     }
 }

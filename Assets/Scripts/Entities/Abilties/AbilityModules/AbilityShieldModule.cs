@@ -18,25 +18,24 @@ namespace TwilightAndBlight.Ability.Module
 
         public IEnumerator PerformShieldAbility(IEnumerable<MapNode> targets, float range = 0)
         {
-            foreach (MapNode node in targets)
+            for (int i = 0; i < GetShieldTicks(); i++)
             {
-                float shield = GetShield();
-                if (respectLineOfSight)
+                foreach (MapNode node in targets)
                 {
-                    shield *= GetCoverMultiplier(node, range);
-                }
-                CombatEntity target = node.GetCombatEntity();
-                if (target != null)
-                {
-                    for (int i = 0; i < GetShieldTicks(); i++)
+                    CombatEntity target = node.GetCombatEntity();
+                    if (target != null)
                     {
+                        float shield = GetShield();
+                        if (respectLineOfSight)
+                        {
+                            shield *= GetCoverMultiplier(node, range);
+                        }
                         prePerTargetBehaviorExpansion?.Invoke(node, shield);
                         float shieldAmmount = target.AddShield(shield, GetShieldDuration());
                         postPerTargetBehaviorExpansion?.Invoke(node, shield);
-                        yield return new WaitForSeconds(timeBetweenTicks);
-
                     }
                 }
+                yield return new WaitForSeconds(timeBetweenTicks);
             }
             moduleBehaviorCoroutine = null;
         }

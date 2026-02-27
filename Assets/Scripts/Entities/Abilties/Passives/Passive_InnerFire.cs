@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using TwilightAndBlight.Ability.Infliction;
 using TwilightAndBlight.Map;
+using TwilightAndBlight.Events;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -34,9 +35,9 @@ namespace TwilightAndBlight.Ability.Passive
             GameEvents.OnTurnEnd -= ReleaseBonus;
 
         }
-        private void InnerFire(CombatEntity entity)
+        private void InnerFire(CombatEntityActionCallback callback)
         {
-            if(entity == combatEntity)
+            if(callback.entity == combatEntity)
             {
                 float consumption = combatEntity.GetHealthCost(percentCurrentHealthConsumption * heat, ResourceCostType.PercentCurrent);
                 combatEntity.DrainEntityHealth(combatEntity, consumption, true);
@@ -83,15 +84,15 @@ namespace TwilightAndBlight.Ability.Passive
                 mark.InitializeDamageMark(markCharges, 0, markDamageBonus);
             }
         }
-        private void ReleaseBonus(CombatEntity entity)
+        private void ReleaseBonus(CombatEntityActionCallback callback)
         {
-            if (entity == combatEntity)
+            if (callback.entity == combatEntity)
             {
                 combatEntity.Stats.GetStat(StatType.Power).ModifyBaseValue(-powerGainedMemory);
             }
         }
 
-        public override void PerformAdditionalBehavior(float value)
+        public override void PerformAdditionalBehavior(float value)// not needed
         {
             heat += Mathf.FloorToInt(value);
         }

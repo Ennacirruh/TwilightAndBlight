@@ -1,5 +1,5 @@
 using UnityEngine;
-namespace TwilightAndBlight
+namespace TwilightAndBlight.Events
 {
     public static class GameEvents
     {
@@ -26,8 +26,8 @@ namespace TwilightAndBlight
         public static KillEntityOverride OnEntityKilledOverride;
         public static GenericAction OnCombatStart;
         public static GenericAction OnCombatEnd;
-        public static CombatTeamInteraction OnTeamJoin;
-        public static CombatTeamInteraction OnTeamLeave;
+        public static CombatTeamCombatEntityInteraction OnTeamJoin;
+        public static CombatTeamCombatEntityInteraction OnTeamLeave;
         public static CombatEntityAction OnAbilitySelected;
         public static CombatEntityAction OnTargetsSelected;
         public static CombatEntityMapNodeInteraction OnAbilityPerformed;

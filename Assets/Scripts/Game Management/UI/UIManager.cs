@@ -13,11 +13,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject AbilityPreviewPrefab;
     [SerializeField] private GameObject StatPreviewListPrefab;
     [SerializeField] private GameObject DescriptionViewPrefab;
+    [SerializeField] private GameObject VictoryScreen;
+    [SerializeField] private GameObject DefeatScreen;
     private Dictionary<string, UIWindow> windowCache = new Dictionary<string, UIWindow>();
     private List<AbilityPreview> abilityPreviewPool = new List<AbilityPreview>();
     private List<AbilityPreview> inUse = new List<AbilityPreview>();
     private UIWindow abilityPreview;
     private UIWindow statPreview;
+    private GameObject victoryScreenInstance;
+    private GameObject defeatScreenInstance;
     private bool abilityPreviewWindowOpen;
     private bool statPreviewWindowOpen;
     private void Awake()
@@ -25,13 +29,24 @@ public class UIManager : MonoBehaviour
         if (_instance == null)
         {
             _instance = this;
+            victoryScreenInstance = Instantiate(VictoryScreen, canvas);
+            victoryScreenInstance.SetActive(false);
+            defeatScreenInstance = Instantiate(DefeatScreen, canvas);
+            defeatScreenInstance.SetActive(false);
         }
         else
         {
             Destroy(this);
         }
     }
-
+    public void OpenVictoryScreen()
+    {
+        victoryScreenInstance.SetActive(true);
+    }
+    public void OpenDefeatScreen()
+    {
+        defeatScreenInstance.SetActive(true);
+    }
     public UIWindow OpenNewUIWindow(Vector2 pos, Vector2 size, string cacheID = "")
     {
 
@@ -68,7 +83,7 @@ public class UIManager : MonoBehaviour
     private UIWindow OpenNewAbilityViewWindow()
     {
         bool exists = windowCache.ContainsKey("AbilityView");
-        UIWindow window = OpenNewUIWindow(new Vector2(700, 0), new Vector2(520, 990), "AbilityView");
+        UIWindow window = OpenNewUIWindow(new Vector2(700, 0), new Vector2(520, 770), "AbilityView");
         if (!exists)
         {
             window.AssignContent(DescriptionViewPrefab);

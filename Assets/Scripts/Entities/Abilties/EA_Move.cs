@@ -121,5 +121,20 @@ namespace TwilightAndBlight.Ability
             base.OnValidate();
             targetFilter = AbilityTarget.EmptyNode;
         }
+
+        public override bool HasValidTargetInRange()
+        {
+            Vector3Int direction = new Vector3Int(0, 0, -1);
+            for (int i = 0; i < 6; i++)
+            {
+                direction = new Vector3Int(-direction.z, direction.x, direction.y);
+                MapNode node = MapManager.Instance.GetRealativeNode(combatEntity.GetCurrentMapNode(), direction);
+                if (node != null)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

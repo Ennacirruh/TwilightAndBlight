@@ -4,8 +4,8 @@ using TwilightAndBlight.Ability;
 using TwilightAndBlight.Ability.Passive;
 using TwilightAndBlight.Map;
 using Unity.VisualScripting;
-using Unity.XR.CoreUtils;
 using UnityEngine;
+using TwilightAndBlight.Events;
 namespace TwilightAndBlight
 {
     [RequireComponent(typeof(EntityStats))]
@@ -38,9 +38,9 @@ namespace TwilightAndBlight
 
         protected Coroutine deathCoroutine;
 
-        public float MaxHealth { get { return 200f + (20f * Stats.Constitution); } }
-        public float MaxMana { get { return 100f + (100f * Stats.Spirit); } }
-        public float MaxStamina { get { return 50f + (10f * Stats.Endurance); } }
+        public float MaxHealth { get { return 100f + (20f * Stats.Constitution); } }
+        public float MaxMana { get { return 50f + (25f * Stats.Spirit); } }
+        public float MaxStamina { get { return 20f + (10f * Stats.Endurance); } }
         public float Health { get { return health; } }
         public float Mana { get { return mana; } }
         public float Stamina { get { return stamina; } }
@@ -57,7 +57,7 @@ namespace TwilightAndBlight
             entityStats = GetComponent<EntityStats>();
             health = MaxHealth;
             mana = MaxMana;
-            stamina = MaxStamina;   
+            stamina = MaxStamina;
         }
         protected virtual void OnEnable()
         {
@@ -71,8 +71,8 @@ namespace TwilightAndBlight
         {
             freeActionsPerformed = false;
             float healthRegen = Stats.Vitality / 10f; 
-            float manaRegen = Stats.Effervescence / 10f;
-            float staminaRegen = Stats.Tenacity / 10f;
+            float manaRegen = Stats.Effervescence / 15f;
+            float staminaRegen = Stats.Tenacity / 3f;
             float corruptionRegen = corruption * 0.2f;
             float astraRegen = 1f / (101f - Stats.Transendance);
             ReplenishEntityHealth(this, healthRegen, false);
@@ -254,7 +254,8 @@ namespace TwilightAndBlight
         /// <returns>Returns the ammount actually recovered value</returns>
         protected virtual float ReplenishEntityResource(ref float targetResource, float resourceMax, CombatEntity source, ReplenishEntityInteraction replenishInteraction, ReplenishEntityOverride interactionOverride, CombatResourceChangeAction resourceChangeAction, float baseRecoveryValue, bool utilizeReflexBonus)
         {
-            float recoveryValue = GetResourceRecoveryValue(interactionOverride, source, baseRecoveryValue, utilizeReflexBonus);
+            bool crit;
+            float recoveryValue = GetResourceRecoveryValue(interactionOverride, source, baseRecoveryValue, utilizeReflexBonus, out crit);
             if (recoveryValue > 0)
             {
                 targetResource += recoveryValue;
@@ -264,14 +265,14 @@ namespace TwilightAndBlight
                     overRecovery = targetResource - resourceMax;
                     targetResource = resourceMax;
                 }
-                replenishInteraction?.Invoke(recoveryValue, overRecovery, this, source);
-                resourceChangeAction?.Invoke(this, recoveryValue - overRecovery);
+                replenishInteraction?.Invoke(new ReplenishEntityInteractionCallback(recoveryValue, overRecovery, this, source, crit));
+                resourceChangeAction?.Invoke(new CombatResourceChangeActionCallback(this, recoveryValue - overRecovery));
                 return recoveryValue - overRecovery;
             }
             return 0;
 
         }
-        protected virtual float GetResourceRecoveryValue(ReplenishEntityOverride eventOverride, CombatEntity source, float baseValue, bool utilizeReflexBonus)
+        protected virtual float GetResourceRecoveryValue(ReplenishEntityOverride eventOverride, CombatEntity source, float baseValue, bool utilizeReflexBonus, out bool isCrit)
         {
             float recoveryRangeWeight = source != null ? source.Stats.Discipline : 0;
             float critChance = source != null ? source.Stats.Cunning : 0;
@@ -300,8 +301,10 @@ namespace TwilightAndBlight
                 {
                     baseValue *= critPower;
                 }
+                isCrit = crit;
                 return Mathf.Max(baseValue,0);
             }
+            isCrit = crit;
             return -1;
         }
         #endregion
@@ -406,8 +409,8 @@ namespace TwilightAndBlight
                         overkill = -targetResource;
                         targetResource = 0;
                     }
-                    drainInteracction?.Invoke(drainValue, this, source);
-                    resourceChangeAction?.Invoke(this, drainValue - overkill);
+                    drainInteracction?.Invoke(new DrainEntityResourceInteractionCallback(drainValue, this, source));
+                    resourceChangeAction?.Invoke(new CombatResourceChangeActionCallback(this, drainValue - overkill));
                     return overkill;
                 }
             }
@@ -424,7 +427,7 @@ namespace TwilightAndBlight
         /// <param name="source"></param>
         /// <param name="attack"></param>
         /// <param name="damageTypes"></param>
-        /// <param name="percentPenetration"></param>
+        /// <param name="percentPenetration">1 = 100% penetration</param>
         /// <param name="flatPenetration"></param>
         /// <param name="ignoreShield"></param>
         /// <returns>Damage Actually Taken</returns>
@@ -478,8 +481,8 @@ namespace TwilightAndBlight
                         health -= damage;
                         returnValue = damage;
                         //Debug.Log($"Damage: {damage}\nBaseDamage: {attack}\nEfective Armor: {armor}\nResistance Mult: {resistanceMultiplier}\nCrit: {crit}\nCrit Damage{critPower}");
-                        GameEvents.OnEntiyDamaged?.Invoke(attack, damage, this, source);
-                        GameEvents.OnHealthChange?.Invoke(this, -damage);
+                        GameEvents.OnEntiyDamaged?.Invoke(new DamageEntityInteractionCallback(attack, damage, this, source, crit));
+                        GameEvents.OnHealthChange?.Invoke(new CombatResourceChangeActionCallback(this, -damage));
                         if (health <= 0f)
                         {
                             KillEntity(source);
@@ -496,7 +499,7 @@ namespace TwilightAndBlight
             GameEvents.OnEntityKilledOverride?.Invoke(this, source, ref kill);
             if (kill)
             {
-                GameEvents.OnEntityKilled?.Invoke(this, source);
+                GameEvents.OnEntityKilled?.Invoke(new CombatEntityInteractionCallback(this, source));
                 if (combatTeam != null)
                 {
                     combatTeam.RemoveCombatant(source);

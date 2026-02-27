@@ -16,25 +16,25 @@ namespace TwilightAndBlight.Ability.Module
 
         public IEnumerator PerformHealBehavior(IEnumerable<MapNode> targets, float range = 0)
         {
-            foreach (MapNode node in targets)
+            for (int i = 0; i < GetHealTicks(); i++)
             {
-                float heal = GetHeal();
-                if (respectLineOfSight)
-                {
-                    heal *= GetCoverMultiplier(node, range);
-                }
-                CombatEntity target = node.GetCombatEntity();
-                if (target != null)
-                {
-                    for (int i = 0; i < GetHealTicks(); i++)
+                foreach (MapNode node in targets)
+                {   
+                    CombatEntity target = node.GetCombatEntity();
+                    if (target != null)
                     {
+                        float heal = GetHeal();
+                        if (respectLineOfSight)
+                        {
+                            heal *= GetCoverMultiplier(node, range);
+                        }
                         prePerTargetBehaviorExpansion?.Invoke(node, heal);
                         float ammountHealed = target.ReplenishEntityHealth(owner.OwningCombatEntity, heal);
                         postPerTargetBehaviorExpansion?.Invoke(node, ammountHealed);
-                        yield return new WaitForSeconds(timeBetweenTicks);
-
                     }
                 }
+                yield return new WaitForSeconds(timeBetweenTicks);
+
             }
             moduleBehaviorCoroutine = null;
         }

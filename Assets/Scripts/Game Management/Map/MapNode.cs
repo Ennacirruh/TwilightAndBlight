@@ -2,16 +2,20 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
+using TwilightAndBlight.Events;
 
 namespace TwilightAndBlight.Map
 {
     [SelectionBase]
     public class MapNode : MonoBehaviour
     {
-        [SerializeField] private CombatEntity entity;
-        [SerializeField] private int movesToLeave = 1;
+        [SerializeField] private CombatEntity groundedEntity;
+        //[SerializeField] private CombatEntity airbornEntity;
+        //[SerializeField] private CombatEntity burrowedEntity;
+        [SerializeField] private int movesToLeaveGround = 1;
+        //[SerializeField] private int movesToLeaveAir = 1;
+        //[SerializeField] private int movesToLeaveUnderground = 1;
         [SerializeField] private float pathfindingScoreModifier = 1f;
         [SerializeField] private Vector2Int positionInMap;
         [SerializeField] private bool spawnNode = false;
@@ -41,22 +45,22 @@ namespace TwilightAndBlight.Map
         }
         public bool IsOccupied()
         {
-            return entity != null;
+            return groundedEntity != null;
         }
         public CombatEntity GetCombatEntity()
         {
-            return entity;
+            return groundedEntity;
         }
-        public void AssignEntity(CombatEntity entity, Vector3 offset)
+        public void AssignEntity(CombatEntity entity, Vector3 offset = default)
         {
             MapNode node = entity.GetCurrentMapNode();
             if (node != this) // check if already assigned
             {
-                this.entity = entity;
+                this.groundedEntity = entity;
 
                 TeleportMovePattern(entity, transform.position + offset);
                 entity.SetCurrentMapNode(this);
-                GameEvents.OnNodeEntered?.Invoke(entity, this);
+                GameEvents.OnNodeEntered?.Invoke(new CombatEntityMapNodeInteractionCallback(entity, this));
                 if (node != null)
                 {
                     node.UnassignCurrentEntity();
@@ -66,10 +70,10 @@ namespace TwilightAndBlight.Map
         }
         public void UnassignCurrentEntity()
         {
-            if (entity != null)
+            if (groundedEntity != null)
             {
-                GameEvents.OnNodeExited?.Invoke(entity, this);
-                entity = null;
+                GameEvents.OnNodeExited?.Invoke(new CombatEntityMapNodeInteractionCallback(groundedEntity, this));
+                groundedEntity = null;
             }
         }
         
@@ -110,7 +114,7 @@ namespace TwilightAndBlight.Map
         }
         public int GetMovesToLeaveNode()
         {
-            return movesToLeave;
+            return movesToLeaveGround;
         }
         public float GetPathFindingScoreModifier()
         {
@@ -173,23 +177,23 @@ namespace TwilightAndBlight.Map
             float speed = initialSpeed;
             float fallHeight = -1000;
             
-            while (entity.transform.position.y != transform.position.y)
+            while (groundedEntity.transform.position.y != transform.position.y)
             {
                 if(fallHeight == -1000 && speed < 0)
                 {
-                    fallHeight = entity.transform.position.y;
+                    fallHeight = groundedEntity.transform.position.y;
                 }
                 speed -= GameManager.Instance.Gravity * Time.deltaTime;
-                float newHeight = entity.transform.position.y + (speed * Time.deltaTime);
+                float newHeight = groundedEntity.transform.position.y + (speed * Time.deltaTime);
                 if (newHeight < transform.position.y)
                 {
                     newHeight = transform.position.y;
                 }
-                entity.transform.position = new Vector3(entity.transform.position.x, newHeight, entity.transform.position.z);
+                groundedEntity.transform.position = new Vector3(groundedEntity.transform.position.x, newHeight, groundedEntity.transform.position.z);
                 yield return null;
             }
-            float fallDistance = fallHeight - entity.transform.position.y;
-            ApplyFallDamage(fallDistance, entity);
+            float fallDistance = fallHeight - groundedEntity.transform.position.y;
+            ApplyFallDamage(fallDistance, groundedEntity);
             entityShiftCoroutine = null;
 
 

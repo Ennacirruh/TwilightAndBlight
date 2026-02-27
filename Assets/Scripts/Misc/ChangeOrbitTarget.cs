@@ -1,5 +1,6 @@
 using TwilightAndBlight;
 using TwilightAndBlight.Map;
+using TwilightAndBlight.Events;
 using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -32,11 +33,11 @@ public class ChangeOrbitTarget : MonoBehaviour
         inputActions.Player.Target.performed -= SelectTarget;
         inputActions.Disable();
     }
-    private void ChangeTarget(CombatEntity combatEntity)
+    private void ChangeTarget(CombatEntityActionCallback callback)
     {
-        if (combatEntity != null)
+        if (callback.entity != null)
         {
-            targetMemory = combatEntity;
+            targetMemory = callback.entity;
         }
         if (targetDefault || targetMemory == null)
         {
@@ -51,7 +52,7 @@ public class ChangeOrbitTarget : MonoBehaviour
     private void ToggleTargeting(InputAction.CallbackContext context)
     {
         targetDefault = !targetDefault;
-        ChangeTarget(null);
+        ChangeTarget(new CombatEntityActionCallback(null));
     }
     private void ApplyTarget(Transform target)
     {

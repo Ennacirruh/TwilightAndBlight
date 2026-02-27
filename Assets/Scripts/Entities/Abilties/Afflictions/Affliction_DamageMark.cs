@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TwilightAndBlight.Events;
 namespace TwilightAndBlight.Ability.Infliction
 {
     public class Affliction_DamageMark : Affliction

@@ -1,0 +1,923 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &639171186366346755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3638726364549520077}
+  - component: {fileID: 8585190763880971914}
+  - component: {fileID: 4211937691122151026}
+  - component: {fileID: 3907591142441764335}
+  - component: {fileID: 1466198658511228590}
+  - component: {fileID: 1480581323855450581}
+  - component: {fileID: 5669880336074773349}
+  - component: {fileID: 8965369534822528835}
+  - component: {fileID: 7091867083022618600}
+  - component: {fileID: 1353667139952745129}
+  - component: {fileID: 1185065751386957013}
+  - component: {fileID: 4048300363147801541}
+  - component: {fileID: 7381096590878363935}
+  m_Layer: 6
+  m_Name: Solara
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3638726364549520077
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -28.87, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2886407133521641929}
+  - {fileID: 2863150685850719605}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8585190763880971914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73bcf3d88f7e3b04ebb92e8e620a5a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power:
+    baseValue: 25
+  fortitude:
+    baseValue: 20
+  agility:
+    baseValue: 20
+  constitution:
+    baseValue: 20
+  intelligence:
+    baseValue: 10
+  wisdom:
+    baseValue: 10
+  dexterity:
+    baseValue: 10
+  charisma:
+    baseValue: 20
+  cunning:
+    baseValue: 20
+  discipline:
+    baseValue: 20
+  reflex:
+    baseValue: 20
+  flatArmorPen:
+    baseValue: 0
+  percemtArmorPen:
+    baseValue: 0
+  spirit:
+    baseValue: 10
+  endurance:
+    baseValue: 15
+  vitality:
+    baseValue: 20
+  tenacity:
+    baseValue: 20
+  effervescence:
+    baseValue: 10
+  compassion:
+    baseValue: 10
+  mettle:
+    baseValue: 10
+  transendance:
+    baseValue: 0
+--- !u!114 &4211937691122151026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityLevel: 1
+  health: 0
+  mana: 0
+  stamina: 0
+  corruption: 0
+  astra: 0
+  totalShield: 0
+  entityHeight: 2
+--- !u!114 &3907591142441764335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c349e14cb4820499697276ce0d8ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.EntityInfoDisplay
+  healthBarPrefab: {fileID: 892272746398520389, guid: b00cdea330ee3174ca1f80a291a96b98, type: 3}
+  manaBarPrefab: {fileID: 892272746398520389, guid: b00cdea330ee3174ca1f80a291a96b98, type: 3}
+  staminaBarPrefab: {fileID: 892272746398520389, guid: 0c5a8ef5a21dbfa4ebb322d2ebad06cf, type: 3}
+  healthBarVertOffset: 20
+  staminaBarVertOffset: 10
+  manaBarVertOffset: 0
+  targetCanvas: {fileID: 2863150685850719605}
+  textObjPrefab: {fileID: 475144812724413662, guid: 908e19433bc6c324aa45ec158a5912dd, type: 3}
+--- !u!114 &1466198658511228590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 395f6b9556f14704790df6035be6ee3a, type: 3}
+  abilityName: Move
+  abilityDescription: 'Move up to :totalmovespeed spaces. '
+  descriptionPreview: 'Move up to 5 spaces. '
+  endOfAbilityDelay: 0
+  targetFilter: 3
+  abilityCost: 0
+  costResource: 0
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  agilityPerMoveSpeed: 0
+  baseMoveSpeed: 5
+--- !u!114 &1480581323855450581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 2b4752bce841cc74bb73820ce5212d34, type: 3}
+  abilityName: Stellar Flare
+  abilityDescription: 'Damage all entities in a line within :range tiles for :damage;
+    (:basedamage + :damagescalers;), ignoring a base :percentarmorpen;% of armor.  '
+  descriptionPreview: Damage all entities in a line within 3 tiles for 60 (35 + 100% 
+    Power), ignoring a base 25% of armor.  Costs 25 Stamina. Has a cooldown of 1
+    turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 0
+  abilityCost: 25
+  costResource: 1
+  resourceCostType: 0
+  abilityCooldown: 1
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 1
+  abilitySizeModule:
+    baseSize: 0
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 3
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 1
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 
+    baseDamage: 35
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 1
+    basePercentArmorPen: 25
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &5669880336074773349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 62053ed690017d143bd2cfa8e5dc3ff5, type: 3}
+  abilityName: Sweeping Corona
+  abilityDescription: Damage all entities in a line within :range tiles for :damage;
+    (:basedamage + :damagescalers;) :damagetypes damage.
+  descriptionPreview: Damage all entities in a line within 3 tiles for 37.5 (20 +
+    70%  Power) Fire damage.  Costs 25 Stamina. Has a cooldown of 2 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 2
+  abilityCost: 25
+  costResource: 1
+  resourceCostType: 0
+  abilityCooldown: 2
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 2
+  abilitySizeModule:
+    baseSize: 180
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 3
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 1
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 01000000
+    baseDamage: 20
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.7
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &8965369534822528835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 5e2b00fc2e687454b8c7dcf6cb8226d7, type: 3}
+  abilityName: Fury Fall
+  abilityDescription: Deal :damage (:basedamage + :damagescalers;) :damagetypes damage
+    to a single enemy, and generate 1 heat.
+  descriptionPreview: Deal 82.5 (45 + 150%  Power) Fire damage to a single enemy,
+    and generate 1 heat.  Costs 75 Stamina. Has a cooldown of 3 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 0
+  abilityCost: 75
+  costResource: 1
+  resourceCostType: 0
+  abilityCooldown: 3
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7381096590878363935}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+          Assembly-CSharp
+        m_MethodName: AddStackOfHeat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 2
+  abilitySizeModule:
+    baseSize: 0
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 1
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 1
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 01000000
+    baseDamage: 45
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 1.5
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &7091867083022618600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d9cd9dd35e486c49b8d0ab29f77bbb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 4e62fa74d1eac074cac268c2997a658c, type: 3}
+  abilityName: Battle Fever
+  abilityDescription: 'Gain 1 heat and gain a :shield (:baseshield + :shieldscalers;)
+    damage shield for :shieldduration turns. '
+  descriptionPreview: Gain 1 heat and gain a 280 (250 + 300%  Mettle) damage shield
+    for 3 turns.  Costs 20% max Mana. Has a cooldown of 1 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 1
+  abilityCost: 20
+  costResource: 2
+  resourceCostType: 1
+  abilityCooldown: 1
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7381096590878363935}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+          Assembly-CSharp
+        m_MethodName: AddStackOfHeat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 0
+  abilitySizeModule:
+    baseSize: 0
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityShieldModule:
+    canTargetSelf: 1
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    baseShield: 250
+    shieldScalers:
+    - scalingStat: 19
+      valuePerScalingStat: 3
+    baseShieldDuration: 3
+    shieldDurationScalers: []
+    baseShieldTicks: 0
+    shieldTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &1353667139952745129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: ba2d3d7d05fd3e046b6d413365e9b11e, type: 3}
+  abilityName: Solar Wind
+  abilityDescription: Deal damage in a wide arc for :damage (:basedamage + :damagescalers;)
+    :damagetypes damage, and mark enemies. When a marked enemy is damaged, detonate
+    the mark for bonus damage.
+  descriptionPreview: Deal damage in a wide arc for 25 (15 + 40%  Power) Fire damage,
+    and mark enemies. When a marked enemy is damaged, detonate the mark for bonus
+    damage.  Costs 30 Mana. Has a cooldown of 2 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 0
+  abilityCost: 30
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 2
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 2
+  abilitySizeModule:
+    baseSize: 120
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 5
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 1
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7381096590878363935}
+          m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+            Assembly-CSharp
+          m_MethodName: MarkEnemies
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    damageTypes: 01000000
+    baseDamage: 15
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.4
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 1
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &1185065751386957013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e56d2a65d0a3240941f1dfb2d5f92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: ba345f2f643d842459447c374943401d, type: 3}
+  abilityName: Trail Blazer
+  abilityDescription: Teleport to a tile within :range tiles, and damage entities
+    within :destinationsize tiles for :destinationdamage (:destinationbasedamage;
+    + :destinationdamagescalers;) :destinationdamagetypes damage.
+  descriptionPreview: Teleport to a tile within 10 tiles, and damage entities within
+    2 tiles for 51.25 (30 + 85%  Power) Fire damage.  Costs 50 Mana. Has a cooldown
+    of 3 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 3
+  abilityCost: 50
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 3
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  teleportRangeModule:
+    rid: 3052357701269717067
+  originTargetFilter: 2
+  destinationTargetFilter: 2
+  originSizeModule:
+    baseSize: 0
+    sizeScalers: []
+  originDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 0.25
+    abilityModuleCastHeightOffset: 0.25
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 
+    baseDamage: 0
+    damageScalers: []
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+  destinationSizeModule:
+    baseSize: 2
+    sizeScalers: []
+  destinationDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 0.25
+    abilityModuleCastHeightOffset: 0.25
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 01000000
+    baseDamage: 30
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.85
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 3052357701269717067
+      type: {class: AbilityRangeModule, ns: TwilightAndBlight.Ability.Module, asm: Assembly-CSharp}
+      data:
+        baseRange: 10
+        rangeScalers: []
+--- !u!114 &4048300363147801541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 035e4d44b8a2a544abb5bd036f6a3e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 8004118ba4145a74e823fedaa37acf3a, type: 3}
+  abilityName: Nova Strike
+  abilityDescription: Consume all stacks of heat and deal :damage (:basedamage +
+    :damagescalers;) :damagetypes damage in a long line, cutting thorugh terrain.
+    Damage is signifigantly increased for each stack of heat consumed.
+  descriptionPreview: Consume all stacks of heat and deal 87.5 (50 + 150%  Power)
+    Fire damage in a long line, cutting thorugh terrain. Damage is signifigantly
+    increased for each stack of heat consumed.  Costs 100 Mana. Has a cooldown of
+    8 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 4
+  abilityCost: 100
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 8
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7381096590878363935}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+          Assembly-CSharp
+        m_MethodName: NovaStrikeStart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7381096590878363935}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+          Assembly-CSharp
+        m_MethodName: NovaStrikeEnd
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  abilityShape: 1
+  abilitySizeModule:
+    baseSize: 5
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 25
+    rangeScalers: []
+  abilityTerrainModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    baseMaxShift: 50
+    maxShiftScalers: []
+    baseShiftSpeed: 100
+    shiftSpeedScalers: []
+    delayRange: 0.5
+    terrainShiftType: 3
+    realativeToTarget: 0
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 01000000
+    baseDamage: 50
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 1.5
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &7381096590878363935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82f64709555c9fe43b201408cd33f186, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passiveName: Inner Fire
+  description: Certain abilities generate stacks of heat. At the start of a turn,
+    this entitie loses a percent of its current health scaling with heat, damaging
+    nearby entities and gaining a signigant power boost for a turn scaling with the
+    health lost.
+  heat: 0
+  percentCurrentHealthConsumption: 5
+  damageRange: 2
+  damagePerHealthConsumed: 1.25
+  powerPerHealthConsumed: 0.05
+  novaStrikeBonusPerHeat: 0.25
+  markCharges: 2
+  markDamageBonus: 1.5
+--- !u!1 &3853865379452149373
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2863150685850719605}
+  - component: {fileID: 8678106415794119304}
+  - component: {fileID: 329477025704657793}
+  m_Layer: 6
+  m_Name: OverheadCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2863150685850719605
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853865379452149373}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3638726364549520077}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 2.2}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &8678106415794119304
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853865379452149373}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &329477025704657793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853865379452149373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d55c2264f43f974cb5d3aaeefbb6a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!1 &7772875454982162414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2886407133521641929}
+  - component: {fileID: 2566266193498302955}
+  - component: {fileID: 4810557604108726655}
+  - component: {fileID: 472724361630618950}
+  m_Layer: 6
+  m_Name: Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2886407133521641929
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7772875454982162414}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3638726364549520077}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &2566266193498302955
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7772875454982162414}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4810557604108726655
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7772875454982162414}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 983852dc1719ea443b9c9ef6aab6c993, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &472724361630618950
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7772875454982162414}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

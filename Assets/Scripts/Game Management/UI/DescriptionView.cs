@@ -27,8 +27,8 @@ namespace TwilightAndBlight
             if (descriptable != null)
             {
                 string actualPrefix = "";
-                if (usePrefix) actualPrefix = prefix;
-                descriptionText.text = prefix + descriptable.GetName() + "\n" + descriptable.GetDescription();
+                if (usePrefix) { actualPrefix = prefix; }
+                descriptionText.text = actualPrefix + descriptable.GetName() + "\n" + descriptable.GetDescription();
             }
             else
             {

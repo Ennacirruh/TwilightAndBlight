@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Net.Security;
 using System.Runtime.InteropServices.WindowsRuntime;
 using TwilightAndBlight.Ability.Module;
 using TwilightAndBlight.Map;
@@ -18,7 +19,19 @@ namespace TwilightAndBlight.Ability
             abilitySizeModule.InitializeAbilityModule(this);
             abilityRangeModule.InitializeAbilityModule(this);
         }
-
+        public override bool HasValidTargetInRange()
+        {
+            switch (abilityShape)
+            {
+                case DefaultAbilityShapes.Hexagon:
+                    return ValidTargetInRangeExists(combatEntity.GetCurrentMapNode(), abilityRangeModule.GetRange() + abilitySizeModule.GetSize(), (MapNode node) => { return IsValidTarget(node); });
+                case DefaultAbilityShapes.Line:
+                    return ValidTargetInRangeExists(combatEntity.GetCurrentMapNode(), abilityRangeModule.GetRange(), (MapNode node) => { return IsValidTarget(node); });
+                case DefaultAbilityShapes.Arc:
+                    return ValidTargetInRangeExists(combatEntity.GetCurrentMapNode(), abilityRangeModule.GetRange(), (MapNode node) => { return IsValidTarget(node); });
+            }
+            return false;
+        }
 
         protected HashSet<MapNode> aquiredTargets = new HashSet<MapNode>();
 
@@ -75,7 +88,7 @@ namespace TwilightAndBlight.Ability
                         newSet.Add(node);
                 }
             }
-
+            newSet.Add(combatEntity.GetCurrentMapNode());
             return newSet;
         }
         public override bool IsValidAbilityCast(MapNode targetNode)

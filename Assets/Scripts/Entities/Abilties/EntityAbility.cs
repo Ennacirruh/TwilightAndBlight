@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using TwilightAndBlight.Map;
+using TwilightAndBlight.Events;
 using UnityEngine;
 using System.Linq;
 
@@ -15,6 +16,7 @@ namespace TwilightAndBlight.Ability
         [SerializeField] protected string abilityName;
         [TextArea][SerializeField] protected string abilityDescription;
         [TextArea][SerializeField] private string descriptionPreview;
+        [SerializeField] protected float endOfAbilityDelay = 1.5f;
         [SerializeField] protected AbilityTarget targetFilter;
         [SerializeField] protected float abilityCost;
         [SerializeField] protected CombatResource costResource;
@@ -22,6 +24,7 @@ namespace TwilightAndBlight.Ability
         [SerializeField] protected int abilityCooldown;
         [SerializeField] protected UnityEvent preBehaviorExpansion;
         [SerializeField] protected UnityEvent postBehaviorExpansion;
+        
         private Dictionary<string, string> stringConversionTable;
         protected Dictionary<string, string> StringConversionTable { get { if (stringConversionTable == null) { stringConversionTable = GenerateStringConversionTable(); } return stringConversionTable; }}
         protected List<MapNode> targetVisualReference = new List<MapNode>();
@@ -64,25 +67,32 @@ namespace TwilightAndBlight.Ability
         }
         public virtual void OnTurnStart()
         {
-            cooldownTimer++;
+            cooldownTimer--;
         }
         public virtual void OnCombatStart()
         {
-            cooldownTimer = abilityCooldown;
+            cooldownTimer = 0;
         }
         protected void EndAbility(MapNode targetingOrigin)
         {
             postBehaviorExpansion?.Invoke();
+            StartCoroutine(EndOfAbilityDelay(targetingOrigin));
+
+            
+        }
+        private IEnumerator EndOfAbilityDelay(MapNode targetingOrigin)
+        {
+            yield return new WaitForSeconds(endOfAbilityDelay);
             if (combatEntity.IsPerformingFreeAction())
             {
                 combatEntity.FreeActionComplete();
             }
             else
             {
-                GameEvents.OnAbilityPerformed?.Invoke(combatEntity, targetingOrigin);
+                GameEvents.OnAbilityPerformed?.Invoke(new CombatEntityMapNodeInteractionCallback(combatEntity, targetingOrigin));
                 if (castTickets == 0)
                 {
-                    cooldownTimer = -1;
+                    cooldownTimer = abilityCooldown + 1;
                 }
             }
         }
@@ -113,9 +123,10 @@ namespace TwilightAndBlight.Ability
                     break;
             }
         }
+        public abstract bool HasValidTargetInRange();
         public virtual bool CanAffordAbility()
         {
-            if(cooldownTimer < abilityCooldown) return false;
+            if(cooldownTimer > 0) return false;
             switch (costResource)
             {
                 case CombatResource.Health:
@@ -232,10 +243,6 @@ namespace TwilightAndBlight.Ability
             if (abilityCooldown > 0)
             {
                 returnString += $" Has a cooldown of {abilityCooldown} turns.";
-                if(cooldownTimer < abilityCooldown)
-                {
-                    returnString += $"\nRemaining Cooldown: {abilityCooldown - cooldownTimer} turns.";
-                }
             }
             return returnString;
         }
@@ -320,10 +327,26 @@ namespace TwilightAndBlight.Ability
             stringConversionTable = GenerateStringConversionTable();
             descriptionPreview = GetAbilityDescription();
         }
-
+        protected virtual bool ValidTargetInRangeExists(MapNode origin, float range, MapNodeConditional conditional)
+        {
+            foreach (MapNode node in MapManager.Instance.GetNodesWithinRange(origin,Mathf.FloorToInt(range)))
+            {
+                if (conditional.Invoke(node))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
         public string GetName()
         {
-            return abilityName;
+            string returnString = abilityName;
+            if (abilityCooldown > 0 && cooldownTimer > 0)
+            {
+                string plural = (cooldownTimer == 1) ? "" : "s";
+                returnString += $": {cooldownTimer} turn{plural} remaining";   
+            }
+            return returnString;
         }
 
         public string GetDescription()

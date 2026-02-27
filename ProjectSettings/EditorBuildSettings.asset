@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
+  - enabled: 1
+    path: Assets/Scenes/SceneReloader.unity
+    guid: 102d6aaa7f950b845877d7ee1f6af3ab
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 97482714df86fed4da7ae33bee18fe11, type: 2}
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 6ef0504eb8a044f488fc76265d2dc07c, type: 2}

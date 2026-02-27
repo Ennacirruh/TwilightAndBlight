@@ -1,0 +1,872 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &405080354219792304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5718375595748843843}
+  - component: {fileID: 6966968490378838111}
+  - component: {fileID: 9193593319599675298}
+  - component: {fileID: 1070199172323118079}
+  - component: {fileID: 5984974834359853730}
+  - component: {fileID: 7211708005789892072}
+  - component: {fileID: 8101844092119534107}
+  - component: {fileID: 984094574910772653}
+  - component: {fileID: 5103573493953110750}
+  - component: {fileID: 4931126350479874839}
+  - component: {fileID: 4947945425408479807}
+  - component: {fileID: 1921351403039179210}
+  - component: {fileID: 5472844577299283022}
+  m_Layer: 6
+  m_Name: Lunara
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5718375595748843843
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -28.87, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 491666251549071745}
+  - {fileID: 2311129832545615705}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6966968490378838111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73bcf3d88f7e3b04ebb92e8e620a5a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power:
+    baseValue: 25
+  fortitude:
+    baseValue: 5
+  agility:
+    baseValue: 22
+  constitution:
+    baseValue: 10
+  intelligence:
+    baseValue: 25
+  wisdom:
+    baseValue: 10
+  dexterity:
+    baseValue: 10
+  charisma:
+    baseValue: 20
+  cunning:
+    baseValue: 25
+  discipline:
+    baseValue: 25
+  reflex:
+    baseValue: 25
+  flatArmorPen:
+    baseValue: 0
+  percemtArmorPen:
+    baseValue: 10
+  spirit:
+    baseValue: 30
+  endurance:
+    baseValue: 15
+  vitality:
+    baseValue: 10
+  tenacity:
+    baseValue: 5
+  effervescence:
+    baseValue: 25
+  compassion:
+    baseValue: 20
+  mettle:
+    baseValue: 5
+  transendance:
+    baseValue: 0
+--- !u!114 &9193593319599675298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityLevel: 1
+  health: 0
+  mana: 0
+  stamina: 0
+  corruption: 0
+  astra: 0
+  totalShield: 0
+  entityHeight: 2
+--- !u!114 &1070199172323118079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c349e14cb4820499697276ce0d8ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.EntityInfoDisplay
+  healthBarVertOffset: 20
+  staminaBarVertOffset: 10
+  manaBarVertOffset: 0
+--- !u!114 &5984974834359853730
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 4a7d01e56d72f0647bac54fe3b1f27f4, type: 3}
+  abilityName: Move
+  abilityDescription: 'Move up to :totalmovespeed spaces. '
+  descriptionPreview: 'Move up to 4 spaces. '
+  endOfAbilityDelay: 0
+  targetFilter: 3
+  abilityCost: 0
+  costResource: 0
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  agilityPerMoveSpeed: 0
+  baseMoveSpeed: 4
+--- !u!114 &7211708005789892072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: f415c0c7295ca1f4d8141caefc78e398, type: 3}
+  abilityName: Crecent Blade
+  abilityDescription: Deal :damage (:basedamage + :damagescalers;) damage to enemies
+    in a small arc.
+  descriptionPreview: Deal 31.25 (15 + 65%  Power) damage to enemies in a small arc. 
+    Costs 15 Stamina.
+  endOfAbilityDelay: 1.5
+  targetFilter: 0
+  abilityCost: 15
+  costResource: 1
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5472844577299283022}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_OmenOfTheMoon,
+          Assembly-CSharp
+        m_MethodName: GainCompassionOnDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  abilityShape: 2
+  abilitySizeModule:
+    baseSize: 160
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 3
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 1
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 00000000
+    baseDamage: 15
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.65
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &8101844092119534107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: db1faed8574bd414794b83b667e06e2f, type: 3}
+  abilityName: Nightfall
+  abilityDescription: Deals :damage (:basedamage + :damagescalers;) damage in a small
+    circle within range.
+  descriptionPreview: Deals 38.75 (20 + 75%  Power) damage in a small circle within
+    range.  Costs 20 Mana. Has a cooldown of 2 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 2
+  abilityCost: 20
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 2
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5472844577299283022}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_OmenOfTheMoon,
+          Assembly-CSharp
+        m_MethodName: GainCompassionOnDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  abilityShape: 0
+  abilitySizeModule:
+    baseSize: 1
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 7
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 
+    baseDamage: 20
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.75
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 1
+    damageTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &984094574910772653
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: c1f67563cd8ff284899b13c81be9686f, type: 3}
+  abilityName: Monolith
+  abilityDescription: Rais a pillar of terrain.
+  descriptionPreview: Rais a pillar of terrain.  Costs 20 Mana. Has a cooldown of
+    3 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 4
+  abilityCost: 20
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 3
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 0
+  abilitySizeModule:
+    baseSize: 2
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 7
+    rangeScalers: []
+  abilityTerrainModule:
+    canTargetSelf: 1
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    baseMaxShift: 9
+    maxShiftScalers: []
+    baseShiftSpeed: 100
+    shiftSpeedScalers: []
+    delayRange: 0.1
+    terrainShiftType: 0
+    realativeToTarget: 1
+--- !u!114 &5103573493953110750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 210e5613da70d6049b7488a7be8e0882, type: 3}
+  abilityName: Lunar Beam
+  abilityDescription: Deals :damage (:basedamage + :damagescalers;) damage in a line
+    :damageticks times.
+  descriptionPreview: Deals 11.25 (5 + 25%  Power) damage in a line 5 times.  Costs
+    20 Mana. Has a cooldown of 2 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 2
+  abilityCost: 20
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 2
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5472844577299283022}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_OmenOfTheMoon,
+          Assembly-CSharp
+        m_MethodName: GainCompassionOnDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  abilityShape: 1
+  abilitySizeModule:
+    baseSize: 2
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 9
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 1
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 
+    baseDamage: 5
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.25
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 5
+    damageTickScalers: []
+    timeBetweenTicks: 0.05
+--- !u!114 &4931126350479874839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2461a44b4a5071548bb5f99796525a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 07613d98f951836478e527727ece4f62, type: 3}
+  abilityName: Moonpool
+  abilityDescription: Heal yourself and allies arround you for :heal (:baseheal +
+    :healscalers;) health.
+  descriptionPreview: Heal yourself and allies arround you for 47.5 (25 + 100%  Compassion,
+    and 10%  Power) health.  Costs 50 Mana. Has a cooldown of 3 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 1
+  abilityCost: 50
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 3
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5472844577299283022}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_OmenOfTheMoon,
+          Assembly-CSharp
+        m_MethodName: GainPowerOnHeal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  abilityShape: 0
+  abilitySizeModule:
+    baseSize: 5
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityHealModule:
+    canTargetSelf: 1
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    baseHeal: 25
+    healScalers:
+    - scalingStat: 18
+      valuePerScalingStat: 1
+    - scalingStat: 0
+      valuePerScalingStat: 0.1
+    baseHealTicks: 0
+    healTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &4947945425408479807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2461a44b4a5071548bb5f99796525a21, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: b842d4f2e597ff74aab307aeacd6050a, type: 3}
+  abilityName: Nights Embrace
+  abilityDescription: Heal all allies in a line for :heal (:baseheal + :healscalers;)
+    health. Grant them a small attack boost for the rest of combat.
+  descriptionPreview: Heal all allies in a line for 40 (20 + 100%  Compassion) health.
+    Grant them a small attack boost for the rest of combat.  Costs 30 Mana. Has a
+    cooldown of 3 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 1
+  abilityCost: 30
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 3
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5472844577299283022}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_OmenOfTheMoon,
+          Assembly-CSharp
+        m_MethodName: GainPowerOnHeal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  abilityShape: 1
+  abilitySizeModule:
+    baseSize: 0.01
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 10
+    rangeScalers: []
+  abilityHealModule:
+    canTargetSelf: 1
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5472844577299283022}
+          m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_OmenOfTheMoon,
+            Assembly-CSharp
+          m_MethodName: EmpowerAlly
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    baseHeal: 20
+    healScalers:
+    - scalingStat: 18
+      valuePerScalingStat: 1
+    baseHealTicks: 1
+    healTickScalers: []
+    timeBetweenTicks: 0
+--- !u!114 &1921351403039179210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 5b0e2c18177332b4496f832494473612, type: 3}
+  abilityName: Scorn of the Moonlight
+  abilityDescription: Deal :damage (:basedamage + :damagescalers;) :damageticks times.
+    Ignores a base :percentarmorpen;% (:basepercentarmorpen;% + :percentarmorpenscalers;)
+    of armor.
+  descriptionPreview: Deal 17.5 (10 + 30%  Power) 5 times. Ignores a base 35% (15%
+    + 100%  Compassion) of armor.  Costs 100 Mana. Has a cooldown of 6 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 0
+  abilityCost: 100
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 6
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5472844577299283022}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_OmenOfTheMoon,
+          Assembly-CSharp
+        m_MethodName: GainCompassionOnDamage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  abilityShape: 0
+  abilitySizeModule:
+    baseSize: 5
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 12
+    rangeScalers: []
+  abilityDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    damageTypes: 
+    baseDamage: 10
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.3
+    basePercentArmorPen: 15
+    percentArmorPenScalers:
+    - scalingStat: 18
+      valuePerScalingStat: 1
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 5
+    damageTickScalers: []
+    timeBetweenTicks: 0.25
+--- !u!114 &5472844577299283022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b211984d793bf247944224469ccdd4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  passiveName: Omen of the Moon
+  description: When casting a damage ability, gain compassion for the rest of combat.
+    When casting a heal ability, gain power for the rest of combat.
+  powerGainOnHeal: 0.05
+  compassionGainOnDamage: 0.015
+  embaraceOfTheNightPwerBuff: 0.1
+--- !u!1 &2552099264517794989
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2311129832545615705}
+  - component: {fileID: 1056353861776544321}
+  - component: {fileID: 2750477155083764045}
+  m_Layer: 6
+  m_Name: OverheadCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2311129832545615705
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552099264517794989}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5718375595748843843}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 2.2}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &1056353861776544321
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552099264517794989}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &2750477155083764045
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2552099264517794989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d55c2264f43f974cb5d3aaeefbb6a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!1 &5093371498386195562
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 491666251549071745}
+  - component: {fileID: 8314162214650533801}
+  - component: {fileID: 8216553775719985840}
+  - component: {fileID: 5368546052593314774}
+  m_Layer: 6
+  m_Name: Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &491666251549071745
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5093371498386195562}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5718375595748843843}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &8314162214650533801
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5093371498386195562}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &8216553775719985840
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5093371498386195562}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 983852dc1719ea443b9c9ef6aab6c993, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &5368546052593314774
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5093371498386195562}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
