@@ -4726,14 +4726,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Solara
       objectReference: {fileID: 0}
-    - target: {fileID: 1466198658511228590, guid: 098f3f3442601f44791527eb24d31147, type: 3}
-      propertyPath: abilityIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: 4a7d01e56d72f0647bac54fe3b1f27f4, type: 3}
-    - target: {fileID: 1480581323855450581, guid: 098f3f3442601f44791527eb24d31147, type: 3}
-      propertyPath: abilityIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: fed3393046498554294bf058c4bfe1a9, type: 3}
     - target: {fileID: 3638726364549520077, guid: 098f3f3442601f44791527eb24d31147, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4774,18 +4766,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5669880336074773349, guid: 098f3f3442601f44791527eb24d31147, type: 3}
-      propertyPath: abilityIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: 90bc3c4de0e2248418246de766a35887, type: 3}
+    - target: {fileID: 4048300363147801541, guid: 098f3f3442601f44791527eb24d31147, type: 3}
+      propertyPath: abilityTerrainModule.delayRange
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4048300363147801541, guid: 098f3f3442601f44791527eb24d31147, type: 3}
+      propertyPath: abilityTerrainModule.baseShiftSpeed
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 8678106415794119304, guid: 098f3f3442601f44791527eb24d31147, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
-    - target: {fileID: 8965369534822528835, guid: 098f3f3442601f44791527eb24d31147, type: 3}
-      propertyPath: abilityIcon
-      value: 
-      objectReference: {fileID: 21300000, guid: bcc57893f38da3f47b8ba33d2de10610, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

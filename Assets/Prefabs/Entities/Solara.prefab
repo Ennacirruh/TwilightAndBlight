@@ -131,14 +131,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c349e14cb4820499697276ce0d8ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.EntityInfoDisplay
-  healthBarPrefab: {fileID: 892272746398520389, guid: b00cdea330ee3174ca1f80a291a96b98, type: 3}
-  manaBarPrefab: {fileID: 892272746398520389, guid: b00cdea330ee3174ca1f80a291a96b98, type: 3}
-  staminaBarPrefab: {fileID: 892272746398520389, guid: 0c5a8ef5a21dbfa4ebb322d2ebad06cf, type: 3}
   healthBarVertOffset: 20
   staminaBarVertOffset: 10
   manaBarVertOffset: 0
-  targetCanvas: {fileID: 2863150685850719605}
-  textObjPrefab: {fileID: 475144812724413662, guid: 908e19433bc6c324aa45ec158a5912dd, type: 3}
 --- !u!114 &1466198658511228590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -151,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 395f6b9556f14704790df6035be6ee3a, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 4a7d01e56d72f0647bac54fe3b1f27f4, type: 3}
   abilityName: Move
   abilityDescription: 'Move up to :totalmovespeed spaces. '
   descriptionPreview: 'Move up to 5 spaces. '
@@ -181,7 +176,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 2b4752bce841cc74bb73820ce5212d34, type: 3}
+  abilityIcon: {fileID: 21300000, guid: fed3393046498554294bf058c4bfe1a9, type: 3}
   abilityName: Stellar Flare
   abilityDescription: 'Damage all entities in a line within :range tiles for :damage;
     (:basedamage + :damagescalers;), ignoring a base :percentarmorpen;% of armor.  '
@@ -242,7 +237,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 62053ed690017d143bd2cfa8e5dc3ff5, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 90bc3c4de0e2248418246de766a35887, type: 3}
   abilityName: Sweeping Corona
   abilityDescription: Damage all entities in a line within :range tiles for :damage;
     (:basedamage + :damagescalers;) :damagetypes damage.
@@ -302,7 +297,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 5e2b00fc2e687454b8c7dcf6cb8226d7, type: 3}
+  abilityIcon: {fileID: 21300000, guid: bcc57893f38da3f47b8ba33d2de10610, type: 3}
   abilityName: Fury Fall
   abilityDescription: Deal :damage (:basedamage + :damagescalers;) :damagetypes damage
     to a single enemy, and generate 1 heat.
@@ -375,7 +370,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d9cd9dd35e486c49b8d0ab29f77bbb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 4e62fa74d1eac074cac268c2997a658c, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 95d7ae0121c3f9443a10e7f6c303c097, type: 3}
   abilityName: Battle Fever
   abilityDescription: 'Gain 1 heat and gain a :shield (:baseshield + :shieldscalers;)
     damage shield for :shieldduration turns. '
@@ -445,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: ba2d3d7d05fd3e046b6d413365e9b11e, type: 3}
+  abilityIcon: {fileID: 21300000, guid: ebc5d7e899981a440b58a6b1df9ededc, type: 3}
   abilityName: Solar Wind
   abilityDescription: Deal damage in a wide arc for :damage (:basedamage + :damagescalers;)
     :damagetypes damage, and mark enemies. When a marked enemy is damaged, detonate
@@ -520,7 +515,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26e56d2a65d0a3240941f1dfb2d5f92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: ba345f2f643d842459447c374943401d, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 739a61a32907c384c9f206f83fdf2141, type: 3}
   abilityName: Trail Blazer
   abilityDescription: Teleport to a tile within :range tiles, and damage entities
     within :destinationsize tiles for :destinationdamage (:destinationbasedamage;
@@ -614,7 +609,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 035e4d44b8a2a544abb5bd036f6a3e34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 8004118ba4145a74e823fedaa37acf3a, type: 3}
+  abilityIcon: {fileID: 21300000, guid: 727ca7e560834e44dbd814bf9b1a7fde, type: 3}
   abilityName: Nova Strike
   abilityDescription: Consume all stacks of heat and deal :damage (:basedamage +
     :damagescalers;) :damagetypes damage in a long line, cutting thorugh terrain.
