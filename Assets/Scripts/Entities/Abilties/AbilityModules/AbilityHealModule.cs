@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TwilightAndBlight.Events;
 using TwilightAndBlight.Map;
 using UnityEngine;
 namespace TwilightAndBlight.Ability.Module
@@ -14,7 +15,7 @@ namespace TwilightAndBlight.Ability.Module
         [SerializeField] protected List<VariableStatScaler> healTickScalers = new List<VariableStatScaler>();
         [SerializeField] protected float timeBetweenTicks;
 
-        public IEnumerator PerformHealBehavior(IEnumerable<MapNode> targets, float range = 0)
+        public IEnumerator PerformHealBehavior(IEnumerable<MapNode> targets, MapNode origin, float range = 0)
         {
             for (int i = 0; i < GetHealTicks(); i++)
             {
@@ -23,10 +24,11 @@ namespace TwilightAndBlight.Ability.Module
                     CombatEntity target = node.GetCombatEntity();
                     if (target != null)
                     {
+                        ApplyCameraShake(origin.transform.position, node.transform.position);
                         float heal = GetHeal();
                         if (respectLineOfSight)
                         {
-                            heal *= GetCoverMultiplier(node, range);
+                            heal *= GetCoverMultiplier(origin, node, range);
                         }
                         prePerTargetBehaviorExpansion?.Invoke(node, heal);
                         float ammountHealed = target.ReplenishEntityHealth(owner.OwningCombatEntity, heal);
@@ -37,6 +39,48 @@ namespace TwilightAndBlight.Ability.Module
 
             }
             moduleBehaviorCoroutine = null;
+        }
+        public void HighlightNodes(IEnumerable<MapNode> nodes, MapNode origin, MapNodeConditional condition, float range, ref HashSet<MapNode> validSet)
+        {
+            foreach (MapNode node in nodes)
+            {
+
+                bool genericHighlight = true;
+                if (RespectLineOfSight)
+                {
+                    if (LineOfSightObstructed(origin, node, AbilityModuleCastHeightOffset, range, LineOfSightForgiveness)) //GetTrueOrigin(targetingOrigin)
+                    {
+                        genericHighlight = false;
+                        MapManager.Instance.HighlightNodes(node, IndicatorType.AltGeneric);
+                    }
+                }
+                if (genericHighlight)
+                {
+                    if (condition.Invoke(node))
+                    {
+                        if (!CanTargetSelf && owner.OwningCombatEntity.GetCurrentMapNode() == node)
+                        {
+                            MapManager.Instance.HighlightNodes(node, IndicatorType.Generic);
+                        }
+                        else
+                        {
+                            if (node.GetCombatEntity().GetCombatTeam() == owner.OwningCombatEntity.GetCombatTeam())
+                            {
+                                MapManager.Instance.HighlightNodes(node, IndicatorType.Valid);
+                            }
+                            else
+                            {
+                                MapManager.Instance.HighlightNodes(node, IndicatorType.Warning);
+                            }
+                            validSet.Add(node);
+                        }
+                    }
+                    else
+                    {
+                        MapManager.Instance.HighlightNodes(node, IndicatorType.Generic);
+                    }
+                }
+            }
         }
         public override void GenerateStringConversionTable(ref Dictionary<string, string> dictionary)
         {

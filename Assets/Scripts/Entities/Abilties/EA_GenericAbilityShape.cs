@@ -11,27 +11,31 @@ namespace TwilightAndBlight.Ability
     {
         [SerializeField] protected DefaultAbilityShapes abilityShape;
         [SerializeField] protected AbilitySizeModule abilitySizeModule = new AbilitySizeModule();
+        [SerializeField] protected AbilitySizeModule abilityMinSizeModule = new AbilitySizeModule();
         [SerializeField] protected AbilityRangeModule abilityRangeModule = new AbilityRangeModule();
+        [SerializeField] protected AbilityRangeModule abilityMinRangeModule = new AbilityRangeModule();
         
         protected override void Awake()
         {
             base.Awake();
             abilitySizeModule.InitializeAbilityModule(this);
-            abilityRangeModule.InitializeAbilityModule(this);
+            abilityRangeModule.InitializeAbilityModule(this, "min");
+            abilityMinSizeModule.InitializeAbilityModule(this);
+            abilityMinRangeModule.InitializeAbilityModule(this, "min");
         }
-        public override bool HasValidTargetInRange()
-        {
-            switch (abilityShape)
-            {
-                case DefaultAbilityShapes.Hexagon:
-                    return ValidTargetInRangeExists(combatEntity.GetCurrentMapNode(), abilityRangeModule.GetRange() + abilitySizeModule.GetSize(), (MapNode node) => { return IsValidTarget(node); });
-                case DefaultAbilityShapes.Line:
-                    return ValidTargetInRangeExists(combatEntity.GetCurrentMapNode(), abilityRangeModule.GetRange(), (MapNode node) => { return IsValidTarget(node); });
-                case DefaultAbilityShapes.Arc:
-                    return ValidTargetInRangeExists(combatEntity.GetCurrentMapNode(), abilityRangeModule.GetRange(), (MapNode node) => { return IsValidTarget(node); });
-            }
-            return false;
-        }
+        //public override bool HasValidTargetInRange()
+        //{
+        //    switch (abilityShape)
+        //    {
+        //        case DefaultAbilityShapes.Hexagon:
+        //            return ValidTargetInRangeExists(combatEntity.GetCurrentMapNode(), abilityRangeModule.GetRange() + abilitySizeModule.GetSize(), (MapNode node) => { return IsValidTarget(node); });
+        //        case DefaultAbilityShapes.Line:
+        //            return ValidTargetInRangeExists(combatEntity.GetCurrentMapNode(), abilityRangeModule.GetRange(), (MapNode node) => { return IsValidTarget(node); });
+        //        case DefaultAbilityShapes.Arc:
+        //            return ValidTargetInRangeExists(combatEntity.GetCurrentMapNode(), abilityRangeModule.GetRange(), (MapNode node) => { return IsValidTarget(node); });
+        //    }
+        //    return false;
+        //}
 
         protected HashSet<MapNode> aquiredTargets = new HashSet<MapNode>();
 
@@ -63,7 +67,8 @@ namespace TwilightAndBlight.Ability
         private HashSet<MapNode> TargetHexagon(MapNode targetingOrigin)
         {
             int radius = Mathf.FloorToInt(abilitySizeModule.GetSize());
-            HashSet<MapNode> newSet = MapManager.Instance.GetNodesWithinRange(targetingOrigin, radius);
+            int minRadius = Mathf.FloorToInt(abilityMinSizeModule.GetSize());
+            HashSet<MapNode> newSet = MapManager.Instance.GetNodesWithinRange(targetingOrigin, radius, minRange: minRadius);
             return newSet;
         }
         private HashSet<MapNode> TargetLine(MapNode targetingOrigin)
@@ -120,7 +125,7 @@ namespace TwilightAndBlight.Ability
             arcRangeMem = Mathf.FloorToInt(abilityRangeModule.GetRange());
             angleForArc = abilitySizeModule.GetSize();
 
-            HashSet<MapNode> newSet = MapManager.Instance.GetNodesWithinRange(combatEntity.GetCurrentMapNode(), arcRangeMem, WithinAngle); 
+            HashSet<MapNode> newSet = MapManager.Instance.GetNodesWithinRange(combatEntity.GetCurrentMapNode(), arcRangeMem, condition: WithinAngle); 
 
             return newSet;
         }
@@ -146,7 +151,7 @@ namespace TwilightAndBlight.Ability
             switch (abilityShape)
             {
                 case DefaultAbilityShapes.Hexagon:
-                    return MapManager.Instance.GetNodesWithinRange(combatEntity.GetCurrentMapNode(), Mathf.FloorToInt(abilityRangeModule.GetRange())).Contains(targetingNode);
+                    return MapManager.Instance.GetNodesWithinRange(combatEntity.GetCurrentMapNode(), Mathf.FloorToInt(abilityRangeModule.GetRange()), minRange: Mathf.FloorToInt(abilityMinRangeModule.GetRange())).Contains(targetingNode);
                 default:
                     return true;
             }
@@ -166,7 +171,8 @@ namespace TwilightAndBlight.Ability
             MapManager.Instance.ResetHighlight();
             MapNode currentNode = combatEntity.GetCurrentMapNode();
             int range = Mathf.FloorToInt(abilityRangeModule.GetRange());
-            HashSet<MapNode> nodesInRange = MapManager.Instance.GetNodesWithinRange(currentNode, range);
+            int minRange = Mathf.FloorToInt(abilityMinRangeModule.GetRange());
+            HashSet<MapNode> nodesInRange = MapManager.Instance.GetNodesWithinRange(currentNode, range, minRange: minRange);
             foreach (MapNode node in nodesInRange)
             {
                 MapManager.Instance.HighlightNodes(node, IndicatorType.AltGeneric);

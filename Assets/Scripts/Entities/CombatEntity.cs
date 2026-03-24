@@ -21,9 +21,9 @@ namespace TwilightAndBlight
         [SerializeField] protected float totalShield;
         [SerializeField] protected float entityHeight;
         /// <summary>
-        /// (float,int) --> (shield, duration)
+        /// (float,float) --> (shield, duration)
         /// </summary>
-        protected List<(float, int)> shields = new List<(float, int)> (); // shield, duration
+        protected List<(float, float)> shields = new List<(float, float)> (); // shield, duration
         private MapNode currentNode;
         protected EntityStats entityStats;
         protected float turnProgress;
@@ -80,12 +80,21 @@ namespace TwilightAndBlight
             ReplenishEntityStamina(this, staminaRegen, false);
             //add corruption
             astra += astraRegen;
+            CheckForExpiredShields();
+            foreach (EntityAbility ability in abilities)
+            {
+                ability.OnTurnStart();
+            }
+        }
+
+        private void CheckForExpiredShields()
+        {
             List<int> expiredShields = new List<int>();
             for (int i = 0; i < shields.Count; i++)
             {
-                int newDuration = shields[i].Item2 - 1;
+                float newDuration = shields[i].Item2 - 1;
                 shields[i] = (shields[i].Item1, newDuration);
-                if(newDuration <= 0)
+                if (newDuration <= 0)
                 {
                     expiredShields.Add(i);
                     totalShield -= shields[i].Item1;
@@ -94,11 +103,9 @@ namespace TwilightAndBlight
             expiredShields.Reverse();
             for (int i = 0; i < expiredShields.Count; i++)
             {
+                GameEvents.OnShieldExpired?.Invoke(new ShieldEntityActionCallback(this, shields[expiredShields[i]].Item1));
+                GameEvents.OnShieldChange?.Invoke(new ShieldResourceChangeCallback(this, -shields[expiredShields[i]].Item1, totalShield));
                 shields.RemoveAt(expiredShields[i]);
-            }
-            foreach (EntityAbility ability in abilities)
-            {
-                ability.OnTurnStart();
             }
         }
         public abstract void SelectAction();
@@ -121,10 +128,14 @@ namespace TwilightAndBlight
         {
             turnProgress = 0;
             health = MaxHealth;
-            abilities.AddRange(GetComponents<EntityAbility>());
+            EntityAbility[] abilityComponents = GetComponents<EntityAbility>();
             passive = GetComponent<Passive>();
-            foreach (EntityAbility ability in abilities)
+            foreach (EntityAbility ability in abilityComponents)
             {
+                if (ability.enabled)
+                {
+                    abilities.Add(ability);
+                }
                 ability.OnCombatStart();
             }
         }
@@ -199,11 +210,46 @@ namespace TwilightAndBlight
         /// <param name="shield"></param>
         /// <param name="duration"></param>
         /// <returns>Returns shield gained</returns>
-        public float AddShield(float shield, float duration)
+        public float AddShield(float shield, float duration, CombatEntity source, bool utilizeReflexBonus = true)
         {
-            shields.Add((shield, Mathf.FloorToInt(duration))); // TODO: Expand to utilize events and random values
-            totalShield += shield;
-            return shield;
+            float recoveryRangeWeight = source != null ? source.Stats.Discipline : 0;
+            float critChance = source != null ? source.Stats.Cunning : 0;
+            float critPower = source != null ? 1.5f + (source.Stats.Intelligence / 100f) : 1.5f;
+            bool crit = false;
+            bool proceed = true;
+            proceed &= GameEvents.OnEntityShieldedOverride?.Invoke(source, this, ref shield, ref duration ,ref recoveryRangeWeight, ref critChance, ref critPower, ref crit) ?? true;
+            if (proceed)
+            {
+                float resourceWeightRoll = (-Mathf.Cos(Mathf.PI * Random.Range(0f, 1f))) + 1f;
+                resourceWeightRoll = GameManager.Instance.ResourceInteractionVarianceRange * (resourceWeightRoll / 2f);
+                resourceWeightRoll += 1f - (GameManager.Instance.ResourceInteractionVarianceRange / 2f);
+                resourceWeightRoll += (recoveryRangeWeight - (GameManager.Instance.ResourceInteractionVarianceRange / 2f)) / 100f;
+                shield = shield * resourceWeightRoll;
+                if (utilizeReflexBonus) critChance += Stats.Reflex;
+                if (critChance > 100f)
+                {
+                    shield *= (1f + ((critChance - 100f) / 200f));
+                }
+                else if (critChance < 0f)
+                {
+                    shield *= (1f + (critChance / 200f));
+                }
+                crit |= Random.Range(0f, 100f) < critChance;
+                if (crit)
+                {
+                    shield *= critPower;
+                }
+
+                if (shield > 0)
+                {
+                    shields.Add((shield, duration)); 
+                    totalShield += shield;
+                    GameEvents.OnEntityShielded?.Invoke(new ShieldEntityInteractionCallback(this, source, shield, duration, crit));
+                    GameEvents.OnShieldChange?.Invoke(new ShieldResourceChangeCallback(this, shield, totalShield));
+                    return shield;
+                }
+            }
+            return 0;
         }
        /// <summary>
        /// 
@@ -309,12 +355,13 @@ namespace TwilightAndBlight
         }
         #endregion
         #region Drain
-        public float DamageShield(float damage)
+        public float DamageShield(float damage, CombatEntity source, bool damageWasCrit)
         {
-            while (shields.Count > 0 && damage > 0)
+            int initialCount = shields.Count;
+            for (int j = 0; j < initialCount; j++)
             {
                 int minDurationIndex = 0;
-                int minDuration = shields[0].Item2;
+                float minDuration = shields[0].Item2;
                 for (int i = 1; i < shields.Count; i++)// get shield with the shortest remaining duration
                 {
                     if (shields[i].Item2 < minDuration)
@@ -327,13 +374,20 @@ namespace TwilightAndBlight
                 float newShieldValue = Mathf.Max(0, initialShieldValue - damage);
                 float difference = initialShieldValue - newShieldValue;
                 totalShield -= difference;
+                damage -= difference;
+                GameEvents.OnShieldChange?.Invoke(new ShieldResourceChangeCallback(this, -difference, totalShield));
                 if (newShieldValue > 0)
                 {
                     shields[minDurationIndex] = (newShieldValue, shields[minDurationIndex].Item2);
                 }
                 else
                 {
+                    GameEvents.OnShieldDestroyed?.Invoke(new ShieldEntityInteractionCallback(this, source, 0, shields[minDurationIndex].Item2, damageWasCrit));
                     shields.RemoveAt(minDurationIndex);
+                }
+                if(damage <= 0)
+                {
+                    break;
                 }
 
             }
@@ -474,14 +528,14 @@ namespace TwilightAndBlight
                 {
                     if (!ignoreShield)
                     {
-                        damage = DamageShield(damage);
+                        damage = DamageShield(damage, source, crit);
                     }
                     if (damage > 0f)
                     {
                         health -= damage;
                         returnValue = damage;
                         //Debug.Log($"Damage: {damage}\nBaseDamage: {attack}\nEfective Armor: {armor}\nResistance Mult: {resistanceMultiplier}\nCrit: {crit}\nCrit Damage{critPower}");
-                        GameEvents.OnEntiyDamaged?.Invoke(new DamageEntityInteractionCallback(attack, damage, this, source, crit));
+                        GameEvents.OnEntityDamaged?.Invoke(new DamageEntityInteractionCallback(attack, damage, this, source, crit));
                         GameEvents.OnHealthChange?.Invoke(new CombatResourceChangeActionCallback(this, -damage));
                         if (health <= 0f)
                         {
@@ -502,7 +556,7 @@ namespace TwilightAndBlight
                 GameEvents.OnEntityKilled?.Invoke(new CombatEntityInteractionCallback(this, source));
                 if (combatTeam != null)
                 {
-                    combatTeam.RemoveCombatant(source);
+                    combatTeam.RemoveCombatant(this);
                 }
                 if (deathCoroutine == null)
                 {

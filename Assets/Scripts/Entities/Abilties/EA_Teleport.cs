@@ -63,9 +63,9 @@ namespace TwilightAndBlight.Ability
             }
         }
 
-        public override bool HasValidTargetInRange()
-        {
-            return ValidTargetInRangeExists(combatEntity.GetCurrentMapNode(), teleportRangeModule.GetRange(), (MapNode node) => { return IsValidTarget(node); });
-        }
+        //public override bool HasValidTargetInRange()
+        //{
+        //    return ValidTargetInRangeExists(combatEntity.GetCurrentMapNode(), teleportRangeModule.GetRange(), (MapNode node) => { return IsValidTarget(node); });
+        //}
     }
 }

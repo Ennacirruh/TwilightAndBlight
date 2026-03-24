@@ -58,9 +58,9 @@ namespace TwilightAndBlight.Ability
         
         protected override IEnumerator AbilityBehavior(MapNode targetingOrigin)
         {
-            originDamageModule.moduleBehaviorCoroutine = StartCoroutine(originDamageModule.PerformDamageBehavior(originTargets, originSizeModule.GetSize() * MapManager.gridDistanceToWorldDistance));
+            originDamageModule.moduleBehaviorCoroutine = StartCoroutine(originDamageModule.PerformDamageBehavior(originTargets,targetingOrigin, originSizeModule.GetSize() * MapManager.gridDistanceToWorldDistance));
             yield return new WaitUntil(() => { return originDamageModule.moduleBehaviorCoroutine == null; });
-            destinationDamageModule.moduleBehaviorCoroutine = StartCoroutine(destinationDamageModule.PerformDamageBehavior(destinationTargets, destinationSizeModule.GetSize() * MapManager.gridDistanceToWorldDistance));
+            destinationDamageModule.moduleBehaviorCoroutine = StartCoroutine(destinationDamageModule.PerformDamageBehavior(destinationTargets, targetingOrigin, destinationSizeModule.GetSize() * MapManager.gridDistanceToWorldDistance));
             yield return new WaitUntil(() => { return destinationDamageModule.moduleBehaviorCoroutine == null; });
             TeleportToNode(targetingOrigin);
             yield return null;
@@ -89,22 +89,22 @@ namespace TwilightAndBlight.Ability
             destinationDamageModule.InitializeAbilityModule(this, "destination");
             destinationSizeModule.InitializeAbilityModule(this, "destination");
             base.OnValidate();
-            if (originTargetFilter == AbilityTarget.EmptyNode || originTargetFilter == AbilityTarget.AnyNode)
-            {
-                originTargetFilter = originTargetMem;
-            }
-            else
-            {
-                originTargetMem = originTargetFilter;
-            }
-            if (destinationTargetFilter == AbilityTarget.EmptyNode || destinationTargetFilter == AbilityTarget.AnyNode)
-            {
-                destinationTargetFilter = destinationTargetMem;
-            }
-            else
-            {
-                destinationTargetMem = destinationTargetFilter;
-            }
+            //if (originTargetFilter == AbilityTarget.EmptyNode || originTargetFilter == AbilityTarget.AnyNode)
+            //{
+            //    originTargetFilter = originTargetMem;
+            //}
+            //else
+            //{
+            //    originTargetMem = originTargetFilter;
+            //}
+            //if (destinationTargetFilter == AbilityTarget.EmptyNode || destinationTargetFilter == AbilityTarget.AnyNode)
+            //{
+            //    destinationTargetFilter = destinationTargetMem;
+            //}
+            //else
+            //{
+            //    destinationTargetMem = destinationTargetFilter;
+            //}
         }
     }
 }

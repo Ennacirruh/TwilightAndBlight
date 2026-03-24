@@ -47,7 +47,7 @@ namespace TwilightAndBlight
         AltGeneric,
         Valid,
         Invalid,
-        Warnign
+        Warning
     }
     public enum DefaultAbilityShapes
     {
@@ -78,5 +78,15 @@ namespace TwilightAndBlight
         PercentCurrent,
         PercentMissing
     }
-
+    public enum CameraShakeMode
+    {
+        CustomDirection,
+        FromCameraToSource,
+        FromCameraToTarget,
+        FromSourceToTarget,
+        PerpendicularToSourceAndTarget,
+        PerpendicularToSourceAndCamera,
+        PerpendicularToTargetAndCamera,
+        RandomDirection
+    }
 }

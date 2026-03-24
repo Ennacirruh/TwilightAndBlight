@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TwilightAndBlight.Events;
+using TwilightAndBlight.Ability.Module;
 
 namespace TwilightAndBlight.Map
 {
@@ -154,8 +155,9 @@ namespace TwilightAndBlight.Map
             {
                 float speed = Mathf.Pow(10f * currentTerrainShiftSpeed, 0.75f) * Mathf.Max(.025f, (Mathf.Abs(transform.position.y - targetTerrainHeight) + 1) / 30f);
                 float newHeight = Mathf.MoveTowards(transform.position.y, targetTerrainHeight, speed * Time.deltaTime);
-                bool falling = newHeight <= transform.position.y;
+                bool falling = newHeight < transform.position.y;
                 transform.position = new Vector3(transform.position.x, newHeight, transform.position.z);
+                CombatManager.Instance.ImpuseSource.GenerateImpulse(GameManager.Instance.TerrainShiftCameraShake.defaultCameraShakeDirection * GameManager.Instance.TerrainShiftCameraShake.cameraShakeForce * speed * Time.deltaTime);
                 AdjustMapVerticalScale();
                 if (IsOccupied() )
                 {
@@ -176,10 +178,10 @@ namespace TwilightAndBlight.Map
         {
             float speed = initialSpeed;
             float fallHeight = -1000;
-            
-            while (groundedEntity.transform.position.y != transform.position.y)
+
+            while (groundedEntity != null && (groundedEntity.transform.position.y != transform.position.y || speed > 0))
             {
-                if(fallHeight == -1000 && speed < 0)
+                if(fallHeight == -1000 && speed <= 0)
                 {
                     fallHeight = groundedEntity.transform.position.y;
                 }
@@ -192,8 +194,11 @@ namespace TwilightAndBlight.Map
                 groundedEntity.transform.position = new Vector3(groundedEntity.transform.position.x, newHeight, groundedEntity.transform.position.z);
                 yield return null;
             }
-            float fallDistance = fallHeight - groundedEntity.transform.position.y;
-            ApplyFallDamage(fallDistance, groundedEntity);
+            if (groundedEntity != null)
+            {
+                float fallDistance = fallHeight - groundedEntity.transform.position.y;
+                ApplyFallDamage(fallDistance, groundedEntity);
+            }
             entityShiftCoroutine = null;
 
 
@@ -240,7 +245,7 @@ namespace TwilightAndBlight.Map
             MapNode nodeMemory = currentNode;
             int targetIndex = 0;
             MapNode endPos = path[path.Count - 1];
-            while (currentNode != endPos)
+            while (currentNode != endPos && targetEntity != null)
             {
                 float maxDelta = speed * Time.deltaTime;
                 Vector3 posMemory = targetEntity.transform.position;
@@ -265,6 +270,10 @@ namespace TwilightAndBlight.Map
                     }
                 }
                 targetEntity.transform.position = newPos;
+                if(targetEntity.Health <= 0)
+                {
+                    break;
+                }
                 yield return null;
             }
             moveInProgress = false;

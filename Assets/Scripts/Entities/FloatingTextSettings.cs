@@ -28,8 +28,6 @@ namespace TwilightAndBlight
         public float AngularAcceleration { get; set; }
         [SerializeField] private Vector2 angularAccelerationRange;
 
-        [SerializeField] private FontStyles styleSettings;
-        public FontStyles StyleSettings { get { return styleSettings; } set { styleSettings = value; } }
 
         public float InitialTextSize { get; set; }
         [SerializeField] private Vector2 initialTextSizeRange;

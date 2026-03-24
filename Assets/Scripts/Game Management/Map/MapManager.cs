@@ -210,7 +210,7 @@ namespace TwilightAndBlight.Map
                 case IndicatorType.Invalid:
                     node.ColorMaterial(invalidIndicator);
                     break;
-                case IndicatorType.Warnign:
+                case IndicatorType.Warning:
                     node.ColorMaterial(warningIndicator);
                     break;
                 case IndicatorType.AltGeneric:
@@ -269,20 +269,25 @@ namespace TwilightAndBlight.Map
         //    int distance = GetDistanceToNode(originNode, targetNode);
         //    return distance <= range;
         //}
-        public HashSet<MapNode> GetNodesWithinRange(MapNode originNode, int range, MapNodeConditional condition = null)
+        public HashSet<MapNode> GetNodesWithinRange(MapNode originNode, int range, int minRange = 1, MapNodeConditional condition = null)
         {
+            minRange = Mathf.Max(1, minRange);
             range++;
             HashSet<MapNode> returnSet = new HashSet<MapNode>();
-            returnSet.Add(originNode);
+            if (minRange == 1)
+            {
+                returnSet.Add(originNode);
+            }
 
             Vector3Int direction = new Vector3Int(0, 0, -1);
             for(int i = 0; i < 6; i++)
             {
                 direction = new Vector3Int(-direction.z, direction.x, direction.y);
-                for(int j = 1; j < range; j++)
+                for(int j = minRange ; j < range; j++)
                 {
-                    Vector3Int rotDirection = new Vector3Int(-direction.z, direction.x, direction.y); 
-                    for (int k = 0; k <= range - j - 1; k++)
+                    Vector3Int rotDirection = new Vector3Int(-direction.y ,- direction.z, direction.x); 
+                    int subRange = j - 1;
+                    for (int k = 0; k <= subRange; k++)
                     {
                         Vector3Int offset = direction * j + (rotDirection * k);
                         MapNode newNode = GetRealativeNode(originNode, offset);
@@ -298,6 +303,43 @@ namespace TwilightAndBlight.Map
                     }
                 }
             
+            }
+
+            return returnSet;
+        }
+        public HashSet<MapNode> GetNodesWithinStar(MapNode originNode, int range, int minRange = 1, MapNodeConditional condition = null)
+        {
+            minRange = Mathf.Max(1, minRange);
+            range++;
+            HashSet<MapNode> returnSet = new HashSet<MapNode>();
+            if (minRange == 1)
+            {
+                returnSet.Add(originNode);
+            }
+
+            Vector3Int direction = new Vector3Int(0, 0, -1);
+            for (int i = 0; i < 6; i++)
+            {
+                direction = new Vector3Int(-direction.z, direction.x, direction.y);
+                for (int j = minRange; j < range; j++)
+                {
+                    Vector3Int rotDirection = new Vector3Int(-direction.y, -direction.z, direction.x);
+                    for (int k = 0; k <= range - j - 1; k++)
+                    {
+                        Vector3Int offset = direction * j + (rotDirection * k);
+                        MapNode newNode = GetRealativeNode(originNode, offset);
+                        if (newNode != null)
+                        {
+                            bool valid = true;
+                            if (condition != null)
+                            {
+                                valid &= condition.Invoke(newNode);
+                            }
+                            if (valid) returnSet.Add(newNode);
+                        }
+                    }
+                }
+
             }
 
             return returnSet;

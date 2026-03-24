@@ -27,45 +27,7 @@ namespace TwilightAndBlight.Ability
             {
                 aquiredTargets.Clear();
                 HashSet<MapNode> nodes = GetTargetingNodes(targetingOrigin);
-                foreach (MapNode node in nodes)
-                {
-
-                    bool genericHighlight = true;
-                    if (abilityHealModule.RespectLineOfSight)
-                    {
-                        if (abilityHealModule.LineOfSightObstructed(GetTrueOrigin(targetingOrigin), node, abilityHealModule.AbilityModuleCastHeightOffset, abilityHealModule.LineOfSightForgiveness))
-                        {
-                            genericHighlight = false;
-                            MapManager.Instance.HighlightNodes(node, IndicatorType.AltGeneric);
-                        }
-                    }
-                    if (genericHighlight)
-                    {
-                        if (IsValidTarget(node))
-                        {
-                            if (!abilityHealModule.CanTargetSelf && combatEntity.GetCurrentMapNode() == node)
-                            {
-                                MapManager.Instance.HighlightNodes(node, IndicatorType.Generic);
-                            }
-                            else
-                            {
-                                if (node.GetCombatEntity().GetCombatTeam() != combatEntity.GetCombatTeam())
-                                {
-                                    MapManager.Instance.HighlightNodes(node, IndicatorType.Warnign);
-                                }
-                                else
-                                {
-                                    MapManager.Instance.HighlightNodes(node, IndicatorType.Valid);
-                                }
-                                aquiredTargets.Add(node);
-                            }
-                        }
-                        else
-                        {
-                            MapManager.Instance.HighlightNodes(node, IndicatorType.Generic);
-                        }
-                    }
-                }
+                abilityHealModule.HighlightNodes(nodes, GetTrueOrigin(targetingOrigin), (node) => { return IsValidTarget(node); }, abilityRangeModule.GetRange(), ref aquiredTargets);
             }
         }
             
@@ -78,7 +40,7 @@ namespace TwilightAndBlight.Ability
         }
         protected override IEnumerator AbilityBehavior(MapNode targetingOrigin)
         {
-            abilityHealModule.moduleBehaviorCoroutine = StartCoroutine(abilityHealModule.PerformHealBehavior(aquiredTargets, abilityRangeModule.GetRange() * MapManager.gridDistanceToWorldDistance));
+            abilityHealModule.moduleBehaviorCoroutine = StartCoroutine(abilityHealModule.PerformHealBehavior(aquiredTargets,targetingOrigin, abilityRangeModule.GetRange() * MapManager.gridDistanceToWorldDistance));
 
             yield return new WaitUntil(() => { return abilityHealModule.moduleBehaviorCoroutine == null; });
 

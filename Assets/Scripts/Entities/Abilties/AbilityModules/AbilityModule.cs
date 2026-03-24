@@ -14,6 +14,8 @@ namespace TwilightAndBlight.Ability.Module
         [SerializeField] protected float abilityModuleCastHeightOffset = 1f;
         [SerializeField] public UnityEvent<MapNode, float> prePerTargetBehaviorExpansion; //target of action, and action value IE damage to be dealt
         [SerializeField] public UnityEvent<MapNode, float> postPerTargetBehaviorExpansion; // same as obove, but IE damage actually dealt
+        [SerializeField] public CameraShakeSettings cameraShakeSettings;
+        
 
         public bool CanTargetSelf { get { return canTargetSelf; } }
         public bool RespectLineOfSight { get { return respectLineOfSight; } set { respectLineOfSight = value; } }
@@ -42,16 +44,16 @@ namespace TwilightAndBlight.Ability.Module
             }
             return result;
         }
-        protected float GetCoverMultiplier(MapNode node, float maxRange)
+        protected float GetCoverMultiplier(MapNode source, MapNode target, float maxRange)
         {
             float multiplier = 1f;
-            if (LineOfSightObstructed(owner.OwningCombatEntity.GetCurrentMapNode(), node, abilityModuleCastHeightOffset, maxRange, 0.2f)) // Partial Cover
+            if (LineOfSightObstructed(source, target, abilityModuleCastHeightOffset, maxRange, 0.2f)) // Partial Cover
             {
                 multiplier = .75f;
-                if (LineOfSightObstructed(owner.OwningCombatEntity.GetCurrentMapNode(), node, abilityModuleCastHeightOffset, maxRange, 0.4f)) // More Partial Cover
+                if (LineOfSightObstructed(source, target, abilityModuleCastHeightOffset, maxRange, 0.4f)) // More Partial Cover
                 {
                     multiplier = .5f;
-                    if (LineOfSightObstructed(owner.OwningCombatEntity.GetCurrentMapNode(), node, abilityModuleCastHeightOffset, maxRange, 0.75f)) // Even More Partial Cover
+                    if (LineOfSightObstructed(source, target, abilityModuleCastHeightOffset, maxRange, 0.75f)) // Even More Partial Cover
                     {
                         multiplier = .25f;
                     }
@@ -59,6 +61,15 @@ namespace TwilightAndBlight.Ability.Module
             }
             return multiplier;
         }
-        
+
+        protected void ApplyCameraShake(Vector3 source, Vector3 target)
+        {
+            CombatManager.Instance.ImpuseSource.GenerateImpulse(GetCameraShakeForce() * cameraShakeSettings.GetCameraShakeDirection(source, target));
+        }
+        private float GetCameraShakeForce()
+        {
+            return GetScaledStat(cameraShakeSettings.cameraShakeForce, cameraShakeSettings.cameraShakeForceScalers);
+        }
+
     }
 }

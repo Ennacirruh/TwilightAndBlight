@@ -1,0 +1,898 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1761360801787368447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7663588664857361852}
+  - component: {fileID: 2094151596391799101}
+  - component: {fileID: 2805403565751875409}
+  - component: {fileID: 1077152758561450408}
+  - component: {fileID: 5044096980563687252}
+  - component: {fileID: 4319256114325673010}
+  - component: {fileID: 8344292875923136467}
+  - component: {fileID: 1215604959439820072}
+  - component: {fileID: 3914867194943873510}
+  - component: {fileID: 3773010535505861345}
+  - component: {fileID: 7734035620620805750}
+  - component: {fileID: 4625712894911883947}
+  - component: {fileID: 3347226431073204586}
+  - component: {fileID: 2106127485220351501}
+  m_Layer: 6
+  m_Name: Terra
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7663588664857361852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -28.87, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 3099226248703259107}
+  - {fileID: 8622547309582165966}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2094151596391799101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73bcf3d88f7e3b04ebb92e8e620a5a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  power:
+    baseValue: 15
+  fortitude:
+    baseValue: 50
+  agility:
+    baseValue: 19
+  constitution:
+    baseValue: 30
+  intelligence:
+    baseValue: 10
+  wisdom:
+    baseValue: 10
+  dexterity:
+    baseValue: 200
+  charisma:
+    baseValue: 10
+  cunning:
+    baseValue: 10
+  discipline:
+    baseValue: 30
+  reflex:
+    baseValue: 20
+  flatArmorPen:
+    baseValue: 0
+  percemtArmorPen:
+    baseValue: 0
+  spirit:
+    baseValue: 15
+  endurance:
+    baseValue: 15
+  vitality:
+    baseValue: 5
+  tenacity:
+    baseValue: 15
+  effervescence:
+    baseValue: 15
+  compassion:
+    baseValue: 10
+  mettle:
+    baseValue: 10
+  transendance:
+    baseValue: 0
+--- !u!114 &2805403565751875409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  entityLevel: 1
+  health: 0
+  mana: 0
+  stamina: 0
+  corruption: 0
+  astra: 0
+  totalShield: 0
+  entityHeight: 2
+--- !u!114 &1077152758561450408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0c349e14cb4820499697276ce0d8ccd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.EntityInfoDisplay
+  statusEffectPreviewOffset: 40
+  maxStatusPreviewPerRow: 5
+  statusEffectPreviewVertMargin: 43
+  statusEffectPreviewWidth: 80
+  healthBarVertOffset: 20
+  staminaBarVertOffset: 10
+  manaBarVertOffset: 0
+--- !u!114 &5044096980563687252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  abilityIcon: {fileID: 21300000, guid: 4a7d01e56d72f0647bac54fe3b1f27f4, type: 3}
+  abilityName: Move
+  abilityDescription: 'Move up to :totalmovespeed spaces. '
+  descriptionPreview: 'Move up to 4 spaces. '
+  endOfAbilityDelay: 0
+  targetFilter: 3
+  abilityCost: 0
+  costResource: 0
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  agilityPerMoveSpeed: 0
+  baseMoveSpeed: 4
+--- !u!114 &4319256114325673010
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.Ability.EA_GenericShiftTerrain
+  abilityIcon: {fileID: 21300000, guid: 3d835437f0b9af14bb17b2b57ad41af7, type: 3}
+  abilityName: Surround Stone
+  abilityDescription: 'Raise a wall of terrain surrounding a point. '
+  descriptionPreview: Raise a wall of terrain surrounding a point.  Costs 15 Mana.
+    Has a cooldown of 3 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 4
+  abilityCost: 15
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 3
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 0
+  abilitySizeModule:
+    baseSize: 5
+    sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 4
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 4
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityTerrainModule:
+    canTargetSelf: 1
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0
+      cameraShakeForceScalers: []
+      cameraShakeMode: 0
+    baseMaxShift: 7
+    maxShiftScalers: []
+    baseShiftSpeed: 26
+    shiftSpeedScalers: []
+    delayRange: 0.5
+    terrainShiftType: 0
+    relativeToTarget: 1
+--- !u!114 &8344292875923136467
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.Ability.EA_GenericShiftTerrain
+  abilityIcon: {fileID: 21300000, guid: ce840f279ced6414986c968de62a71e1, type: 3}
+  abilityName: Mosh Pit
+  abilityDescription: Drop the terrain beneath you.
+  descriptionPreview: Drop the terrain beneath you.  Costs 15 Mana. Has a cooldown
+    of 4 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 4
+  abilityCost: 15
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 4
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 0
+  abilitySizeModule:
+    baseSize: 5
+    sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityTerrainModule:
+    canTargetSelf: 1
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0
+      cameraShakeForceScalers: []
+      cameraShakeMode: 0
+    baseMaxShift: 13
+    maxShiftScalers: []
+    baseShiftSpeed: 25
+    shiftSpeedScalers: []
+    delayRange: 1.5
+    terrainShiftType: 4
+    relativeToTarget: 0
+--- !u!114 &1215604959439820072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26e56d2a65d0a3240941f1dfb2d5f92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.Ability.EA_TeleportAndDamage
+  abilityIcon: {fileID: 21300000, guid: 5d3f70eb8aa7f7d4a86340cff07b47f0, type: 3}
+  abilityName: Earth Walk
+  abilityDescription: Teleport through the earth, and deal :origindamage (:originbasedamage
+    + :origindamagescalers;) around your origional position, and deal :destinationdamage
+    (:destinationbasedamage + :destinationdamagescalers;) around where you arrive.
+  descriptionPreview: Teleport through the earth, and deal 25 (10 + 100%  Power)
+    around your origional position, and deal 20.5 (10 + 70%  Power) around where
+    you arrive.  Costs 20 Mana. Has a cooldown of 1 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 3
+  abilityCost: 20
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 1
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  teleportRangeModule:
+    rid: 7093153143226105930
+  originTargetFilter: 0
+  destinationTargetFilter: 0
+  originSizeModule:
+    baseSize: 2
+    sizeScalers: []
+  originDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0
+      cameraShakeForceScalers: []
+      cameraShakeMode: 0
+    damageTypes: 00000000
+    baseDamage: 10
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 1
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+  destinationSizeModule:
+    baseSize: 2
+    sizeScalers: []
+  destinationDamageModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0
+      cameraShakeForceScalers: []
+      cameraShakeMode: 0
+    damageTypes: 00000000
+    baseDamage: 10
+    damageScalers:
+    - scalingStat: 0
+      valuePerScalingStat: 0.7
+    basePercentArmorPen: 0
+    percentArmorPenScalers: []
+    baseFlatArmorPen: 0
+    flatArmorPenScalers: []
+    baseDamageTicks: 0
+    damageTickScalers: []
+    timeBetweenTicks: 0
+  references:
+    version: 2
+    RefIds:
+    - rid: 7093153143226105930
+      type: {class: AbilityRangeModule, ns: TwilightAndBlight.Ability.Module, asm: Assembly-CSharp}
+      data:
+        baseRange: 6
+        rangeScalers: []
+--- !u!114 &3914867194943873510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.Ability.EA_GenericShiftTerrain
+  abilityIcon: {fileID: 21300000, guid: df7dc4ece2a92164f93e93f8114bdef1, type: 3}
+  abilityName: Wall World
+  abilityDescription: Raise a thin wall in a line.
+  descriptionPreview: Raise a thin wall in a line.  Costs 20 Mana. Has a cooldown
+    of 3 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 4
+  abilityCost: 20
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 3
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 1
+  abilitySizeModule:
+    baseSize: 0.01
+    sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 50
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityTerrainModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0
+      cameraShakeForceScalers: []
+      cameraShakeMode: 0
+    baseMaxShift: 7
+    maxShiftScalers: []
+    baseShiftSpeed: 20
+    shiftSpeedScalers: []
+    delayRange: 1.25
+    terrainShiftType: 0
+    relativeToTarget: 0
+--- !u!114 &3773010535505861345
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.Ability.EA_GenericShiftTerrain
+  abilityIcon: {fileID: 21300000, guid: ea7c840e1d4ccda4bbe2a563397fcbe4, type: 3}
+  abilityName: Encase in Earth
+  abilityDescription: 
+  descriptionPreview: ' Costs 20 Mana. Has a cooldown of 5 turns.'
+  endOfAbilityDelay: 1.5
+  targetFilter: 3
+  abilityCost: 20
+  costResource: 2
+  resourceCostType: 0
+  abilityCooldown: 5
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 0
+  abilitySizeModule:
+    baseSize: 4
+    sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 7
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityTerrainModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0
+      cameraShakeForceScalers: []
+      cameraShakeMode: 0
+    baseMaxShift: 10
+    maxShiftScalers: []
+    baseShiftSpeed: 25
+    shiftSpeedScalers: []
+    delayRange: 0.75
+    terrainShiftType: 0
+    relativeToTarget: 0
+--- !u!114 &7734035620620805750
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.Ability.EA_GenericShiftTerrain
+  abilityIcon: {fileID: 21300000, guid: 129d4f4423044d845a5fa2b445c9367e, type: 3}
+  abilityName: Even Playing Field
+  abilityDescription: Levels the surrounding terrain.
+  descriptionPreview: Levels the surrounding terrain.  Costs 20 Stamina. Has a cooldown
+    of 4 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 4
+  abilityCost: 20
+  costResource: 1
+  resourceCostType: 0
+  abilityCooldown: 4
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 0
+  abilitySizeModule:
+    baseSize: 7
+    sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityTerrainModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0
+      cameraShakeForceScalers: []
+      cameraShakeMode: 0
+    baseMaxShift: 30
+    maxShiftScalers: []
+    baseShiftSpeed: 25
+    shiftSpeedScalers: []
+    delayRange: 1
+    terrainShiftType: 2
+    relativeToTarget: 0
+--- !u!114 &4625712894911883947
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.Ability.EA_GenericShiftTerrain
+  abilityIcon: {fileID: 21300000, guid: eb1e8909e032f5f44902dafcb44aab63, type: 3}
+  abilityName: Earthquake
+  abilityDescription: Release a powerful tremmor in the earth in a wave that launches
+    enemies upward.
+  descriptionPreview: Release a powerful tremmor in the earth in a wave that launches
+    enemies upward.  Costs 50 Stamina. Has a cooldown of 8 turns.
+  endOfAbilityDelay: 1.5
+  targetFilter: 4
+  abilityCost: 50
+  costResource: 1
+  resourceCostType: 0
+  abilityCooldown: 8
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  abilityShape: 2
+  abilitySizeModule:
+    baseSize: 40
+    sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
+  abilityRangeModule:
+    baseRange: 18
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityTerrainModule:
+    canTargetSelf: 0
+    respectLineOfSight: 0
+    lineOfSightForgiveness: 1
+    abilityModuleCastHeightOffset: 1
+    prePerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    postPerTargetBehaviorExpansion:
+      m_PersistentCalls:
+        m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0
+      cameraShakeForceScalers: []
+      cameraShakeMode: 0
+    baseMaxShift: 0.25
+    maxShiftScalers: []
+    baseShiftSpeed: 170
+    shiftSpeedScalers: []
+    delayRange: 1.25
+    terrainShiftType: 0
+    relativeToTarget: 0
+--- !u!114 &3347226431073204586
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb24ecebe474d344a54a8ae74e07093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.Ability.EA_SkipTurn
+  abilityIcon: {fileID: 21300000, guid: be10f469b420f274682d70f461e3d15d, type: 3}
+  abilityName: 
+  abilityDescription: 'Skp Turn
+
+'
+  descriptionPreview: "Skp Turn\n "
+  endOfAbilityDelay: 0
+  targetFilter: 4
+  abilityCost: 0
+  costResource: 0
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &2106127485220351501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1761360801787368447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 076ca6683f2bd494bb3120085e28a444, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.Ability.Passive.Passive_EmptyPassive
+  passiveName: Cloud Earth
+  description: Take signfigantly reduced fall damage.
+--- !u!1 &2155545088364161583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8622547309582165966}
+  - component: {fileID: 5423516426034082273}
+  - component: {fileID: 7772205395168770626}
+  m_Layer: 6
+  m_Name: OverheadCanvas
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8622547309582165966
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155545088364161583}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7663588664857361852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 2.2}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &5423516426034082273
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155545088364161583}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 1
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &7772205395168770626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2155545088364161583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d55c2264f43f974cb5d3aaeefbb6a02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 0}
+--- !u!1 &7183488305707027227
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3099226248703259107}
+  - component: {fileID: 3771210492883000756}
+  - component: {fileID: 6302335949785161475}
+  - component: {fileID: 3671444703587403158}
+  m_Layer: 6
+  m_Name: Visual
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3099226248703259107
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7183488305707027227}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7663588664857361852}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &3771210492883000756
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7183488305707027227}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &6302335949785161475
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7183488305707027227}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_ForceMeshLod: -1
+  m_MeshLodSelectionBias: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 983852dc1719ea443b9c9ef6aab6c993, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_GlobalIlluminationMeshLod: 0
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_MaskInteraction: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!136 &3671444703587403158
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7183488305707027227}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

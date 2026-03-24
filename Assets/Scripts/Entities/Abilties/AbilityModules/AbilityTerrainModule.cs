@@ -2,6 +2,7 @@ using NUnit.Framework.Constraints;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TwilightAndBlight.Events;
 using TwilightAndBlight.Map;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -16,7 +17,7 @@ namespace TwilightAndBlight.Ability.Module
         [SerializeField] protected List<VariableStatScaler> shiftSpeedScalers = new List<VariableStatScaler>();
         [SerializeField] protected float delayRange;
         [SerializeField] protected TerrainShiftType terrainShiftType;
-        [SerializeField] protected bool realativeToTarget;
+        [SerializeField] protected bool relativeToTarget;
         protected int nodesBeingShifted = 0;
         protected MapNode targetingOriginMemory;
         private Dictionary<MapNode, float> initialHeightMemory = new Dictionary<MapNode, float>();
@@ -39,15 +40,56 @@ namespace TwilightAndBlight.Ability.Module
                 Vector3 start = new Vector3(node.transform.position.x, 0, node.transform.position.z);
                 Vector3 end = new Vector3(owner.transform.position.x, 0, owner.transform.position.z);
                 float delayMultiplier = Vector3.Distance(start, end) / maxRange * MapManager.gridSizeToWorldSize;
-                float speed = (delayRange + UnityEngine.Random.Range(0, 0.1f)) * delayMultiplier;
+                float delay = (delayRange + UnityEngine.Random.Range(0, 0.1f)) * delayMultiplier;
                 RecordNodeHeight(node);
                 prePerTargetBehaviorExpansion?.Invoke(node, GetMaxShift());
-                owner.StartCoroutine(ShiftNode(node, speed));
+                owner.StartCoroutine(ShiftNode(node, delay));
             }
             yield return new WaitUntil(() => { return nodesBeingShifted == 0; });
             moduleBehaviorCoroutine = null;
         }
-       
+        public void HighlightNodes(IEnumerable<MapNode> nodes, MapNode origin, MapNodeConditional condition, float range, ref HashSet<MapNode> validSet)
+        {
+            foreach (MapNode node in nodes)
+            {
+
+                bool genericHighlight = true;
+                if (RespectLineOfSight)
+                {
+                    if (LineOfSightObstructed(origin, node, AbilityModuleCastHeightOffset, range, LineOfSightForgiveness)) //GetTrueOrigin(targetingOrigin)
+                    {
+                        genericHighlight = false;
+                        MapManager.Instance.HighlightNodes(node, IndicatorType.AltGeneric);
+                    }
+                }
+                if (genericHighlight)
+                {
+                    if (condition.Invoke(node))
+                    {
+                        if (!CanTargetSelf && owner.OwningCombatEntity.GetCurrentMapNode() == node)
+                        {
+                            MapManager.Instance.HighlightNodes(node, IndicatorType.Generic);
+                        }
+                        else
+                        {
+                            if (node.IsOccupied() && node.GetCombatEntity().GetCombatTeam() == owner.OwningCombatEntity.GetCombatTeam())
+                            {
+                                MapManager.Instance.HighlightNodes(node, IndicatorType.Warning);
+                            }
+                            else
+                            {
+                                MapManager.Instance.HighlightNodes(node, IndicatorType.Valid);
+                            }
+                            validSet.Add(node);
+                        }
+                    }
+                    else
+                    {
+                        MapManager.Instance.HighlightNodes(node, IndicatorType.Generic);
+                    }
+                }
+            }
+        }
         protected virtual float GetMaxShift()
         {
             return GetScaledStat(baseMaxShift, maxShiftScalers, 0) * MapManager.gridSizeToWorldSize;
@@ -85,7 +127,7 @@ namespace TwilightAndBlight.Ability.Module
                     break;
 
                 case TerrainShiftType.Flatten:
-                    if (realativeToTarget)
+                    if (relativeToTarget)
                     {
                         newHeight = targetingOriginMemory.transform.position.y;
                     }
@@ -106,7 +148,7 @@ namespace TwilightAndBlight.Ability.Module
                     break;
 
                 case TerrainShiftType.Bridge:
-                    if (realativeToTarget)
+                    if (relativeToTarget)
                     {
                         newHeight = targetingOriginMemory.transform.position.y;
                     }
@@ -123,7 +165,7 @@ namespace TwilightAndBlight.Ability.Module
                     break;
 
                 case TerrainShiftType.Level:
-                    if (realativeToTarget)
+                    if (relativeToTarget)
                     {
                         newHeight = targetingOriginMemory.transform.position.y;
                     }

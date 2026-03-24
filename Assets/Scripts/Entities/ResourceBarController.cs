@@ -20,7 +20,8 @@ public class ResourceBarController : MonoBehaviour
     {
         xMax = resourceBar.localScale.x;
         yMax = resourceBar.localScale.y;
-        shadowT = 1f;
+        shadowT = 0f;
+        resourceShadowBar.localScale = GetNewScale(shadowT);
     }
 
     public void SetBarProgress(float current, float max)

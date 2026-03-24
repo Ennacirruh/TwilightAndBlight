@@ -16,7 +16,7 @@ namespace TwilightAndBlight.Ability.Module
         [SerializeField] protected List<VariableStatScaler> shieldTickScalers = new List<VariableStatScaler>();
         [SerializeField] protected float timeBetweenTicks;
 
-        public IEnumerator PerformShieldAbility(IEnumerable<MapNode> targets, float range = 0)
+        public IEnumerator PerformShieldAbility(IEnumerable<MapNode> targets,MapNode origin, float range = 0)
         {
             for (int i = 0; i < GetShieldTicks(); i++)
             {
@@ -28,10 +28,11 @@ namespace TwilightAndBlight.Ability.Module
                         float shield = GetShield();
                         if (respectLineOfSight)
                         {
-                            shield *= GetCoverMultiplier(node, range);
+                            shield *= GetCoverMultiplier(origin, node, range);
                         }
+                        ApplyCameraShake(origin.transform.position, node.transform.position);
                         prePerTargetBehaviorExpansion?.Invoke(node, shield);
-                        float shieldAmmount = target.AddShield(shield, GetShieldDuration());
+                        float shieldAmmount = target.AddShield(shield, GetShieldDuration(), owner.OwningCombatEntity);
                         postPerTargetBehaviorExpansion?.Invoke(node, shield);
                     }
                 }

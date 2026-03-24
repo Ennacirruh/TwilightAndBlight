@@ -35,6 +35,7 @@ namespace TwilightAndBlight.Ability
         public CombatEntity OwningCombatEntity{ get { return combatEntity; } }
         protected int castTickets;
         protected int cooldownTimer;
+        private bool subscribed;
         protected virtual void Awake()
         {
             entityStats = GetComponent<EntityStats>();  
@@ -43,11 +44,11 @@ namespace TwilightAndBlight.Ability
 
         protected virtual void OnEnable()
         {
-            
         }
         protected virtual void OnDisable()
         {
             
+
         }
         protected abstract IEnumerator AbilityBehavior(MapNode targetingOrigin);
         public abstract void HighlightAbility(MapNode targetingOrigin);
@@ -65,16 +66,31 @@ namespace TwilightAndBlight.Ability
             StartCoroutine(AbilityBehavior(targetingOrigin));
             
         }
+        public void OnEntityKilled(CombatEntityInteractionCallback callback)
+        {
+            if (callback.target == combatEntity)
+            {
+                EndAbility(null);
+            }
+        }
         public virtual void OnTurnStart()
         {
             cooldownTimer--;
+            if (!subscribed)
+            {
+                subscribed = true;
+                GameEvents.OnEntityKilled += OnEntityKilled;
+            }
         }
+
         public virtual void OnCombatStart()
         {
             cooldownTimer = 0;
         }
         protected void EndAbility(MapNode targetingOrigin)
         {
+            GameEvents.OnEntityKilled -= OnEntityKilled;
+            subscribed = false;
             postBehaviorExpansion?.Invoke();
             StartCoroutine(EndOfAbilityDelay(targetingOrigin));
 
@@ -82,7 +98,11 @@ namespace TwilightAndBlight.Ability
         }
         private IEnumerator EndOfAbilityDelay(MapNode targetingOrigin)
         {
-            yield return new WaitForSeconds(endOfAbilityDelay);
+            if (combatEntity.Health > 0)
+            {
+                yield return new WaitForSeconds(endOfAbilityDelay);
+            }
+
             if (combatEntity.IsPerformingFreeAction())
             {
                 combatEntity.FreeActionComplete();
@@ -123,7 +143,7 @@ namespace TwilightAndBlight.Ability
                     break;
             }
         }
-        public abstract bool HasValidTargetInRange();
+        //public abstract bool HasValidTargetInRange();
         public virtual bool CanAffordAbility()
         {
             if(cooldownTimer > 0) return false;
@@ -353,5 +373,6 @@ namespace TwilightAndBlight.Ability
         {
             return GetAbilityDescription();
         }
+    
     }
 }

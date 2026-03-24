@@ -5,10 +5,14 @@ using TwilightAndBlight.Events;
 using Unity.Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
+using TwilightAndBlight.Map.Modifier;
 namespace TwilightAndBlight.Ability.Passive
 {
     public class Passive_InnerFire : Passive
     {
+        [SerializeField] private Sprite heatIcon;
+        [SerializeField] private Sprite powerIcon;
+        [SerializeField] private Sprite markIcon;
         [SerializeField] private int heat;
         [SerializeField] private float percentCurrentHealthConsumption;
         [SerializeField] private int damageRange;
@@ -17,22 +21,33 @@ namespace TwilightAndBlight.Ability.Passive
         [SerializeField] private float novaStrikeBonusPerHeat;
         [SerializeField] private int markCharges;
         [SerializeField] private float markDamageBonus;
+        [SerializeField] private GameObject damageZoneVisualPrefab;
+        [SerializeField] private float terrainDamagePerStack;
+        [SerializeField] private float terrainDamageDecayPerTurn;
         private CombatEntity combatEntity;
         private float powerGainedMemory;
         private float novaStrikeBonus;
+        private StatusEffectPreview heatPreview;
+        private StatusEffectPreview powerPreview;
+        private EntityInfoDisplay infoDisplay;
+        private Dictionary<MapNode, TerrainModifier_DamageZone> damageZones = new Dictionary<MapNode, TerrainModifier_DamageZone>();
         private void Awake()
         {
             combatEntity = GetComponent<CombatEntity>();    
+            infoDisplay = GetComponent<EntityInfoDisplay>();
         }
         private void OnEnable()
         {
             GameEvents.OnTurnStart += InnerFire;
-            GameEvents.OnTurnEnd += ReleaseBonus;
+            GameEvents.OnEntityDamaged += OnDamageTaken;
+            GameEvents.OnShieldChange += OnDamageTaken;
         }
         private void OnDisable()
         {
             GameEvents.OnTurnStart -= InnerFire;
-            GameEvents.OnTurnEnd -= ReleaseBonus;
+            GameEvents.OnEntityDamaged -= OnDamageTaken;
+            GameEvents.OnShieldChange -= OnDamageTaken;
+
 
         }
         private void InnerFire(CombatEntityActionCallback callback)
@@ -41,14 +56,47 @@ namespace TwilightAndBlight.Ability.Passive
             {
                 float consumption = combatEntity.GetHealthCost(percentCurrentHealthConsumption * heat, ResourceCostType.PercentCurrent);
                 combatEntity.DrainEntityHealth(combatEntity, consumption, true);
-                powerGainedMemory = consumption * powerPerHealthConsumed;
-                combatEntity.Stats.GetStat(StatType.Power).ModifyBaseValue(powerGainedMemory);
+                List<MapNode> nodesToRecycle = new List<MapNode>();
+                foreach(MapNode node in damageZones.Keys)
+                {
+                    TerrainModifier_DamageZone damageZone = damageZones[node];
+                    damageZone.TerrainDamage -= terrainDamageDecayPerTurn;
+                    if (damageZone.TerrainDamage <= 0)
+                    {
+                        Destroy(damageZone);
+                        nodesToRecycle.Add(node);
+                    }
+                }
+                foreach(MapNode node in nodesToRecycle)
+                {
+                    damageZones.Remove(node);
+                }
+            }
+        }
+        private void OnDamageTaken(DamageEntityInteractionCallback callback)
+        {
+            if (callback.target == combatEntity)
+            {
                 HashSet<MapNode> nodes = MapManager.Instance.GetNodesWithinRange(combatEntity.GetCurrentMapNode(), damageRange);
                 foreach (MapNode node in nodes)
                 {
-                    if (node.IsOccupied() && node.GetCombatEntity() != combatEntity)
+                    if (node.IsOccupied() && node.GetCombatEntity().GetCombatTeam() != combatEntity.GetCombatTeam())
                     {
-                        node.GetCombatEntity().DamageEntity(combatEntity, consumption * damagePerHealthConsumed, DamageType.Fire);
+                        node.GetCombatEntity().DamageEntity(combatEntity, callback.preMitigationDamage * damagePerHealthConsumed, DamageType.Fire);
+                    }
+                }
+            }
+        }
+        private void OnDamageTaken(ShieldResourceChangeCallback callback)
+        {
+            if (callback.entity == combatEntity && callback.shieldValueChange < 0)
+            {
+                HashSet<MapNode> nodes = MapManager.Instance.GetNodesWithinRange(combatEntity.GetCurrentMapNode(), damageRange);
+                foreach (MapNode node in nodes)
+                {
+                    if (node.IsOccupied() && node.GetCombatEntity().GetCombatTeam() != combatEntity.GetCombatTeam())
+                    {
+                        node.GetCombatEntity().DamageEntity(combatEntity, Mathf.Abs(callback.shieldValueChange) * damagePerHealthConsumed, DamageType.Fire);
                     }
                 }
             }
@@ -56,16 +104,27 @@ namespace TwilightAndBlight.Ability.Passive
         public void AddStackOfHeat()
         {
             heat ++;
+            if(heatPreview == null)
+            {
+                heatPreview = infoDisplay.AddStatusEffectVisual(heatIcon, heat);
+            }
+            else
+            {
+                heatPreview.StackCounter.text = heat.ToString();
+            }
         }
         public void NovaStrikeStart()
         {
             novaStrikeBonus = 1f + (novaStrikeBonusPerHeat * heat);
-            heat = 0;
+            
             GameEvents.OnEntityDamagedOverride += DamageOrverride;
         }
         public void NovaStrikeEnd()
         {
             GameEvents.OnEntityDamagedOverride -= DamageOrverride;
+            heat = 0;
+            infoDisplay.RemoveStatusEffectVisual(heatPreview);
+            heatPreview = null;
         }
         public bool DamageOrverride(CombatEntity source, CombatEntity target, ref float attack, ref HashSet<DamageType> damageTypes, ref float percentPenetration, ref float flatPenetration, ref float damageRangeWeight, ref float critChance, ref float critDamage, ref bool crit)
         {
@@ -78,23 +137,34 @@ namespace TwilightAndBlight.Ability.Passive
         public void MarkEnemies(MapNode node, float idk)
         {
             CombatEntity combatEntity = node.GetCombatEntity();
-            if(node != null)
+            if(combatEntity != null)
             {
                 Affliction_DamageMark mark = combatEntity.AddComponent<Affliction_DamageMark>();
-                mark.InitializeDamageMark(markCharges, 0, markDamageBonus);
+                mark.InitializeDamageMark(markIcon ,markCharges, 0, markDamageBonus);
             }
         }
-        private void ReleaseBonus(CombatEntityActionCallback callback)
+        public void ApplyTerrainModifier(MapNode node, float idk)
         {
-            if (callback.entity == combatEntity)
+            if (!damageZones.ContainsKey(node))
             {
-                combatEntity.Stats.GetStat(StatType.Power).ModifyBaseValue(-powerGainedMemory);
+                damageZones.Add(node, node.AddComponent<TerrainModifier_DamageZone>());
+                damageZones[node].Initialize(damageZoneVisualPrefab);
+            }
+            //if (damageZones[node] == null)
+            //{
+            //    damageZones[node] = node.AddComponent<TerrainModifier_DamageZone>();
+            //    damageZones[node].Initialize(damageZoneVisualPrefab);
+            //}
+            float damageIncrease = heat * terrainDamagePerStack;
+            damageZones[node].TerrainDamage += damageIncrease;
+        }
+        private void OnDestroy()
+        {
+            foreach(TerrainModifier_DamageZone damageZone in damageZones.Values)
+            {
+                Destroy(damageZone);
             }
         }
 
-        public override void PerformAdditionalBehavior(float value)// not needed
-        {
-            heat += Mathf.FloorToInt(value);
-        }
     }
 }

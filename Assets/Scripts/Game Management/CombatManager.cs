@@ -6,7 +6,9 @@ using TwilightAndBlight.Map;
 using TwilightAndBlight.Events;
 using Unity.VisualScripting;
 using UnityEngine;
+using Unity.Cinemachine;
 namespace TwilightAndBlight {
+    [RequireComponent(typeof(CinemachineImpulseSource))]
     public class CombatManager : MonoBehaviour
     {
         private static CombatManager instance;
@@ -17,12 +19,15 @@ namespace TwilightAndBlight {
         private CombatEntity entityTakingTurn;
         public CombatTeam cursorTarget;
         [SerializeField] private bool startCombat;
+        private CinemachineImpulseSource impulseSource;
+        public CinemachineImpulseSource ImpuseSource { get { return impulseSource; } }  
         private bool combatRunning;
         private void Awake()
         {
             if (instance == null)
             {
                 instance = this;
+                impulseSource = gameObject.GetComponent<CinemachineImpulseSource>();
             }
             else
             {
@@ -107,7 +112,8 @@ namespace TwilightAndBlight {
         public void EndTurn()
         {
             GameEvents.OnTurnEnd?.Invoke(new CombatEntityActionCallback(entityTakingTurn));
-            CheckWinConditions();
+            ProgressToNextTurn();
+           // CheckWinConditions();
         }
         public void SelectAction()
         {
@@ -161,7 +167,8 @@ namespace TwilightAndBlight {
             if (combatRunning && callback.entity == entityTakingTurn)
             {
                 MapManager.Instance.ResetHighlight();
-                ProgressToNextTurn();
+                //ProgressToNextTurn();
+                EndTurn();
             }
         }
         public void AddTeam(CombatTeam team, bool neutralTream = false)

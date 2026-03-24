@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TwilightAndBlight.Map;
 using UnityEngine;
 using TwilightAndBlight.Events;
+using System.Linq;
 namespace TwilightAndBlight.Ability.Module
 {
     [Serializable]
@@ -45,53 +46,72 @@ namespace TwilightAndBlight.Ability.Module
             AddElementToLookupTable(ref dictionary, "damageticks", GetDamageTicks().ToString());
         }
 
-        public IEnumerator PerformDamageBehavior(IEnumerable<MapNode> targets, float range = 0)
+        public IEnumerator PerformDamageBehavior(IEnumerable<MapNode> targets, MapNode origin, float range = 0)
         {
-            for (int i = 0; i < GetDamageTicks(); i++)
+            float damage = GetDamage();
+            int ticks = GetDamageTicks();
+            Dictionary<MapNode, float> damageCounters = new Dictionary<MapNode, float>();
+
+            foreach (MapNode node in targets)
+            {
+                prePerTargetBehaviorExpansion?.Invoke(node, damage * ticks);
+                if (!damageCounters.ContainsKey(node))
+                {
+                    damageCounters.Add(node, 0);
+                }
+            }
+            for (int i = 0; i < ticks; i++)
             {
                 foreach (MapNode node in targets)
                 {
-                    float damage = GetDamage();
                     if (respectLineOfSight)
                     {
-                        damage *= GetCoverMultiplier(node, range);
+                        damage *= GetCoverMultiplier(origin, node, range);
                     }
                     CombatEntity target = node.GetCombatEntity();
                     if (target != null)
                     {
-
-                        DamageTarget(target, node, damage);
+                        damageCounters[node] += DamageTarget(target, node, origin, damage);
                     }
                 }
                 yield return new WaitForSeconds(timeBetweenTicks);
             }
+            foreach(MapNode node in targets)
+            {
+                postPerTargetBehaviorExpansion?.Invoke(node, damageCounters[node]);
+            }
             moduleBehaviorCoroutine = null;
         }
         
-        public IEnumerator PerformDamageBehavior(MapNode targetNode, float range)
+        public IEnumerator PerformDamageBehavior(MapNode targetNode, MapNode origin, float range)
         {
             float damage = GetDamage();
             if (respectLineOfSight)
             {
-                damage *= GetCoverMultiplier(targetNode, range);
+                damage *= GetCoverMultiplier(origin, targetNode, range);
             }
-
+            int ticks = GetDamageTicks();
+            prePerTargetBehaviorExpansion?.Invoke(targetNode, damage * ticks);
+            float damageCounter = 0;
             CombatEntity target = targetNode.GetCombatEntity();
             if (target != null)
             {
-                for (int i = 0; i < GetDamageTicks(); i++)
+                for (int i = 0; i < ticks; i++)
                 {
-                    DamageTarget(target, targetNode, damage);
+                    
+                    damageCounter += DamageTarget(target, targetNode, origin, damage);
                     yield return new WaitForSeconds(timeBetweenTicks);
                 }
             }
+            postPerTargetBehaviorExpansion?.Invoke(targetNode, damageCounter);
+
             moduleBehaviorCoroutine = null;
         }
-        private void DamageTarget(CombatEntity target, MapNode targetNode, float damage)
+        private float DamageTarget(CombatEntity target, MapNode targetNode, MapNode origin, float damage)
         {
-            prePerTargetBehaviorExpansion?.Invoke(targetNode, damage);
+            ApplyCameraShake(origin.transform.position, targetNode.transform.position);
             float damageTaken = target.DamageEntity(owner.OwningCombatEntity, damage, damageTypeSet, GetPercentArmorPen() / 100f, GetFlatArmorPen());
-            postPerTargetBehaviorExpansion?.Invoke(targetNode, damageTaken);
+            return damageTaken;
         }
         public void HighlightNodes(IEnumerable<MapNode> nodes, MapNode origin, MapNodeConditional condition, float range, ref HashSet<MapNode> validSet)
         {
@@ -117,9 +137,9 @@ namespace TwilightAndBlight.Ability.Module
                         }
                         else
                         {
-                            if (node.GetCombatEntity().GetCombatTeam() == owner.OwningCombatEntity.GetCombatTeam())
+                            if (node.IsOccupied() && node.GetCombatEntity().GetCombatTeam() == owner.OwningCombatEntity.GetCombatTeam())
                             {
-                                MapManager.Instance.HighlightNodes(node, IndicatorType.Warnign);
+                                MapManager.Instance.HighlightNodes(node, IndicatorType.Warning);
                             }
                             else
                             {

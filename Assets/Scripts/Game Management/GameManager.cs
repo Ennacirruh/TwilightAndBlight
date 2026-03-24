@@ -1,5 +1,3 @@
-using TwilightAndBlight.Collections;
-using UnityEditor.AdaptivePerformance.Editor;
 using UnityEngine;
 namespace TwilightAndBlight
 {
@@ -20,13 +18,12 @@ namespace TwilightAndBlight
         [SerializeField] private int maxAstra = 1;
         [SerializeField] private FloatingTextSettings floatingTextSettings;
         [SerializeField] private Gradient damageColorOverTime;
-        [SerializeField] private Gradient damageCritColorOverTime;
         [SerializeField] private Gradient healColorOverTime;
-        [SerializeField] private Gradient healCritColorOverTime;
         [SerializeField] private Gradient recoverStaminaColorOverTime;
-        [SerializeField] private Gradient recoverStaminaCritColorOverTime;
         [SerializeField] private Gradient recoverManaColorOverTime;
-        [SerializeField] private Gradient recoverManaCritColorOverTime;
+        [SerializeField] private AnimationCurve critOverTime;
+
+        [SerializeField] private CameraShakeSettings terrainShiftCameraShake;
         public float TurnThreshold { get { return turnThreshold; } }
         public float ResourceInteractionVarianceRange { get { return resourceInteractionVarianceRange; } }
         public float FallDamageThreshold { get { return fallDamageThreshold; } }
@@ -40,13 +37,11 @@ namespace TwilightAndBlight
         public float MaxAstra { get { return maxAstra; } }
         public FloatingTextSettings FloatingTextSettings { get { return floatingTextSettings; } }
         public Gradient DamageColorOverTime {  get { return damageColorOverTime; } }
-        public Gradient DamageCritColorOverTime {  get { return damageCritColorOverTime; } }
         public Gradient HealColorOverTime {  get { return healColorOverTime; } }
-        public Gradient HealCritColorOverTime {  get { return healCritColorOverTime; } }
         public Gradient RecoverStaminaColorOverTime { get { return recoverStaminaColorOverTime; } }
-        public Gradient RecoverStaminaCritColorOverTime { get { return recoverStaminaCritColorOverTime; } }
         public Gradient RecoverManaColorOverTime { get { return recoverManaColorOverTime; } }
-        public Gradient RecoverManaCritColorOverTime { get { return recoverManaCritColorOverTime; } }
+        public AnimationCurve CritOverTime { get { return critOverTime; } }
+        public CameraShakeSettings TerrainShiftCameraShake { get { return terrainShiftCameraShake; } }
 
         public static GameManager Instance { get { return instance; } }
         [SerializeField] private Canvas mainCanvas;

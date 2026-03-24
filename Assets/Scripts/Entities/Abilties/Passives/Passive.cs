@@ -3,9 +3,9 @@ namespace TwilightAndBlight.Ability.Passive
 {
     [RequireComponent(typeof(CombatEntity))]
 
-    public abstract class Passive : AbilityBehaviorExpansion, IDescriptable
+    public abstract class Passive : MonoBehaviour, IDescriptable
     {
-        [SerializeField] [TextArea] protected string passiveName;
+        [SerializeField] protected string passiveName;
         [SerializeField] [TextArea] protected string description;
 
 

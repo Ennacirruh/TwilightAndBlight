@@ -20,6 +20,7 @@ GameObject:
   - component: {fileID: 4931126350479874839}
   - component: {fileID: 4947945425408479807}
   - component: {fileID: 1921351403039179210}
+  - component: {fileID: 3020046204795471268}
   - component: {fileID: 5472844577299283022}
   m_Layer: 6
   m_Name: Lunara
@@ -66,7 +67,7 @@ MonoBehaviour:
   constitution:
     baseValue: 10
   intelligence:
-    baseValue: 25
+    baseValue: 40
   wisdom:
     baseValue: 10
   dexterity:
@@ -76,19 +77,19 @@ MonoBehaviour:
   cunning:
     baseValue: 25
   discipline:
-    baseValue: 25
+    baseValue: 10
   reflex:
-    baseValue: 25
+    baseValue: 15
   flatArmorPen:
     baseValue: 0
   percemtArmorPen:
-    baseValue: 10
+    baseValue: 0
   spirit:
     baseValue: 30
   endurance:
     baseValue: 15
   vitality:
-    baseValue: 10
+    baseValue: 15
   tenacity:
     baseValue: 5
   effervescence:
@@ -131,6 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c349e14cb4820499697276ce0d8ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.EntityInfoDisplay
+  statusEffectPreviewOffset: 40
+  maxStatusPreviewPerRow: 5
+  statusEffectPreviewVertMargin: 43
+  statusEffectPreviewWidth: 80
   healthBarVertOffset: 20
   staminaBarVertOffset: 10
   manaBarVertOffset: 0
@@ -211,8 +216,14 @@ MonoBehaviour:
   abilitySizeModule:
     baseSize: 160
     sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
   abilityRangeModule:
     baseRange: 3
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
     rangeScalers: []
   abilityDamageModule:
     canTargetSelf: 0
@@ -225,6 +236,13 @@ MonoBehaviour:
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
         m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0.075
+      cameraShakeForceScalers:
+      - scalingStat: 0
+        valuePerScalingStat: 0.002
+      cameraShakeMode: 4
     damageTypes: 00000000
     baseDamage: 15
     damageScalers:
@@ -284,8 +302,14 @@ MonoBehaviour:
   abilitySizeModule:
     baseSize: 1
     sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
   abilityRangeModule:
     baseRange: 7
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
     rangeScalers: []
   abilityDamageModule:
     canTargetSelf: 0
@@ -298,6 +322,13 @@ MonoBehaviour:
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
         m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: -1, z: 0}
+      cameraShakeForce: 0.08
+      cameraShakeForceScalers:
+      - scalingStat: 0
+        valuePerScalingStat: 0.006
+      cameraShakeMode: 0
     damageTypes: 
     baseDamage: 20
     damageScalers:
@@ -324,8 +355,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityIcon: {fileID: 21300000, guid: c1f67563cd8ff284899b13c81be9686f, type: 3}
   abilityName: Monolith
-  abilityDescription: Rais a pillar of terrain.
-  descriptionPreview: Rais a pillar of terrain.  Costs 20 Mana. Has a cooldown of
+  abilityDescription: Raise a pillar of terrain.
+  descriptionPreview: Raise a pillar of terrain.  Costs 20 Mana. Has a cooldown of
     3 turns.
   endOfAbilityDelay: 1.5
   targetFilter: 4
@@ -343,8 +374,14 @@ MonoBehaviour:
   abilitySizeModule:
     baseSize: 2
     sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
   abilityRangeModule:
     baseRange: 7
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
     rangeScalers: []
   abilityTerrainModule:
     canTargetSelf: 1
@@ -357,13 +394,18 @@ MonoBehaviour:
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
         m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0
+      cameraShakeForceScalers: []
+      cameraShakeMode: 0
     baseMaxShift: 9
     maxShiftScalers: []
-    baseShiftSpeed: 100
+    baseShiftSpeed: 24
     shiftSpeedScalers: []
     delayRange: 0.1
     terrainShiftType: 0
-    realativeToTarget: 1
+    relativeToTarget: 0
 --- !u!114 &5103573493953110750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,8 +453,14 @@ MonoBehaviour:
   abilitySizeModule:
     baseSize: 2
     sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
   abilityRangeModule:
     baseRange: 9
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
     rangeScalers: []
   abilityDamageModule:
     canTargetSelf: 0
@@ -425,6 +473,13 @@ MonoBehaviour:
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
         m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0.01
+      cameraShakeForceScalers:
+      - scalingStat: 0
+        valuePerScalingStat: 0.001
+      cameraShakeMode: 3
     damageTypes: 
     baseDamage: 5
     damageScalers:
@@ -484,7 +539,13 @@ MonoBehaviour:
   abilitySizeModule:
     baseSize: 5
     sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
   abilityRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityMinRangeModule:
     baseRange: 0
     rangeScalers: []
   abilityHealModule:
@@ -498,6 +559,11 @@ MonoBehaviour:
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
         m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0.075
+      cameraShakeForceScalers: []
+      cameraShakeMode: 7
     baseHeal: 25
     healScalers:
     - scalingStat: 18
@@ -555,8 +621,14 @@ MonoBehaviour:
   abilitySizeModule:
     baseSize: 0.01
     sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
   abilityRangeModule:
     baseRange: 10
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
     rangeScalers: []
   abilityHealModule:
     canTargetSelf: 1
@@ -582,6 +654,13 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0.075
+      cameraShakeForceScalers:
+      - scalingStat: 18
+        valuePerScalingStat: 0.002
+      cameraShakeMode: 3
     baseHeal: 20
     healScalers:
     - scalingStat: 18
@@ -637,8 +716,14 @@ MonoBehaviour:
   abilitySizeModule:
     baseSize: 5
     sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
   abilityRangeModule:
     baseRange: 12
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
     rangeScalers: []
   abilityDamageModule:
     canTargetSelf: 0
@@ -651,6 +736,13 @@ MonoBehaviour:
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
         m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: -1, z: 0}
+      cameraShakeForce: 0.04
+      cameraShakeForceScalers:
+      - scalingStat: 0
+        valuePerScalingStat: 0.0025
+      cameraShakeMode: 0
     damageTypes: 
     baseDamage: 10
     damageScalers:
@@ -665,6 +757,36 @@ MonoBehaviour:
     baseDamageTicks: 5
     damageTickScalers: []
     timeBetweenTicks: 0.25
+--- !u!114 &3020046204795471268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 405080354219792304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb24ecebe474d344a54a8ae74e07093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.Ability.EA_SkipTurn
+  abilityIcon: {fileID: 21300000, guid: be10f469b420f274682d70f461e3d15d, type: 3}
+  abilityName: 
+  abilityDescription: 'Skp Turn
+
+'
+  descriptionPreview: "Skp Turn\n "
+  endOfAbilityDelay: 0
+  targetFilter: 4
+  abilityCost: 0
+  costResource: 0
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &5472844577299283022
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -680,6 +802,9 @@ MonoBehaviour:
   passiveName: Omen of the Moon
   description: When casting a damage ability, gain compassion for the rest of combat.
     When casting a heal ability, gain power for the rest of combat.
+  powerIcon: {fileID: 21300000, guid: ae1f6a23fec1d25448cbedad2d88e59b, type: 3}
+  compassionIcon: {fileID: 21300000, guid: 991ba6ba457fc7a4384ab59b8e1e70aa, type: 3}
+  nightsEmbraceIcon: {fileID: 21300000, guid: c227117215d64004ebb52ff7fb5c7f3d, type: 3}
   powerGainOnHeal: 0.05
   compassionGainOnDamage: 0.015
   embaraceOfTheNightPwerBuff: 0.1

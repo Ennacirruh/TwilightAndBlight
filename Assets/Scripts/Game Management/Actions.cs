@@ -5,6 +5,7 @@ namespace TwilightAndBlight.Events
 {
     public delegate void GenericAction();
     public delegate float GenericFloatAction();
+
     public delegate void DamageEntityInteraction(DamageEntityInteractionCallback callback);
     public struct DamageEntityInteractionCallback
     {
@@ -22,7 +23,9 @@ namespace TwilightAndBlight.Events
             this.crit = crit;
         }  
     }
+
     public delegate bool DamageEntityOverride(CombatEntity source, CombatEntity target, ref float attack, ref HashSet<DamageType> damageTypes, ref float percentPenetration,ref float flatPenetration, ref float damageRangeWeight, ref float critChance, ref float critDamage, ref bool crit);   
+    
     public delegate void ReplenishEntityInteraction(ReplenishEntityInteractionCallback callback);
     public struct ReplenishEntityInteractionCallback
     {
@@ -40,7 +43,9 @@ namespace TwilightAndBlight.Events
             this.crit = crit;
         }
     }
+
     public delegate bool ReplenishEntityOverride(CombatEntity source, CombatEntity target, ref float recovery, ref float recoveryRangeWeight, ref float critChance, ref float critPower, ref bool crit);
+   
     public delegate void DrainEntityResourceInteraction(DrainEntityResourceInteractionCallback callback);
     public struct DrainEntityResourceInteractionCallback
     {
@@ -54,7 +59,56 @@ namespace TwilightAndBlight.Events
             this.source = source;
         }
     }
+
     public delegate bool DrainEntityResourceOverride(CombatEntity source, CombatEntity target, ref float resourceDrain);
+
+    public delegate void ShieldEntityInteraction(ShieldEntityInteractionCallback callback);
+    public struct ShieldEntityInteractionCallback
+    {
+        public float shieldValue;
+        public float shieldDuration;
+        public CombatEntity target;
+        public CombatEntity source;
+        public bool crit;
+        public ShieldEntityInteractionCallback(CombatEntity target, CombatEntity source, float shieldValue, float shieldDuration, bool crit)
+        {
+            this.target = target;
+            this.source = source;
+            this.shieldValue = shieldValue;
+            this.shieldDuration = shieldDuration;
+            this.crit = crit;
+        }
+    }
+
+    public delegate void ShieldEntityAction(ShieldEntityActionCallback callback);
+    public struct ShieldEntityActionCallback
+    {
+        public float shieldValue;
+        public CombatEntity entity;
+        public ShieldEntityActionCallback(CombatEntity entity, float shieldValue)
+        {
+            this.entity = entity;
+            this.shieldValue = shieldValue;
+        }
+    }
+
+    public delegate void ShieldResourceChange(ShieldResourceChangeCallback callback);
+    public struct ShieldResourceChangeCallback
+    {
+        public float shieldValueChange;
+        public float totalShield;
+        public CombatEntity entity;
+        public ShieldResourceChangeCallback(CombatEntity entity, float shieldValueChange, float totalShield)
+        {
+            this.shieldValueChange = shieldValueChange;
+            this.totalShield = totalShield;
+            this.entity = entity;
+        }
+    }
+
+         
+    public delegate bool ShieldEntityOverride(CombatEntity source, CombatEntity target, ref float shield, ref float shieldDuration, ref float shieldRangeWeight, ref float critChance, ref float critPower, ref bool crit);
+    
     public delegate void CombatEntityAction(CombatEntityActionCallback callback);
     public struct CombatEntityActionCallback
     {
@@ -64,6 +118,7 @@ namespace TwilightAndBlight.Events
             this.entity = entity;
         }
     }
+
     public delegate void CombatEntityInteraction(CombatEntityInteractionCallback callback);
     public struct CombatEntityInteractionCallback
     {
@@ -76,6 +131,7 @@ namespace TwilightAndBlight.Events
         }
     }
     public delegate void KillEntityOverride(CombatEntity target, CombatEntity source, ref bool kill);
+
     public delegate void CombatTeamCombatEntityInteraction(CombatTeamCombatEntityInteractionCallback callback);
     public struct CombatTeamCombatEntityInteractionCallback
     {
@@ -87,6 +143,7 @@ namespace TwilightAndBlight.Events
             this.entity = combatEntity;
         }
     }
+
     public delegate void CombatResourceChangeAction(CombatResourceChangeActionCallback callback);
     public struct CombatResourceChangeActionCallback
     {
@@ -111,6 +168,6 @@ namespace TwilightAndBlight.Events
     }
     public delegate bool MapNodeParentConditional(MapNode parent, MapNode neighbor);
     public delegate bool MapNodeConditional(MapNode node);
-
+    
 
 }

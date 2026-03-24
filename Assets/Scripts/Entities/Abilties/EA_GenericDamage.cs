@@ -43,7 +43,7 @@ namespace TwilightAndBlight.Ability
         protected override IEnumerator AbilityBehavior(MapNode targetingOrigin)
         {
 
-            abilityDamageModule.moduleBehaviorCoroutine = StartCoroutine(abilityDamageModule.PerformDamageBehavior(aquiredTargets, abilityRangeModule.GetRange() * MapManager.gridDistanceToWorldDistance));
+            abilityDamageModule.moduleBehaviorCoroutine = StartCoroutine(abilityDamageModule.PerformDamageBehavior(aquiredTargets, targetingOrigin, abilityRangeModule.GetRange() * MapManager.gridDistanceToWorldDistance));
     
             yield return new WaitUntil(() => { return abilityDamageModule.moduleBehaviorCoroutine == null; });
 
@@ -54,14 +54,14 @@ namespace TwilightAndBlight.Ability
         {
             abilityDamageModule.InitializeAbilityModule(this);
             base.OnValidate();
-            if (targetFilter == AbilityTarget.EmptyNode || targetFilter == AbilityTarget.AnyNode)
-            {
-                targetFilter = targetMem;
-            }
-            else
-            {
-                targetMem = targetFilter;
-            }
+            //if (targetFilter == AbilityTarget.EmptyNode || targetFilter == AbilityTarget.AnyNode)
+            //{
+            //    targetFilter = targetMem;
+            //}
+            //else
+            //{
+            //    targetMem = targetFilter;
+            //}
         }
     }
 }

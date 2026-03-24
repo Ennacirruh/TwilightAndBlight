@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 1185065751386957013}
   - component: {fileID: 4048300363147801541}
   - component: {fileID: 7381096590878363935}
+  - component: {fileID: 1991189454181920717}
   m_Layer: 6
   m_Name: Solara
   m_TagString: Untagged
@@ -62,11 +63,11 @@ MonoBehaviour:
   fortitude:
     baseValue: 20
   agility:
-    baseValue: 20
+    baseValue: 21
   constitution:
     baseValue: 20
   intelligence:
-    baseValue: 10
+    baseValue: 20
   wisdom:
     baseValue: 10
   dexterity:
@@ -88,7 +89,7 @@ MonoBehaviour:
   endurance:
     baseValue: 15
   vitality:
-    baseValue: 20
+    baseValue: 100
   tenacity:
     baseValue: 20
   effervescence:
@@ -131,6 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0c349e14cb4820499697276ce0d8ccd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.EntityInfoDisplay
+  statusEffectPreviewOffset: 40
+  maxStatusPreviewPerRow: 5
+  statusEffectPreviewVertMargin: 43
+  statusEffectPreviewWidth: 80
   healthBarVertOffset: 20
   staminaBarVertOffset: 10
   manaBarVertOffset: 0
@@ -178,20 +183,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityIcon: {fileID: 21300000, guid: fed3393046498554294bf058c4bfe1a9, type: 3}
   abilityName: Stellar Flare
-  abilityDescription: 'Damage all entities in a line within :range tiles for :damage;
-    (:basedamage + :damagescalers;), ignoring a base :percentarmorpen;% of armor.  '
-  descriptionPreview: Damage all entities in a line within 3 tiles for 60 (35 + 100% 
-    Power), ignoring a base 25% of armor.  Costs 25 Stamina. Has a cooldown of 1
-    turns.
+  abilityDescription: 'Gain 1 heat. Damage all entities in a line within :range tiles
+    for :damage; (:basedamage + :damagescalers;), ignoring a base :percentarmorpen;%
+    of armor.  '
+  descriptionPreview: Gain 1 heat. Damage all entities in a line within 3 tiles for
+    60 (35 + 100%  Power), ignoring a base 25% of armor.  Costs 25 Stamina. Has a
+    cooldown of 1 turns.
   endOfAbilityDelay: 1.5
-  targetFilter: 0
+  targetFilter: 4
   abilityCost: 25
   costResource: 1
   resourceCostType: 0
   abilityCooldown: 1
   preBehaviorExpansion:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7381096590878363935}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+          Assembly-CSharp
+        m_MethodName: AddStackOfHeat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   postBehaviorExpansion:
     m_PersistentCalls:
       m_Calls: []
@@ -199,8 +218,14 @@ MonoBehaviour:
   abilitySizeModule:
     baseSize: 0
     sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
   abilityRangeModule:
     baseRange: 3
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
     rangeScalers: []
   abilityDamageModule:
     canTargetSelf: 0
@@ -212,7 +237,27 @@ MonoBehaviour:
         m_Calls: []
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 7381096590878363935}
+          m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+            Assembly-CSharp
+          m_MethodName: ApplyTerrainModifier
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0.1
+      cameraShakeForceScalers:
+      - scalingStat: 0
+        valuePerScalingStat: 0.005
+      cameraShakeMode: 3
     damageTypes: 
     baseDamage: 35
     damageScalers:
@@ -239,19 +284,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityIcon: {fileID: 21300000, guid: 90bc3c4de0e2248418246de766a35887, type: 3}
   abilityName: Sweeping Corona
-  abilityDescription: Damage all entities in a line within :range tiles for :damage;
-    (:basedamage + :damagescalers;) :damagetypes damage.
-  descriptionPreview: Damage all entities in a line within 3 tiles for 37.5 (20 +
-    70%  Power) Fire damage.  Costs 25 Stamina. Has a cooldown of 2 turns.
+  abilityDescription: Gain 1 heat. Damage all entities in an arc within :range tiles
+    for :damage; (:basedamage + :damagescalers;) :damagetypes damage.
+  descriptionPreview: Gain 1 heat. Damage all entities in an arc within 3 tiles for
+    37.5 (20 + 70%  Power) Fire damage.  Costs 25 Stamina. Has a cooldown of 2 turns.
   endOfAbilityDelay: 1.5
-  targetFilter: 2
+  targetFilter: 4
   abilityCost: 25
   costResource: 1
   resourceCostType: 0
   abilityCooldown: 2
   preBehaviorExpansion:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7381096590878363935}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+          Assembly-CSharp
+        m_MethodName: AddStackOfHeat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   postBehaviorExpansion:
     m_PersistentCalls:
       m_Calls: []
@@ -259,8 +317,14 @@ MonoBehaviour:
   abilitySizeModule:
     baseSize: 180
     sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
   abilityRangeModule:
     baseRange: 3
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
     rangeScalers: []
   abilityDamageModule:
     canTargetSelf: 0
@@ -272,7 +336,27 @@ MonoBehaviour:
         m_Calls: []
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 7381096590878363935}
+          m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+            Assembly-CSharp
+          m_MethodName: ApplyTerrainModifier
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0.1
+      cameraShakeForceScalers:
+      - scalingStat: 0
+        valuePerScalingStat: 0.005
+      cameraShakeMode: 4
     damageTypes: 01000000
     baseDamage: 20
     damageScalers:
@@ -299,12 +383,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityIcon: {fileID: 21300000, guid: bcc57893f38da3f47b8ba33d2de10610, type: 3}
   abilityName: Fury Fall
-  abilityDescription: Deal :damage (:basedamage + :damagescalers;) :damagetypes damage
-    to a single enemy, and generate 1 heat.
-  descriptionPreview: Deal 82.5 (45 + 150%  Power) Fire damage to a single enemy,
-    and generate 1 heat.  Costs 75 Stamina. Has a cooldown of 3 turns.
+  abilityDescription: Gain 2 heat. Deal :damage (:basedamage + :damagescalers;) :damagetypes
+    damage to a single enemy, and generate 1 heat.
+  descriptionPreview: Gain 2 heat. Deal 82.5 (45 + 150%  Power) Fire damage to a
+    single enemy, and generate 1 heat.  Costs 75 Stamina. Has a cooldown of 3 turns.
   endOfAbilityDelay: 1.5
-  targetFilter: 0
+  targetFilter: 4
   abilityCost: 75
   costResource: 1
   resourceCostType: 0
@@ -325,6 +409,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 7381096590878363935}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+          Assembly-CSharp
+        m_MethodName: AddStackOfHeat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   postBehaviorExpansion:
     m_PersistentCalls:
       m_Calls: []
@@ -332,8 +429,14 @@ MonoBehaviour:
   abilitySizeModule:
     baseSize: 0
     sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
   abilityRangeModule:
     baseRange: 1
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
     rangeScalers: []
   abilityDamageModule:
     canTargetSelf: 0
@@ -345,7 +448,27 @@ MonoBehaviour:
         m_Calls: []
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 7381096590878363935}
+          m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+            Assembly-CSharp
+          m_MethodName: ApplyTerrainModifier
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: -1, z: 0}
+      cameraShakeForce: 0.15
+      cameraShakeForceScalers:
+      - scalingStat: 0
+        valuePerScalingStat: 0.0075
+      cameraShakeMode: 0
     damageTypes: 01000000
     baseDamage: 45
     damageScalers:
@@ -372,19 +495,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityIcon: {fileID: 21300000, guid: 95d7ae0121c3f9443a10e7f6c303c097, type: 3}
   abilityName: Battle Fever
-  abilityDescription: 'Gain 1 heat and gain a :shield (:baseshield + :shieldscalers;)
+  abilityDescription: 'Gain 2 heat and gain a :shield (:baseshield + :shieldscalers;)
     damage shield for :shieldduration turns. '
-  descriptionPreview: Gain 1 heat and gain a 280 (250 + 300%  Mettle) damage shield
-    for 3 turns.  Costs 20% max Mana. Has a cooldown of 1 turns.
+  descriptionPreview: Gain 2 heat and gain a 120 (100 + 200%  Mettle) damage shield
+    for 3 turns.  Costs 20% max Mana. Has a cooldown of 2 turns.
   endOfAbilityDelay: 1.5
   targetFilter: 1
   abilityCost: 20
   costResource: 2
   resourceCostType: 1
-  abilityCooldown: 1
+  abilityCooldown: 2
   preBehaviorExpansion:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 7381096590878363935}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+          Assembly-CSharp
+        m_MethodName: AddStackOfHeat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 7381096590878363935}
         m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
           Assembly-CSharp
@@ -405,7 +541,13 @@ MonoBehaviour:
   abilitySizeModule:
     baseSize: 0
     sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
   abilityRangeModule:
+    baseRange: 0
+    rangeScalers: []
+  abilityMinRangeModule:
     baseRange: 0
     rangeScalers: []
   abilityShieldModule:
@@ -419,10 +561,15 @@ MonoBehaviour:
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
         m_Calls: []
-    baseShield: 250
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0.05
+      cameraShakeForceScalers: []
+      cameraShakeMode: 7
+    baseShield: 100
     shieldScalers:
     - scalingStat: 19
-      valuePerScalingStat: 3
+      valuePerScalingStat: 2
     baseShieldDuration: 3
     shieldDurationScalers: []
     baseShieldTicks: 0
@@ -449,14 +596,27 @@ MonoBehaviour:
     and mark enemies. When a marked enemy is damaged, detonate the mark for bonus
     damage.  Costs 30 Mana. Has a cooldown of 2 turns.
   endOfAbilityDelay: 1.5
-  targetFilter: 0
+  targetFilter: 4
   abilityCost: 30
   costResource: 2
   resourceCostType: 0
   abilityCooldown: 2
   preBehaviorExpansion:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7381096590878363935}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+          Assembly-CSharp
+        m_MethodName: AddStackOfHeat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   postBehaviorExpansion:
     m_PersistentCalls:
       m_Calls: []
@@ -464,8 +624,14 @@ MonoBehaviour:
   abilitySizeModule:
     baseSize: 120
     sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
   abilityRangeModule:
     baseRange: 5
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
     rangeScalers: []
   abilityDamageModule:
     canTargetSelf: 0
@@ -481,6 +647,19 @@ MonoBehaviour:
         - m_Target: {fileID: 7381096590878363935}
           m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
             Assembly-CSharp
+          m_MethodName: ApplyTerrainModifier
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 7381096590878363935}
+          m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+            Assembly-CSharp
           m_MethodName: MarkEnemies
           m_Mode: 0
           m_Arguments:
@@ -491,6 +670,13 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0.1
+      cameraShakeForceScalers:
+      - scalingStat: 0
+        valuePerScalingStat: 0.0025
+      cameraShakeMode: 4
     damageTypes: 01000000
     baseDamage: 15
     damageScalers:
@@ -517,12 +703,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityIcon: {fileID: 21300000, guid: 739a61a32907c384c9f206f83fdf2141, type: 3}
   abilityName: Trail Blazer
-  abilityDescription: Teleport to a tile within :range tiles, and damage entities
-    within :destinationsize tiles for :destinationdamage (:destinationbasedamage;
+  abilityDescription: Gain 1 heat. Teleport to a tile within :range tiles, and damage
+    entities within :destinationsize tiles for :destinationdamage (:destinationbasedamage;
     + :destinationdamagescalers;) :destinationdamagetypes damage.
-  descriptionPreview: Teleport to a tile within 10 tiles, and damage entities within
-    2 tiles for 51.25 (30 + 85%  Power) Fire damage.  Costs 50 Mana. Has a cooldown
-    of 3 turns.
+  descriptionPreview: Gain 1 heat. Teleport to a tile within 10 tiles, and damage
+    entities within 2 tiles for 51.25 (30 + 85%  Power) Fire damage.  Costs 50 Mana.
+    Has a cooldown of 3 turns.
   endOfAbilityDelay: 1.5
   targetFilter: 3
   abilityCost: 50
@@ -531,14 +717,27 @@ MonoBehaviour:
   abilityCooldown: 3
   preBehaviorExpansion:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 7381096590878363935}
+        m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+          Assembly-CSharp
+        m_MethodName: AddStackOfHeat
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   postBehaviorExpansion:
     m_PersistentCalls:
       m_Calls: []
   teleportRangeModule:
     rid: 3052357701269717067
-  originTargetFilter: 2
-  destinationTargetFilter: 2
+  originTargetFilter: 4
+  destinationTargetFilter: 4
   originSizeModule:
     baseSize: 0
     sizeScalers: []
@@ -553,6 +752,11 @@ MonoBehaviour:
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
         m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0
+      cameraShakeForceScalers: []
+      cameraShakeMode: 0
     damageTypes: 
     baseDamage: 0
     damageScalers: []
@@ -576,7 +780,27 @@ MonoBehaviour:
         m_Calls: []
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 7381096590878363935}
+          m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+            Assembly-CSharp
+          m_MethodName: ApplyTerrainModifier
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: -1, z: 0}
+      cameraShakeForce: 0.1
+      cameraShakeForceScalers:
+      - scalingStat: 0
+        valuePerScalingStat: 0.0025
+      cameraShakeMode: 0
     damageTypes: 01000000
     baseDamage: 30
     damageScalers:
@@ -660,8 +884,14 @@ MonoBehaviour:
   abilitySizeModule:
     baseSize: 5
     sizeScalers: []
+  abilityMinSizeModule:
+    baseSize: 0
+    sizeScalers: []
   abilityRangeModule:
     baseRange: 25
+    rangeScalers: []
+  abilityMinRangeModule:
+    baseRange: 0
     rangeScalers: []
   abilityTerrainModule:
     canTargetSelf: 0
@@ -674,13 +904,20 @@ MonoBehaviour:
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
         m_Calls: []
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0.25
+      cameraShakeForceScalers:
+      - scalingStat: 0
+        valuePerScalingStat: 0.01
+      cameraShakeMode: 7
     baseMaxShift: 50
     maxShiftScalers: []
-    baseShiftSpeed: 100
+    baseShiftSpeed: 250
     shiftSpeedScalers: []
-    delayRange: 0.5
+    delayRange: 0.4
     terrainShiftType: 3
-    realativeToTarget: 0
+    relativeToTarget: 0
   abilityDamageModule:
     canTargetSelf: 0
     respectLineOfSight: 0
@@ -691,7 +928,25 @@ MonoBehaviour:
         m_Calls: []
     postPerTargetBehaviorExpansion:
       m_PersistentCalls:
-        m_Calls: []
+        m_Calls:
+        - m_Target: {fileID: 7381096590878363935}
+          m_TargetAssemblyTypeName: TwilightAndBlight.Ability.Passive.Passive_InnerFire,
+            Assembly-CSharp
+          m_MethodName: ApplyTerrainModifier
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    cameraShakeSettings:
+      defaultCameraShakeDirection: {x: 0, y: 0, z: 0}
+      cameraShakeForce: 0
+      cameraShakeForceScalers: []
+      cameraShakeMode: 0
     damageTypes: 01000000
     baseDamage: 50
     damageScalers:
@@ -717,18 +972,56 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   passiveName: Inner Fire
-  description: Certain abilities generate stacks of heat. At the start of a turn,
-    this entitie loses a percent of its current health scaling with heat, damaging
-    nearby entities and gaining a signigant power boost for a turn scaling with the
-    health lost.
+  description: 'Certain abilities generate heat. At the start of Solara''s turn,
+    she looses 1% of her current health per stack of heat. Whenever Solara takes
+    damage, deal a burst of damage to enemies within 3 tiles equal to half of the
+    pre-mitigation damage taken . Furthermore, some abilities set the ground on fire.
+    The severity of this fire stacks, and the rate at which you heat up the ground
+    scales with stacks of heat.  '
+  heatIcon: {fileID: 21300000, guid: d0cdcafaf6a9f9d41a55f663f167ea5c, type: 3}
+  powerIcon: {fileID: 21300000, guid: 10cc7c11d3ec2b243897b3ff9b5ff2fc, type: 3}
+  markIcon: {fileID: 21300000, guid: d8f16bf9192c8f545af4851891233a4d, type: 3}
   heat: 0
-  percentCurrentHealthConsumption: 5
-  damageRange: 2
-  damagePerHealthConsumed: 1.25
-  powerPerHealthConsumed: 0.05
-  novaStrikeBonusPerHeat: 0.25
-  markCharges: 2
-  markDamageBonus: 1.5
+  percentCurrentHealthConsumption: 1
+  damageRange: 3
+  damagePerHealthConsumed: 0.5
+  powerPerHealthConsumed: 0.1
+  novaStrikeBonusPerHeat: 0.2
+  markCharges: 10
+  markDamageBonus: 1.2
+  damageZoneVisualPrefab: {fileID: 9133925569786361817, guid: 518cb5dcd5e859444987223493c303b9, type: 3}
+  terrainDamagePerStack: 3
+  terrainDamageDecayPerTurn: 5
+--- !u!114 &1991189454181920717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 639171186366346755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8cb24ecebe474d344a54a8ae74e07093, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.Ability.EA_SkipTurn
+  abilityIcon: {fileID: 21300000, guid: be10f469b420f274682d70f461e3d15d, type: 3}
+  abilityName: 
+  abilityDescription: 'Skp Turn
+
+'
+  descriptionPreview: "Skp Turn\n "
+  endOfAbilityDelay: 0
+  targetFilter: 4
+  abilityCost: 0
+  costResource: 0
+  resourceCostType: 0
+  abilityCooldown: 0
+  preBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
+  postBehaviorExpansion:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3853865379452149373
 GameObject:
   m_ObjectHideFlags: 0

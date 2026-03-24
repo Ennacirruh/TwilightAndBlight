@@ -50,7 +50,7 @@ namespace TwilightAndBlight.Ability
                             {
                                 if (node.GetCombatEntity().GetCombatTeam() != combatEntity.GetCombatTeam())
                                 {
-                                    MapManager.Instance.HighlightNodes(node, IndicatorType.Warnign);
+                                    MapManager.Instance.HighlightNodes(node, IndicatorType.Warning);
                                 }
                                 else
                                 {
@@ -78,7 +78,7 @@ namespace TwilightAndBlight.Ability
         }
         protected override IEnumerator AbilityBehavior(MapNode targetingOrigin)
         {
-            abilityShieldModule.moduleBehaviorCoroutine = StartCoroutine(abilityShieldModule.PerformShieldAbility(aquiredTargets, abilityRangeModule.GetRange() * MapManager.gridDistanceToWorldDistance));
+            abilityShieldModule.moduleBehaviorCoroutine = StartCoroutine(abilityShieldModule.PerformShieldAbility(aquiredTargets, targetingOrigin, abilityRangeModule.GetRange() * MapManager.gridDistanceToWorldDistance));
             yield return new WaitUntil(() => { return abilityShieldModule.moduleBehaviorCoroutine == null; });
             EndAbility(targetingOrigin);
         }

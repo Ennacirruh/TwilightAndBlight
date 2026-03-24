@@ -198,120 +198,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &107227118
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 107227119}
-  - component: {fileID: 107227122}
-  - component: {fileID: 107227121}
-  - component: {fileID: 107227120}
-  m_Layer: 6
-  m_Name: Visual
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &107227119
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107227118}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1394196316}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &107227120
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107227118}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &107227121
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107227118}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6c1c0e2adaa88304a80a3429c6f9d866, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &107227122
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 107227118}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &133442602
 GameObject:
   m_ObjectHideFlags: 0
@@ -374,6 +260,7 @@ GameObject:
   - component: {fileID: 141664998}
   - component: {fileID: 141664996}
   - component: {fileID: 141664999}
+  - component: {fileID: 141665002}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -432,8 +319,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 141664991}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.2773573, y: -0.00000003725441, z: 0.000000010754723, w: 0.9607669}
-  m_LocalPosition: {x: 0, y: 6.007058, z: -9.537169}
+  m_LocalRotation: {x: 0.052577313, y: -6.088505e-16, z: -5.025118e-17, w: 0.9986169}
+  m_LocalPosition: {x: 0, y: 3.0070581, z: -9.537169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -546,7 +433,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b5d7c088409d9a40b7b09aa707777f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TargetOffset: {x: 0, y: 3, z: 0}
+  TargetOffset: {x: 0, y: 0, z: 0}
   TrackerSettings:
     BindingMode: 0
     PositionDamping: {x: 1, y: 1, z: 1}
@@ -619,1111 +506,197 @@ MonoBehaviour:
       Size: {x: 0.8, y: 0.8}
       Offset: {x: 0, y: 0}
   CenterOnActivate: 1
-  TargetOffset: {x: 0, y: 0, z: 0}
+  TargetOffset: {x: 0, y: 2, z: 0}
   Damping: {x: 0.5, y: 0.5}
   Lookahead:
     Enabled: 0
     Time: 0
     Smoothing: 0
     IgnoreY: 0
---- !u!1 &253643609
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 253643617}
-  - component: {fileID: 253643616}
-  - component: {fileID: 253643615}
-  - component: {fileID: 253643618}
-  - component: {fileID: 253643613}
-  - component: {fileID: 253643612}
-  - component: {fileID: 253643611}
-  - component: {fileID: 253643610}
-  m_Layer: 6
-  m_Name: Team 2 E
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &253643610
+--- !u!114 &141665002
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253643609}
+  m_GameObject: {fileID: 141664991}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 68e5a78013e33f247822a837e55b0ab4, type: 3}
-  abilityName: Level Terrain
-  abilityDescription: Terrain Shift
-  descriptionPreview: Terrain Shift  Costs 50 Health. Has a cooldown of 2 turns.
-  endOfAbilityDelay: 1.5
-  targetFilter: 4
-  abilityCost: 50
-  costResource: 0
-  resourceCostType: 0
-  abilityCooldown: 2
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 1
-  abilitySizeModule:
-    baseSize: 2
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 7
-    rangeScalers: []
-  abilityTerrainModule:
-    canTargetSelf: 0
-    respectLineOfSight: 0
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    baseMaxShift: 50
-    maxShiftScalers: []
-    baseShiftSpeed: 20
-    shiftSpeedScalers: []
-    delayRange: 1
-    terrainShiftType: 2
-    realativeToTarget: 0
---- !u!114 &253643611
-MonoBehaviour:
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseListener
+  ApplyAfter: 2
+  ChannelMask: 1
+  Gain: 1
+  Use2DDistance: 0
+  UseCameraSpace: 1
+  SignalCombinationMode: 0
+  ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!1001 &269568005
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253643609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Stomp
-  abilityDescription: AOE Damage.
-  descriptionPreview: AOE Damage.  Costs 25 Mana.
-  endOfAbilityDelay: 1.5
-  targetFilter: 0
-  abilityCost: 25
-  costResource: 2
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 0
-  abilitySizeModule:
-    baseSize: 3
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 0
-    rangeScalers: []
-  abilityDamageModule:
-    canTargetSelf: 0
-    respectLineOfSight: 0
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    damageTypes: 
-    baseDamage: 15
-    damageScalers:
-    - scalingStat: 0
-      valuePerScalingStat: 0.85
-    basePercentArmorPen: 0
-    percentArmorPenScalers: []
-    baseFlatArmorPen: 0
-    flatArmorPenScalers: []
-    baseDamageTicks: 0
-    damageTickScalers: []
-    timeBetweenTicks: 0
---- !u!114 &253643612
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 308327562806224960, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_Name
+      value: Basic Enemy (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950152477646907597, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: agility.baseValue
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461034333626487100, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 519420032}
+    - target: {fileID: 4522638118228300003, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -28.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+--- !u!114 &269568006 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6226328964967811995, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+  m_PrefabInstance: {fileID: 269568005}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253643609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Beam
-  abilityDescription: Damage in an Line
-  descriptionPreview: Damage in an Line  Costs 25 Stamina.
-  endOfAbilityDelay: 1.5
-  targetFilter: 0
-  abilityCost: 25
-  costResource: 1
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 1
-  abilitySizeModule:
-    baseSize: 3
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 5
-    rangeScalers: []
-  abilityDamageModule:
-    canTargetSelf: 0
-    respectLineOfSight: 1
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    damageTypes: 
-    baseDamage: 25
-    damageScalers:
-    - scalingStat: 0
-      valuePerScalingStat: 0.9
-    basePercentArmorPen: 0
-    percentArmorPenScalers: []
-    baseFlatArmorPen: 0
-    flatArmorPenScalers: []
-    baseDamageTicks: 0
-    damageTickScalers: []
-    timeBetweenTicks: 0
---- !u!114 &253643613
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253643609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 4a7d01e56d72f0647bac54fe3b1f27f4, type: 3}
-  abilityName: Move
-  abilityDescription: Test
-  descriptionPreview: 'Test '
-  endOfAbilityDelay: 0
-  targetFilter: 3
-  abilityCost: 0
-  costResource: 0
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  agilityPerMoveSpeed: 100
-  baseMoveSpeed: 3
---- !u!114 &253643615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253643609}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityLevel: 1
-  health: 0
-  mana: 0
-  stamina: 0
-  corruption: 0
-  astra: 0
-  totalShield: 0
-  entityHeight: 2
---- !u!114 &253643616
-MonoBehaviour:
+--- !u!1001 &421344665
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253643609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73bcf3d88f7e3b04ebb92e8e620a5a2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  power:
-    baseValue: 20
-  fortitude:
-    baseValue: 20
-  agility:
-    baseValue: 19
-  constitution:
-    baseValue: 15
-  intelligence:
-    baseValue: 15
-  wisdom:
-    baseValue: 10
-  dexterity:
-    baseValue: 10
-  charisma:
-    baseValue: 10
-  cunning:
-    baseValue: 10
-  discipline:
-    baseValue: 10
-  reflex:
-    baseValue: 10
-  flatArmorPen:
-    baseValue: 0
-  percemtArmorPen:
-    baseValue: 0
-  spirit:
-    baseValue: 10
-  endurance:
-    baseValue: 10
-  vitality:
-    baseValue: 10
-  tenacity:
-    baseValue: 10
-  effervescence:
-    baseValue: 10
-  compassion:
-    baseValue: 0
-  mettle:
-    baseValue: 0
-  transendance:
-    baseValue: 0
---- !u!4 &253643617
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253643609}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.21, y: -28.87, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 339926184}
-  - {fileID: 1806927487}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &253643618
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 308327562806224960, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_Name
+      value: Basic Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3950152477646907597, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: agility.baseValue
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461034333626487100, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 519420032}
+    - target: {fileID: 4522638118228300003, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -28.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+--- !u!114 &421344666 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6226328964967811995, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+  m_PrefabInstance: {fileID: 421344665}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 253643609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c349e14cb4820499697276ce0d8ccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.EntityInfoDisplay
-  healthBarVertOffset: 20
-  staminaBarVertOffset: 10
-  manaBarVertOffset: 0
---- !u!1 &260290370
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 260290378}
-  - component: {fileID: 260290377}
-  - component: {fileID: 260290376}
-  - component: {fileID: 260290379}
-  - component: {fileID: 260290374}
-  - component: {fileID: 260290373}
-  - component: {fileID: 260290372}
-  - component: {fileID: 260290371}
-  m_Layer: 6
-  m_Name: Team 2 D
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &260290371
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260290370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 68e5a78013e33f247822a837e55b0ab4, type: 3}
-  abilityName: Level Terrain
-  abilityDescription: Terrain Shift
-  descriptionPreview: Terrain Shift  Costs 50 Health. Has a cooldown of 2 turns.
-  endOfAbilityDelay: 1.5
-  targetFilter: 4
-  abilityCost: 50
-  costResource: 0
-  resourceCostType: 0
-  abilityCooldown: 2
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 1
-  abilitySizeModule:
-    baseSize: 2
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 7
-    rangeScalers: []
-  abilityTerrainModule:
-    canTargetSelf: 0
-    respectLineOfSight: 0
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    baseMaxShift: 50
-    maxShiftScalers: []
-    baseShiftSpeed: 20
-    shiftSpeedScalers: []
-    delayRange: 1
-    terrainShiftType: 2
-    realativeToTarget: 0
---- !u!114 &260290372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260290370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Stomp
-  abilityDescription: AOE Damage.
-  descriptionPreview: AOE Damage.  Costs 25 Mana.
-  endOfAbilityDelay: 1.5
-  targetFilter: 0
-  abilityCost: 25
-  costResource: 2
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 0
-  abilitySizeModule:
-    baseSize: 3
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 0
-    rangeScalers: []
-  abilityDamageModule:
-    canTargetSelf: 0
-    respectLineOfSight: 0
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    damageTypes: 
-    baseDamage: 15
-    damageScalers:
-    - scalingStat: 0
-      valuePerScalingStat: 0.85
-    basePercentArmorPen: 0
-    percentArmorPenScalers: []
-    baseFlatArmorPen: 0
-    flatArmorPenScalers: []
-    baseDamageTicks: 0
-    damageTickScalers: []
-    timeBetweenTicks: 0
---- !u!114 &260290373
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260290370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Beam
-  abilityDescription: Damage in an Line
-  descriptionPreview: Damage in an Line  Costs 25 Stamina.
-  endOfAbilityDelay: 1.5
-  targetFilter: 0
-  abilityCost: 25
-  costResource: 1
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 1
-  abilitySizeModule:
-    baseSize: 3
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 5
-    rangeScalers: []
-  abilityDamageModule:
-    canTargetSelf: 0
-    respectLineOfSight: 1
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    damageTypes: 
-    baseDamage: 25
-    damageScalers:
-    - scalingStat: 0
-      valuePerScalingStat: 0.9
-    basePercentArmorPen: 0
-    percentArmorPenScalers: []
-    baseFlatArmorPen: 0
-    flatArmorPenScalers: []
-    baseDamageTicks: 0
-    damageTickScalers: []
-    timeBetweenTicks: 0
---- !u!114 &260290374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260290370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 4a7d01e56d72f0647bac54fe3b1f27f4, type: 3}
-  abilityName: Move
-  abilityDescription: Test
-  descriptionPreview: 'Test '
-  endOfAbilityDelay: 0
-  targetFilter: 3
-  abilityCost: 0
-  costResource: 0
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  agilityPerMoveSpeed: 100
-  baseMoveSpeed: 3
---- !u!114 &260290376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260290370}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityLevel: 1
-  health: 0
-  mana: 0
-  stamina: 0
-  corruption: 0
-  astra: 0
-  totalShield: 0
-  entityHeight: 2
---- !u!114 &260290377
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260290370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73bcf3d88f7e3b04ebb92e8e620a5a2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  power:
-    baseValue: 20
-  fortitude:
-    baseValue: 20
-  agility:
-    baseValue: 18
-  constitution:
-    baseValue: 15
-  intelligence:
-    baseValue: 15
-  wisdom:
-    baseValue: 10
-  dexterity:
-    baseValue: 10
-  charisma:
-    baseValue: 10
-  cunning:
-    baseValue: 10
-  discipline:
-    baseValue: 10
-  reflex:
-    baseValue: 10
-  flatArmorPen:
-    baseValue: 0
-  percemtArmorPen:
-    baseValue: 0
-  spirit:
-    baseValue: 10
-  endurance:
-    baseValue: 10
-  vitality:
-    baseValue: 10
-  tenacity:
-    baseValue: 10
-  effervescence:
-    baseValue: 10
-  compassion:
-    baseValue: 0
-  mettle:
-    baseValue: 0
-  transendance:
-    baseValue: 0
---- !u!4 &260290378
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260290370}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.21, y: -28.87, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1105563051}
-  - {fileID: 637963812}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &260290379
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 260290370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c349e14cb4820499697276ce0d8ccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.EntityInfoDisplay
-  healthBarVertOffset: 20
-  staminaBarVertOffset: 10
-  manaBarVertOffset: 0
---- !u!1 &339926183
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 339926184}
-  - component: {fileID: 339926187}
-  - component: {fileID: 339926186}
-  - component: {fileID: 339926185}
-  m_Layer: 6
-  m_Name: Visual
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &339926184
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339926183}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 253643617}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &339926185
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339926183}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &339926186
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339926183}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6c1c0e2adaa88304a80a3429c6f9d866, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &339926187
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339926183}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &457419560
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 457419568}
-  - component: {fileID: 457419567}
-  - component: {fileID: 457419566}
-  - component: {fileID: 457419569}
-  - component: {fileID: 457419564}
-  - component: {fileID: 457419563}
-  - component: {fileID: 457419562}
-  - component: {fileID: 457419561}
-  m_Layer: 6
-  m_Name: Team 2 C
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &457419561
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457419560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 68e5a78013e33f247822a837e55b0ab4, type: 3}
-  abilityName: Level Terrain
-  abilityDescription: Terrain Shift
-  descriptionPreview: Terrain Shift  Costs 50 Health. Has a cooldown of 2 turns.
-  endOfAbilityDelay: 1.5
-  targetFilter: 4
-  abilityCost: 50
-  costResource: 0
-  resourceCostType: 0
-  abilityCooldown: 2
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 1
-  abilitySizeModule:
-    baseSize: 2
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 7
-    rangeScalers: []
-  abilityTerrainModule:
-    canTargetSelf: 0
-    respectLineOfSight: 0
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    baseMaxShift: 50
-    maxShiftScalers: []
-    baseShiftSpeed: 20
-    shiftSpeedScalers: []
-    delayRange: 1
-    terrainShiftType: 2
-    realativeToTarget: 0
---- !u!114 &457419562
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457419560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Stomp
-  abilityDescription: AOE Damage.
-  descriptionPreview: AOE Damage.  Costs 25 Mana.
-  endOfAbilityDelay: 1.5
-  targetFilter: 0
-  abilityCost: 25
-  costResource: 2
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 0
-  abilitySizeModule:
-    baseSize: 3
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 0
-    rangeScalers: []
-  abilityDamageModule:
-    canTargetSelf: 0
-    respectLineOfSight: 0
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    damageTypes: 
-    baseDamage: 15
-    damageScalers:
-    - scalingStat: 0
-      valuePerScalingStat: 0.85
-    basePercentArmorPen: 0
-    percentArmorPenScalers: []
-    baseFlatArmorPen: 0
-    flatArmorPenScalers: []
-    baseDamageTicks: 0
-    damageTickScalers: []
-    timeBetweenTicks: 0
---- !u!114 &457419563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457419560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Beam
-  abilityDescription: Damage in an Line
-  descriptionPreview: Damage in an Line  Costs 25 Stamina.
-  endOfAbilityDelay: 1.5
-  targetFilter: 0
-  abilityCost: 25
-  costResource: 1
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 1
-  abilitySizeModule:
-    baseSize: 3
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 5
-    rangeScalers: []
-  abilityDamageModule:
-    canTargetSelf: 0
-    respectLineOfSight: 1
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    damageTypes: 
-    baseDamage: 25
-    damageScalers:
-    - scalingStat: 0
-      valuePerScalingStat: 0.9
-    basePercentArmorPen: 0
-    percentArmorPenScalers: []
-    baseFlatArmorPen: 0
-    flatArmorPenScalers: []
-    baseDamageTicks: 0
-    damageTickScalers: []
-    timeBetweenTicks: 0
---- !u!114 &457419564
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457419560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 4a7d01e56d72f0647bac54fe3b1f27f4, type: 3}
-  abilityName: Move
-  abilityDescription: Test
-  descriptionPreview: 'Test '
-  endOfAbilityDelay: 0
-  targetFilter: 3
-  abilityCost: 0
-  costResource: 0
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  agilityPerMoveSpeed: 100
-  baseMoveSpeed: 3
---- !u!114 &457419566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457419560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  entityLevel: 1
-  health: 0
-  mana: 0
-  stamina: 0
-  corruption: 0
-  astra: 0
-  totalShield: 0
-  entityHeight: 2
---- !u!114 &457419567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457419560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73bcf3d88f7e3b04ebb92e8e620a5a2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  power:
-    baseValue: 20
-  fortitude:
-    baseValue: 20
-  agility:
-    baseValue: 14
-  constitution:
-    baseValue: 15
-  intelligence:
-    baseValue: 15
-  wisdom:
-    baseValue: 10
-  dexterity:
-    baseValue: 10
-  charisma:
-    baseValue: 10
-  cunning:
-    baseValue: 10
-  discipline:
-    baseValue: 10
-  reflex:
-    baseValue: 10
-  flatArmorPen:
-    baseValue: 0
-  percemtArmorPen:
-    baseValue: 0
-  spirit:
-    baseValue: 10
-  endurance:
-    baseValue: 10
-  vitality:
-    baseValue: 10
-  tenacity:
-    baseValue: 10
-  effervescence:
-    baseValue: 10
-  compassion:
-    baseValue: 0
-  mettle:
-    baseValue: 0
-  transendance:
-    baseValue: 0
---- !u!4 &457419568
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457419560}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.21, y: -28.87, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1826495363}
-  - {fileID: 959267810}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &457419569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 457419560}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c349e14cb4820499697276ce0d8ccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.EntityInfoDisplay
-  healthBarVertOffset: 20
-  staminaBarVertOffset: 10
-  manaBarVertOffset: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1857,8 +830,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.27735734, y: -0.000000037254416, z: 0.000000010754728, w: 0.96076685}
-  m_LocalPosition: {x: 0, y: 6.007058, z: -9.537169}
+  m_LocalRotation: {x: 0.052577317, y: -6.1319606e-16, z: 3.2284856e-17, w: 0.9986169}
+  m_LocalPosition: {x: 0, y: 3.0070581, z: -9.537169}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2056,407 +1029,17 @@ Light:
   m_LightUnit: 1
   m_LuxAtDistance: 1
   m_EnableSpotReflector: 1
---- !u!1 &630883950
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 630883958}
-  - component: {fileID: 630883957}
-  - component: {fileID: 630883956}
-  - component: {fileID: 630883959}
-  - component: {fileID: 630883954}
-  - component: {fileID: 630883953}
-  - component: {fileID: 630883952}
-  - component: {fileID: 630883951}
-  m_Layer: 6
-  m_Name: Team 2 F
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &630883951
+--- !u!114 &630883956 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 3038689929260829376, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+  m_PrefabInstance: {fileID: 7010359751881088569}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630883950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 68e5a78013e33f247822a837e55b0ab4, type: 3}
-  abilityName: Level Terrain
-  abilityDescription: Terrain Shift
-  descriptionPreview: Terrain Shift  Costs 50 Health. Has a cooldown of 2 turns.
-  endOfAbilityDelay: 1.5
-  targetFilter: 4
-  abilityCost: 50
-  costResource: 0
-  resourceCostType: 0
-  abilityCooldown: 2
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 1
-  abilitySizeModule:
-    baseSize: 2
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 7
-    rangeScalers: []
-  abilityTerrainModule:
-    canTargetSelf: 0
-    respectLineOfSight: 0
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    baseMaxShift: 50
-    maxShiftScalers: []
-    baseShiftSpeed: 20
-    shiftSpeedScalers: []
-    delayRange: 1
-    terrainShiftType: 2
-    realativeToTarget: 0
---- !u!114 &630883952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630883950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Stomp
-  abilityDescription: AOE Damage.
-  descriptionPreview: AOE Damage.  Costs 25 Mana.
-  endOfAbilityDelay: 1.5
-  targetFilter: 0
-  abilityCost: 25
-  costResource: 2
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 0
-  abilitySizeModule:
-    baseSize: 3
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 0
-    rangeScalers: []
-  abilityDamageModule:
-    canTargetSelf: 0
-    respectLineOfSight: 0
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    damageTypes: 
-    baseDamage: 15
-    damageScalers:
-    - scalingStat: 0
-      valuePerScalingStat: 0.85
-    basePercentArmorPen: 0
-    percentArmorPenScalers: []
-    baseFlatArmorPen: 0
-    flatArmorPenScalers: []
-    baseDamageTicks: 0
-    damageTickScalers: []
-    timeBetweenTicks: 0
---- !u!114 &630883953
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630883950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Beam
-  abilityDescription: Damage in an Line
-  descriptionPreview: Damage in an Line  Costs 25 Stamina.
-  endOfAbilityDelay: 1.5
-  targetFilter: 0
-  abilityCost: 25
-  costResource: 1
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 1
-  abilitySizeModule:
-    baseSize: 3
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 5
-    rangeScalers: []
-  abilityDamageModule:
-    canTargetSelf: 0
-    respectLineOfSight: 1
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    damageTypes: 
-    baseDamage: 25
-    damageScalers:
-    - scalingStat: 0
-      valuePerScalingStat: 0.9
-    basePercentArmorPen: 0
-    percentArmorPenScalers: []
-    baseFlatArmorPen: 0
-    flatArmorPenScalers: []
-    baseDamageTicks: 0
-    damageTickScalers: []
-    timeBetweenTicks: 0
---- !u!114 &630883954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630883950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 4a7d01e56d72f0647bac54fe3b1f27f4, type: 3}
-  abilityName: Move
-  abilityDescription: Test
-  descriptionPreview: 'Test '
-  endOfAbilityDelay: 0
-  targetFilter: 3
-  abilityCost: 0
-  costResource: 0
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  agilityPerMoveSpeed: 100
-  baseMoveSpeed: 3
---- !u!114 &630883956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630883950}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityLevel: 1
-  health: 0
-  mana: 0
-  stamina: 0
-  corruption: 0
-  astra: 0
-  totalShield: 0
-  entityHeight: 2
---- !u!114 &630883957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630883950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73bcf3d88f7e3b04ebb92e8e620a5a2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  power:
-    baseValue: 20
-  fortitude:
-    baseValue: 20
-  agility:
-    baseValue: 10
-  constitution:
-    baseValue: 15
-  intelligence:
-    baseValue: 15
-  wisdom:
-    baseValue: 10
-  dexterity:
-    baseValue: 10
-  charisma:
-    baseValue: 10
-  cunning:
-    baseValue: 10
-  discipline:
-    baseValue: 10
-  reflex:
-    baseValue: 10
-  flatArmorPen:
-    baseValue: 0
-  percemtArmorPen:
-    baseValue: 0
-  spirit:
-    baseValue: 10
-  endurance:
-    baseValue: 10
-  vitality:
-    baseValue: 10
-  tenacity:
-    baseValue: 10
-  effervescence:
-    baseValue: 10
-  compassion:
-    baseValue: 0
-  mettle:
-    baseValue: 0
-  transendance:
-    baseValue: 0
---- !u!4 &630883958
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630883950}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.21, y: -28.87, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1207846825}
-  - {fileID: 2029513000}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &630883959
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 630883950}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c349e14cb4820499697276ce0d8ccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.EntityInfoDisplay
-  healthBarVertOffset: 20
-  staminaBarVertOffset: 10
-  manaBarVertOffset: 0
---- !u!1 &637963811
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 637963812}
-  - component: {fileID: 637963814}
-  - component: {fileID: 637963813}
-  m_Layer: 6
-  m_Name: HealthBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &637963812
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637963811}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 260290378}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.2}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &637963813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637963811}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d55c2264f43f974cb5d3aaeefbb6a02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 519420032}
---- !u!223 &637963814
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 637963811}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!114 &649547126 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7829155639302408118, guid: 0b8feda11302db640a81ad9d1c11e802, type: 3}
@@ -2500,6 +1083,7 @@ MonoBehaviour:
   teamMembers:
   - {fileID: 1388232283}
   - {fileID: 1608824070794674537}
+  - {fileID: 7615778883346012445}
   isPlayerTeam: 1
 --- !u!4 &764788426
 Transform:
@@ -2516,635 +1100,97 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &959267809
-GameObject:
+--- !u!1001 &1174028752
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 959267810}
-  - component: {fileID: 959267812}
-  - component: {fileID: 959267811}
-  m_Layer: 6
-  m_Name: HealthBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &959267810
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959267809}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 457419568}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.2}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &959267811
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 454283921126905945, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 480051537325247856, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: agility.baseValue
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 1747444813965585461, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_Name
+      value: Beefcake Enemy (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531397718007860268, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 519420032}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -28.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+--- !u!114 &1174028753 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 543130504335483661, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+  m_PrefabInstance: {fileID: 1174028752}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959267809}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d55c2264f43f974cb5d3aaeefbb6a02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 519420032}
---- !u!223 &959267812
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 959267809}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!1 &1105563050
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1105563051}
-  - component: {fileID: 1105563054}
-  - component: {fileID: 1105563053}
-  - component: {fileID: 1105563052}
-  m_Layer: 6
-  m_Name: Visual
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1105563051
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105563050}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 260290378}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1105563052
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105563050}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1105563053
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105563050}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6c1c0e2adaa88304a80a3429c6f9d866, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1105563054
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1105563050}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1207846824
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1207846825}
-  - component: {fileID: 1207846828}
-  - component: {fileID: 1207846827}
-  - component: {fileID: 1207846826}
-  m_Layer: 6
-  m_Name: Visual
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1207846825
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207846824}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 630883958}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1207846826
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207846824}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1207846827
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207846824}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6c1c0e2adaa88304a80a3429c6f9d866, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1207846828
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1207846824}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1222710135
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1222710140}
-  - component: {fileID: 1222710139}
-  - component: {fileID: 1222710136}
-  - component: {fileID: 1222710146}
-  - component: {fileID: 1222710141}
-  - component: {fileID: 1222710142}
-  - component: {fileID: 1222710144}
-  - component: {fileID: 1222710145}
-  m_Layer: 6
-  m_Name: 'Team 2 A '
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1222710136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222710135}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityLevel: 1
-  health: 0
-  mana: 0
-  stamina: 0
-  corruption: 0
-  astra: 0
-  totalShield: 0
-  entityHeight: 2
---- !u!114 &1222710139
+--- !u!114 &1222710136 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 543130504335483661, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+  m_PrefabInstance: {fileID: 2095965545333572296}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222710135}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73bcf3d88f7e3b04ebb92e8e620a5a2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  power:
-    baseValue: 20
-  fortitude:
-    baseValue: 20
-  agility:
-    baseValue: 15
-  constitution:
-    baseValue: 15
-  intelligence:
-    baseValue: 15
-  wisdom:
-    baseValue: 10
-  dexterity:
-    baseValue: 10
-  charisma:
-    baseValue: 10
-  cunning:
-    baseValue: 10
-  discipline:
-    baseValue: 10
-  reflex:
-    baseValue: 10
-  flatArmorPen:
-    baseValue: 0
-  percemtArmorPen:
-    baseValue: 0
-  spirit:
-    baseValue: 10
-  endurance:
-    baseValue: 10
-  vitality:
-    baseValue: 10
-  tenacity:
-    baseValue: 10
-  effervescence:
-    baseValue: 10
-  compassion:
-    baseValue: 0
-  mettle:
-    baseValue: 0
-  transendance:
-    baseValue: 0
---- !u!4 &1222710140
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222710135}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.21, y: -28.87, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2115640770}
-  - {fileID: 1436181371}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1222710141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222710135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 4a7d01e56d72f0647bac54fe3b1f27f4, type: 3}
-  abilityName: Move
-  abilityDescription: Test
-  descriptionPreview: 'Test '
-  endOfAbilityDelay: 0
-  targetFilter: 3
-  abilityCost: 0
-  costResource: 0
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  agilityPerMoveSpeed: 100
-  baseMoveSpeed: 3
---- !u!114 &1222710142
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222710135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Beam
-  abilityDescription: Damage in an Line
-  descriptionPreview: Damage in an Line  Costs 25 Stamina.
-  endOfAbilityDelay: 1.5
-  targetFilter: 0
-  abilityCost: 25
-  costResource: 1
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 1
-  abilitySizeModule:
-    baseSize: 3
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 5
-    rangeScalers: []
-  abilityDamageModule:
-    canTargetSelf: 0
-    respectLineOfSight: 1
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    damageTypes: 
-    baseDamage: 25
-    damageScalers:
-    - scalingStat: 0
-      valuePerScalingStat: 0.9
-    basePercentArmorPen: 0
-    percentArmorPenScalers: []
-    baseFlatArmorPen: 0
-    flatArmorPenScalers: []
-    baseDamageTicks: 0
-    damageTickScalers: []
-    timeBetweenTicks: 0
---- !u!114 &1222710144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222710135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Stomp
-  abilityDescription: AOE Damage.
-  descriptionPreview: AOE Damage.  Costs 25 Mana.
-  endOfAbilityDelay: 1.5
-  targetFilter: 0
-  abilityCost: 25
-  costResource: 2
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 0
-  abilitySizeModule:
-    baseSize: 3
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 0
-    rangeScalers: []
-  abilityDamageModule:
-    canTargetSelf: 0
-    respectLineOfSight: 0
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    damageTypes: 
-    baseDamage: 15
-    damageScalers:
-    - scalingStat: 0
-      valuePerScalingStat: 0.85
-    basePercentArmorPen: 0
-    percentArmorPenScalers: []
-    baseFlatArmorPen: 0
-    flatArmorPenScalers: []
-    baseDamageTicks: 0
-    damageTickScalers: []
-    timeBetweenTicks: 0
---- !u!114 &1222710145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222710135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 68e5a78013e33f247822a837e55b0ab4, type: 3}
-  abilityName: Level Terrain
-  abilityDescription: Terrain Shift
-  descriptionPreview: Terrain Shift  Costs 50 Health. Has a cooldown of 2 turns.
-  endOfAbilityDelay: 1.5
-  targetFilter: 4
-  abilityCost: 50
-  costResource: 0
-  resourceCostType: 0
-  abilityCooldown: 2
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 1
-  abilitySizeModule:
-    baseSize: 2
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 7
-    rangeScalers: []
-  abilityTerrainModule:
-    canTargetSelf: 0
-    respectLineOfSight: 0
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    baseMaxShift: 50
-    maxShiftScalers: []
-    baseShiftSpeed: 20
-    shiftSpeedScalers: []
-    delayRange: 1
-    terrainShiftType: 2
-    realativeToTarget: 0
---- !u!114 &1222710146
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222710135}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c349e14cb4820499697276ce0d8ccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.EntityInfoDisplay
-  healthBarVertOffset: 20
-  staminaBarVertOffset: 10
-  manaBarVertOffset: 0
 --- !u!114 &1388232283 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4211937691122151026, guid: 098f3f3442601f44791527eb24d31147, type: 3}
@@ -3282,480 +1328,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1394196308
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1394196316}
-  - component: {fileID: 1394196315}
-  - component: {fileID: 1394196314}
-  - component: {fileID: 1394196317}
-  - component: {fileID: 1394196312}
-  - component: {fileID: 1394196311}
-  - component: {fileID: 1394196310}
-  - component: {fileID: 1394196309}
-  m_Layer: 6
-  m_Name: Team 2 B
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1394196309
+--- !u!114 &1394196314 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 6226328964967811995, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+  m_PrefabInstance: {fileID: 1504589500457963768}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394196308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dbbdd30db91fc64c84f901748e8f9a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 68e5a78013e33f247822a837e55b0ab4, type: 3}
-  abilityName: Level Terrain
-  abilityDescription: Terrain Shift
-  descriptionPreview: Terrain Shift  Costs 50 Health. Has a cooldown of 2 turns.
-  endOfAbilityDelay: 1.5
-  targetFilter: 4
-  abilityCost: 50
-  costResource: 0
-  resourceCostType: 0
-  abilityCooldown: 2
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 1
-  abilitySizeModule:
-    baseSize: 2
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 7
-    rangeScalers: []
-  abilityTerrainModule:
-    canTargetSelf: 0
-    respectLineOfSight: 0
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    baseMaxShift: 50
-    maxShiftScalers: []
-    baseShiftSpeed: 20
-    shiftSpeedScalers: []
-    delayRange: 1
-    terrainShiftType: 2
-    realativeToTarget: 0
---- !u!114 &1394196310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394196308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Stomp
-  abilityDescription: AOE Damage.
-  descriptionPreview: AOE Damage.  Costs 25 Mana.
-  endOfAbilityDelay: 1.5
-  targetFilter: 0
-  abilityCost: 25
-  costResource: 2
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 0
-  abilitySizeModule:
-    baseSize: 3
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 0
-    rangeScalers: []
-  abilityDamageModule:
-    canTargetSelf: 0
-    respectLineOfSight: 0
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    damageTypes: 
-    baseDamage: 15
-    damageScalers:
-    - scalingStat: 0
-      valuePerScalingStat: 0.85
-    basePercentArmorPen: 0
-    percentArmorPenScalers: []
-    baseFlatArmorPen: 0
-    flatArmorPenScalers: []
-    baseDamageTicks: 0
-    damageTickScalers: []
-    timeBetweenTicks: 0
---- !u!114 &1394196311
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394196308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0c3eb548aa1076c4b866fcad00a6df92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 91b480a4153c3a549ac9da4a987977e7, type: 3}
-  abilityName: Beam
-  abilityDescription: Damage in an Line
-  descriptionPreview: Damage in an Line  Costs 25 Stamina.
-  endOfAbilityDelay: 1.5
-  targetFilter: 0
-  abilityCost: 25
-  costResource: 1
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  abilityShape: 1
-  abilitySizeModule:
-    baseSize: 3
-    sizeScalers: []
-  abilityRangeModule:
-    baseRange: 5
-    rangeScalers: []
-  abilityDamageModule:
-    canTargetSelf: 0
-    respectLineOfSight: 1
-    lineOfSightForgiveness: 1
-    abilityModuleCastHeightOffset: 1
-    prePerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    postPerTargetBehaviorExpansion:
-      m_PersistentCalls:
-        m_Calls: []
-    damageTypes: 
-    baseDamage: 25
-    damageScalers:
-    - scalingStat: 0
-      valuePerScalingStat: 0.9
-    basePercentArmorPen: 0
-    percentArmorPenScalers: []
-    baseFlatArmorPen: 0
-    flatArmorPenScalers: []
-    baseDamageTicks: 0
-    damageTickScalers: []
-    timeBetweenTicks: 0
---- !u!114 &1394196312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394196308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 493ccc72ed53e3c49aef3f4e4aabc285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  abilityIcon: {fileID: 21300000, guid: 4a7d01e56d72f0647bac54fe3b1f27f4, type: 3}
-  abilityName: Move
-  abilityDescription: Test
-  descriptionPreview: 'Test '
-  endOfAbilityDelay: 0
-  targetFilter: 3
-  abilityCost: 0
-  costResource: 0
-  resourceCostType: 0
-  abilityCooldown: 0
-  preBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  postBehaviorExpansion:
-    m_PersistentCalls:
-      m_Calls: []
-  agilityPerMoveSpeed: 100
-  baseMoveSpeed: 3
---- !u!114 &1394196314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394196308}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entityLevel: 1
-  health: 0
-  mana: 0
-  stamina: 0
-  corruption: 0
-  astra: 0
-  totalShield: 0
-  entityHeight: 2
---- !u!114 &1394196315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394196308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73bcf3d88f7e3b04ebb92e8e620a5a2e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  power:
-    baseValue: 20
-  fortitude:
-    baseValue: 20
-  agility:
-    baseValue: 16
-  constitution:
-    baseValue: 15
-  intelligence:
-    baseValue: 15
-  wisdom:
-    baseValue: 10
-  dexterity:
-    baseValue: 10
-  charisma:
-    baseValue: 10
-  cunning:
-    baseValue: 10
-  discipline:
-    baseValue: 10
-  reflex:
-    baseValue: 10
-  flatArmorPen:
-    baseValue: 0
-  percemtArmorPen:
-    baseValue: 0
-  spirit:
-    baseValue: 10
-  endurance:
-    baseValue: 10
-  vitality:
-    baseValue: 10
-  tenacity:
-    baseValue: 10
-  effervescence:
-    baseValue: 10
-  compassion:
-    baseValue: 0
-  mettle:
-    baseValue: 0
-  transendance:
-    baseValue: 0
---- !u!4 &1394196316
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394196308}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.21, y: -28.87, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 107227119}
-  - {fileID: 1434801397}
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1394196317
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1394196308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f0c349e14cb4820499697276ce0d8ccd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::TwilightAndBlight.EntityInfoDisplay
-  healthBarVertOffset: 20
-  staminaBarVertOffset: 10
-  manaBarVertOffset: 0
---- !u!1 &1434801396
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1434801397}
-  - component: {fileID: 1434801399}
-  - component: {fileID: 1434801398}
-  m_Layer: 6
-  m_Name: HealthBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1434801397
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434801396}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1394196316}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.2}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1434801398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434801396}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d55c2264f43f974cb5d3aaeefbb6a02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 519420032}
---- !u!223 &1434801399
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1434801396}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!1 &1436181370
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1436181371}
-  - component: {fileID: 1436181373}
-  - component: {fileID: 1436181372}
-  m_Layer: 6
-  m_Name: HealthBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1436181371
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436181370}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1222710140}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.2}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1436181372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436181370}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d55c2264f43f974cb5d3aaeefbb6a02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 519420032}
---- !u!223 &1436181373
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1436181370}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
 --- !u!1 &1664380803
 GameObject:
   m_ObjectHideFlags: 0
@@ -3857,193 +1440,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &1806927486
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1806927487}
-  - component: {fileID: 1806927489}
-  - component: {fileID: 1806927488}
-  m_Layer: 6
-  m_Name: HealthBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1806927487
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1806927486}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 253643617}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.2}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1806927488
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1806927486}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d55c2264f43f974cb5d3aaeefbb6a02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 519420032}
---- !u!223 &1806927489
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1806927486}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!1 &1826495362
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1826495363}
-  - component: {fileID: 1826495366}
-  - component: {fileID: 1826495365}
-  - component: {fileID: 1826495364}
-  m_Layer: 6
-  m_Name: Visual
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1826495363
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826495362}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 457419568}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &1826495364
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826495362}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1826495365
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826495362}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6c1c0e2adaa88304a80a3429c6f9d866, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1826495366
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1826495362}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1909998094
 GameObject:
   m_ObjectHideFlags: 0
@@ -4057,6 +1453,7 @@ GameObject:
   - component: {fileID: 1909998097}
   - component: {fileID: 1909998098}
   - component: {fileID: 1909998099}
+  - component: {fileID: 1909998100}
   m_Layer: 0
   m_Name: GameManger
   m_TagString: Untagged
@@ -4091,37 +1488,7 @@ MonoBehaviour:
   damageColorOverTime:
     serializedVersion: 2
     key0: {r: 0.8941177, g: 0.058823533, b: 0.10588236, a: 1}
-    key1: {r: 1, g: 0.5832002, b: 0, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  damageCritColorOverTime:
-    serializedVersion: 2
-    key0: {r: 0.7921569, g: 0, b: 0.7504359, a: 1}
-    key1: {r: 1, g: 0, b: 0.1536007, a: 1}
+    key1: {r: 1, g: 0, b: 0.07887125, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -4151,7 +1518,7 @@ MonoBehaviour:
   healColorOverTime:
     serializedVersion: 2
     key0: {r: 0, g: 1, b: 0.12738347, a: 1}
-    key1: {r: 0, g: 1, b: 0.9085827, a: 1}
+    key1: {r: 0, g: 1, b: 0.1254902, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -4160,36 +1527,6 @@ MonoBehaviour:
     key7: {r: 0, g: 0, b: 0, a: 0}
     ctime0: 0
     ctime1: 65535
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
-  healCritColorOverTime:
-    serializedVersion: 2
-    key0: {r: 0.88913447, g: 0.44968545, b: 1, a: 1}
-    key1: {r: 0.49371064, g: 1, b: 0.79341066, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 48059
     ctime2: 0
     ctime3: 0
     ctime4: 0
@@ -4210,8 +1547,8 @@ MonoBehaviour:
     m_NumAlphaKeys: 2
   recoverStaminaColorOverTime:
     serializedVersion: 2
-    key0: {r: 1, g: 0.9297448, b: 0.33647794, a: 1}
-    key1: {r: 1, g: 0.69712013, b: 0, a: 1}
+    key0: {r: 0.94509804, g: 0.7849365, b: 0, a: 1}
+    key1: {r: 1, g: 0.8299316, b: 0, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -4238,40 +1575,10 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  recoverStaminaCritColorOverTime:
-    serializedVersion: 2
-    key0: {r: 1, g: 0.34276712, b: 0.7925219, a: 1}
-    key1: {r: 1, g: 0.8361935, b: 0, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 40735
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
   recoverManaColorOverTime:
     serializedVersion: 2
-    key0: {r: 0, g: 0.84760237, b: 1, a: 1}
-    key1: {r: 0, g: 0.0005173683, b: 1, a: 1}
+    key0: {r: 0, g: 1, b: 0.9803922, a: 1}
+    key1: {r: 0, g: 1, b: 0.9803922, a: 1}
     key2: {r: 0, g: 0, b: 0, a: 0}
     key3: {r: 0, g: 0, b: 0, a: 0}
     key4: {r: 0, g: 0, b: 0, a: 0}
@@ -4298,36 +1605,116 @@ MonoBehaviour:
     m_ColorSpace: -1
     m_NumColorKeys: 2
     m_NumAlphaKeys: 2
-  recoverManaCritColorOverTime:
+  critOverTime:
     serializedVersion: 2
-    key0: {r: 0.66511154, g: 0, b: 1, a: 1}
-    key1: {r: 0.015686274, g: 0.54917663, b: 1, a: 1}
-    key2: {r: 0, g: 0, b: 0, a: 0}
-    key3: {r: 0, g: 0, b: 0, a: 0}
-    key4: {r: 0, g: 0, b: 0, a: 0}
-    key5: {r: 0, g: 0, b: 0, a: 0}
-    key6: {r: 0, g: 0, b: 0, a: 0}
-    key7: {r: 0, g: 0, b: 0, a: 0}
-    ctime0: 0
-    ctime1: 63865
-    ctime2: 0
-    ctime3: 0
-    ctime4: 0
-    ctime5: 0
-    ctime6: 0
-    ctime7: 0
-    atime0: 0
-    atime1: 65535
-    atime2: 0
-    atime3: 0
-    atime4: 0
-    atime5: 0
-    atime6: 0
-    atime7: 0
-    m_Mode: 0
-    m_ColorSpace: -1
-    m_NumColorKeys: 2
-    m_NumAlphaKeys: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.0029730215
+      value: 1.0002201
+      inSlope: -3.7604046
+      outSlope: -3.7604046
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.07305797
+      value: 0.7366723
+      inSlope: 0.000000834465
+      outSlope: 0.000000834465
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.1431429
+      value: 1.0002201
+      inSlope: -0.00000023841858
+      outSlope: -0.00000023841858
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.21322781
+      value: 0.7366723
+      inSlope: -0.0000011920929
+      outSlope: -0.0000011920929
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.28331277
+      value: 1.0002201
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.35339773
+      value: 0.7366723
+      inSlope: 0.0000023841858
+      outSlope: 0.0000023841858
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.4234826
+      value: 1.0002201
+      inSlope: 0.000004053116
+      outSlope: 0.000004053116
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.49356762
+      value: 0.7366723
+      inSlope: 0.0000032186508
+      outSlope: 0.0000032186508
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5636525
+      value: 1.0002201
+      inSlope: -0.000000834465
+      outSlope: -0.000000834465
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.6337374
+      value: 0.7366723
+      inSlope: -0.000004887581
+      outSlope: -0.000004887581
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.70382243
+      value: 1.0002201
+      inSlope: 3.7603993
+      outSlope: 3.7603993
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 1
+    m_RotationOrder: 4
+  terrainShiftCameraShake:
+    defaultCameraShakeDirection: {x: 0, y: 1, z: 0}
+    cameraShakeForce: 0.02
+    cameraShakeForceScalers: []
+    cameraShakeMode: 0
   mainCanvas: {fileID: 1664380806}
 --- !u!4 &1909998096
 Transform:
@@ -4395,6 +1782,59 @@ MonoBehaviour:
   DescriptionViewPrefab: {fileID: 7846234316464661787, guid: 930535616ed3caa43ac839eb305e5bac, type: 3}
   VictoryScreen: {fileID: 8475046179310297713, guid: 803e525dbae763e4fbc55ba65d010901, type: 3}
   DefeatScreen: {fileID: 763247582551119763, guid: 7feb9f90718665f4a9ec8f1e3e117f52, type: 3}
+--- !u!114 &1909998100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1909998094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.Cinemachine::Unity.Cinemachine.CinemachineImpulseSource
+  ImpulseDefinition:
+    ImpulseChannel: 1
+    ImpulseShape: 3
+    CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    ImpulseDuration: 0.25
+    ImpulseType: 1
+    DissipationRate: 0.1
+    RawSignal: {fileID: 0}
+    AmplitudeGain: 1
+    FrequencyGain: 1
+    RepeatMode: 0
+    Randomize: 1
+    TimeEnvelope:
+      AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      AttackTime: 0
+      SustainTime: 0.2
+      DecayTime: 0.7
+      ScaleWithImpact: 1
+      HoldForever: 0
+    ImpactRadius: 100
+    DirectionMode: 0
+    DissipationMode: 2
+    DissipationDistance: 500
+    PropagationSpeed: 343
+  DefaultVelocity: {x: 0, y: -1, z: 0}
 --- !u!1 &1934064791
 GameObject:
   m_ObjectHideFlags: 0
@@ -4426,10 +1866,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   teamMembers:
   - {fileID: 1222710136}
+  - {fileID: 1174028753}
   - {fileID: 1394196314}
-  - {fileID: 457419566}
-  - {fileID: 260290376}
-  - {fileID: 253643615}
+  - {fileID: 421344666}
+  - {fileID: 269568006}
   - {fileID: 630883956}
   isPlayerTeam: 0
 --- !u!4 &1934064793
@@ -4447,193 +1887,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2029512999
-GameObject:
+--- !u!1001 &1504589500457963768
+PrefabInstance:
   m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2029513000}
-  - component: {fileID: 2029513002}
-  - component: {fileID: 2029513001}
-  m_Layer: 6
-  m_Name: HealthBar
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2029513000
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2029512999}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01, y: 0.01, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 630883958}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.2}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2029513001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2029512999}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d55c2264f43f974cb5d3aaeefbb6a02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 519420032}
---- !u!223 &2029513002
-Canvas:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2029512999}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_RenderMode: 2
-  m_Camera: {fileID: 519420031}
-  m_PlaneDistance: 100
-  m_PixelPerfect: 0
-  m_ReceivesEvents: 1
-  m_OverrideSorting: 0
-  m_OverridePixelPerfect: 0
-  m_SortingBucketNormalizedSize: 0
-  m_VertexColorAlwaysGammaSpace: 1
-  m_AdditionalShaderChannelsFlag: 0
-  m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_TargetDisplay: 0
---- !u!1 &2115640769
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2115640770}
-  - component: {fileID: 2115640773}
-  - component: {fileID: 2115640772}
-  - component: {fileID: 2115640771}
-  m_Layer: 6
-  m_Name: Visual
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2115640770
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2115640769}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1222710140}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &2115640771
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2115640769}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &2115640772
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2115640769}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
-  m_SmallMeshCulling: 1
-  m_ForceMeshLod: -1
-  m_MeshLodSelectionBias: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 6c1c0e2adaa88304a80a3429c6f9d866, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_MaskInteraction: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &2115640773
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2115640769}
-  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 308327562806224960, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_Name
+      value: Basic Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4461034333626487100, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 519420032}
+    - target: {fileID: 4522638118228300003, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -28.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8717029980189200610, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c68d7f4ff7b27d4c841f6202acd9e52, type: 3}
 --- !u!114 &1608824070794674537 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9193593319599675298, guid: 1a0ce3c970421934c95d239dbdd496fb, type: 3}
@@ -4645,6 +1963,71 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &2095965545333572296
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 454283921126905945, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 1747444813965585461, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_Name
+      value: Beefcake Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5531397718007860268, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 519420032}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.21
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -28.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7372852968073079350, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4b7c98886f339424692c7ef8658296b3, type: 3}
 --- !u!1001 &2200422584534644505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4766,14 +2149,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4048300363147801541, guid: 098f3f3442601f44791527eb24d31147, type: 3}
-      propertyPath: abilityTerrainModule.delayRange
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 4048300363147801541, guid: 098f3f3442601f44791527eb24d31147, type: 3}
-      propertyPath: abilityTerrainModule.baseShiftSpeed
-      value: 250
-      objectReference: {fileID: 0}
     - target: {fileID: 8678106415794119304, guid: 098f3f3442601f44791527eb24d31147, type: 3}
       propertyPath: m_Camera
       value: 
@@ -4783,6 +2158,151 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 098f3f3442601f44791527eb24d31147, type: 3}
+--- !u!1001 &7010359751881088569
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 598522712759251959, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: abilityHealModule.cameraShakeSettings.cameraShakeMode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174044415957811766, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 519420032}
+    - target: {fileID: 2815849633864076386, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 3572779765733126361, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -5.275
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572779765733126361, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -28.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572779765733126361, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572779765733126361, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572779765733126361, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572779765733126361, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572779765733126361, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572779765733126361, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572779765733126361, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3572779765733126361, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7970348346321372991, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+      propertyPath: m_Name
+      value: EnemyHealer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4ea23abc71069494cb8feaad9c2a7318, type: 3}
+--- !u!1001 &7468197272182221030
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1761360801787368447, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+      propertyPath: m_Name
+      value: Terra
+      objectReference: {fileID: 0}
+    - target: {fileID: 5423516426034082273, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 7663588664857361852, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663588664857361852, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -28.87
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663588664857361852, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663588664857361852, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663588664857361852, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663588664857361852, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663588664857361852, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663588664857361852, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663588664857361852, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663588664857361852, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7772205395168770626, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 519420032}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+--- !u!114 &7615778883346012445 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2805403565751875409, guid: 5cfe15d8f5dc4b340920cf2d969a8920, type: 3}
+  m_PrefabInstance: {fileID: 7468197272182221030}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 111dd4abaff2cbb4ba5fc92ed27d93bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8698999774280435081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4889,13 +2409,14 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1909998096}
   - {fileID: 6839493737032615947}
+  - {fileID: 7468197272182221030}
   - {fileID: 2200422584534644505}
-  - {fileID: 1222710140}
-  - {fileID: 1394196316}
-  - {fileID: 457419568}
-  - {fileID: 260290378}
-  - {fileID: 253643617}
-  - {fileID: 630883958}
+  - {fileID: 2095965545333572296}
+  - {fileID: 1174028752}
+  - {fileID: 1504589500457963768}
+  - {fileID: 421344665}
+  - {fileID: 269568005}
+  - {fileID: 7010359751881088569}
   - {fileID: 8698999774280435081}
   - {fileID: 1664380807}
   - {fileID: 1391307749}

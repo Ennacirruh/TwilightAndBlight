@@ -3,7 +3,7 @@ namespace TwilightAndBlight.Events
 {
     public static class GameEvents
     {
-        public static DamageEntityInteraction OnEntiyDamaged;
+        public static DamageEntityInteraction OnEntityDamaged;
         public static DamageEntityOverride OnEntityDamagedOverride;
         public static ReplenishEntityInteraction OnEntityHealthReplenished;
         public static ReplenishEntityOverride OnEntityHealthReplenishedOverride;
@@ -20,6 +20,11 @@ namespace TwilightAndBlight.Events
         public static DrainEntityResourceInteraction OnEntityManaDrained;
         public static DrainEntityResourceOverride OnEntityManaDrainedOverride;
         public static CombatResourceChangeAction OnManaChange;
+        public static ShieldEntityInteraction OnEntityShielded;
+        public static ShieldEntityOverride OnEntityShieldedOverride;
+        public static ShieldEntityAction OnShieldExpired;
+        public static ShieldEntityInteraction OnShieldDestroyed;
+        public static ShieldResourceChange OnShieldChange;
         public static CombatEntityAction OnTurnStart;
         public static CombatEntityAction OnTurnEnd;
         public static CombatEntityInteraction OnEntityKilled;

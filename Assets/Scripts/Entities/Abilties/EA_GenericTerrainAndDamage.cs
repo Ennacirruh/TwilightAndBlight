@@ -35,7 +35,7 @@ namespace TwilightAndBlight.Ability
 
         public virtual void DamageOnTerrainShift(MapNode node, float idc)
         {
-            StartCoroutine(abilityDamageModule.PerformDamageBehavior(node, idc));
+            StartCoroutine(abilityDamageModule.PerformDamageBehavior(node, node, idc));
         }
         protected override Dictionary<string, string> GenerateStringConversionTable()
         {
